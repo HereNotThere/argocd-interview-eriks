@@ -4,20 +4,19 @@
 global:
   environmentName: gamma
   gcp:
-    projectId: hnt-live-gamma 
+    projectId: hnt-live-gamma
     gke:
       clusterLocation: us-east4
       clusterName: main-cluster-gamma
   chains:
     river:
       chainId: "6524490"
-      contractAddresses: 
-        riverRegistry: '0xf18E98D36A6bd1aDb52F776aCc191E69B491c070'
-
+      contractAddresses:
+        riverRegistry: "0xf18E98D36A6bd1aDb52F776aCc191E69B491c070"
 
 appOfApps:
   default:
-    valuesFile: ../../environments/gamma/values.yaml 
+    valuesFile: ../../environments/gamma/values.yaml
     spec:
       project: default
       source:
@@ -25,18 +24,18 @@ appOfApps:
         targetRevision: main
 
   applications:
-    cert-manager:
+    - name: cert-manager
       disable: true
       namespace: cert-manager
-    datadog:
+    - name: datadog
       disable: true
       namespace: datadog
-    external-secrets:
+    - name: external-secrets
       disable: true
       namespace: external-secrets
-    metrics-aggregator:
+    - name: metrics-aggregator
       disable: true
       namespace: default
-    notification-service:
+    - name: notification-service
       disable: true
       namespace: default
