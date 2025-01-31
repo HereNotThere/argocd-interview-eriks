@@ -37,5 +37,5 @@ appOfApps:
       disable: false
       namespace: datadog
     - name: xchain-monitor
-      disable: false
+      disable: true
       namespace: default
