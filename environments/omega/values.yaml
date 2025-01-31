@@ -39,3 +39,6 @@ appOfApps:
     - name: xchain-monitor
       disable: true
       namespace: default
+      values: |
+        image:
+          tag: 78d5c910f736345b02388284f46a0a5391a5d416
