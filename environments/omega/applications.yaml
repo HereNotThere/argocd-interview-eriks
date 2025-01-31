@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps-omega
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/HereNotThere/argocd
+    targetRevision: main # TODO: start using tags
+    path: charts/app-of-apps
+    helm:
+      valueFiles:
+        - ../../environments/omega/values.yaml # TODO: always update
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true # TODO: is this okay?
+      selfHeal: true # TODO: is this okay?
+      allowEmpty: true # TODO: is this okay?
+    syncOptions:
+      - CreateNamespace=true

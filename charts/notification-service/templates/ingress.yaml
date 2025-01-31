@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "notification-service.fullname" . }}
+  labels:
+    {{- include "notification-service.labels" . | nindent 4 }}
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    ingress.gcp.kubernetes.io/pre-shared-cert: "notification-service-cert"
+    kubernetes.io/ingress.global-static-ip-name: "main-alb-ip"
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  rules:
+    - host: river-notification-service-{{ .Values.global.environmentName }}.towns.com
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "notification-service.fullname" $ }}
+                port:
+                  number: {{ $.Values.service.port }}

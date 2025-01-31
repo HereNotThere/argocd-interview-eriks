@@ -1,0 +1,40 @@
+datadog:
+  datadog:
+    apiKeyExistingSecret: datadog-secret
+    appKeyExistingSecret: datadog-secret
+    prometheusScrape:
+      enabled: true
+    logs:
+      enabled: true
+      containerCollectAll: false
+      auto_multi_line_detection: true
+
+  agents:
+    containers:
+      agent:
+        # resources for the Agent container
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+
+      traceAgent:
+        # resources for the Trace Agent container
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+
+      processAgent:
+        # resources for the Process Agent container
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+
+    priorityClassCreate: true
+
+  clusterAgent:
+    enabled: true
+    metricsProvider:
+      enabled: true

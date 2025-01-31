@@ -1,0 +1,41 @@
+{{- range $app := .Values.appOfApps.applications -}}
+{{ if not .disable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+  namespace: argocd
+  {{- if not .disableAutomated }}
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  {{- end }}
+spec:
+  project: {{ $.Values.appOfApps.default.spec.project }}
+  source:
+    repoURL:  {{  $.Values.appOfApps.default.spec.source.repoURL }}
+    targetRevision: {{ $.Values.appOfApps.default.spec.source.targetRevision  }}
+    path: charts/{{ .name }}
+    helm:
+      valueFiles:
+      - './values.yaml'
+      - {{ default $.Values.appOfApps.default.valuesFile .valuesFile }}
+      {{- with .values }}
+      values:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      
+  destination:
+    namespace: {{ .namespace }}
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    {{- if not .disableAutomated }}
+    automated:
+      prune: true # TODO: is this okay?
+      selfHeal: true # TODO: is this okay?
+      allowEmpty: true # TODO: is this okay?
+    {{- end }}
+    syncOptions:
+      - CreateNamespace=true
+---
+{{- end }}
+{{- end }}

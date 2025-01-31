@@ -1,0 +1,41 @@
+# ################### GLOBAL ###################
+
+global:
+  environmentName: omega
+  gcp:
+    projectId: hnt-live-omega # TODO: make sure we don't reuse this on other environments
+    gke:
+      clusterLocation: us-east4
+      clusterName: main-cluster-omega # always update
+  chains:
+    river:
+      chainId: "550" # TODO: always update
+      contractAddresses:
+        riverRegistry: "0x1298c03Fde548dc433a452573E36A713b38A0404" # TODO: always update this accross environments
+
+appOfApps:
+  default:
+    valuesFile: ../../environments/omega/values.yaml # TODO: always update
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/HereNotThere/argocd
+        targetRevision: main
+
+  applications:
+    - name: external-secrets
+      disable: false
+      namespace: external-secrets
+      values: |
+        external-secrets:
+          serviceAccount:
+            create: true
+            name: main-service-account
+            annotations:
+              iam.gke.io/gcp-service-account: main-service-account@hnt-live-omega.iam.gserviceaccount.com # TODO: make sure you replace the project ID with the correct one. turn this into a tpl
+    - name: datadog
+      disable: false
+      namespace: datadog
+    - name: xchain-monitor
+      disable: false
+      namespace: default

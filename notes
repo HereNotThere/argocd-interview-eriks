@@ -1,0 +1,17 @@
+Decisions:
+  - Create separate gcp projects per environment
+  - Use trunk based development. Argocd will depend on tags for deployment
+  - The regular release of argocd is not good enough for multi-cluster + single-instance. Plus, it's operationally complex to do so. It's okay to run one argocd instance per environment.
+  - You don't want non argocd pods running in the argocd nodes. You will want to dedicate specific nodes to just run argocd. Argocd can not be choked by other pods.
+  - Use external-secrets CRD to manage secrets via gcp secret manager
+
+Discussion:
+  - ArgoCD app of apps pattern
+  - One main app module
+  - Referencing multiple microservice modules, some of which will be argocd apps themselves
+  - Multiple environments (omega, gamma, delta, alpha)
+  - Each environment managed in a different cluster
+  - A single argocd instance managing all clusters
+  - Is it possible to maintain argocd within argocd?
+  - Each cluster will have datadog-agent running
+  - Secrets?

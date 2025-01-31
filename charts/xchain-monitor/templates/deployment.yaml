@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "xchain-monitor.fullname" . }}
+  labels:
+    {{- include "xchain-monitor.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate #Tell k8s to recreate the pod when the deployment is updated
+  selector:
+    matchLabels:
+      {{- include "xchain-monitor.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        # TODO: add prometheus annotations
+        ad.datadoghq.com/xchain-monitor.logs: '[{"service": "xchain-monitor"}]' # TODO: fix env tag
+      labels:
+        {{- include "xchain-monitor.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: xchain-monitor
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: RIVER_ENV
+              value: {{ .Values.global.environmentName }}
+            - name: INITIAL_BLOCK_NUM
+              value: "21109999"
+            - name: TRANSACTION_VALID_BLOCKS
+              value: "20"
+            - name: BASE_PROVIDER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: xchain-monitor-secrets
+                  key: base-rpc-url 
+            - name: LOG_LEVEL
+              value: "info"
+            - name: LOG_PRETTY
+              value: "false"
+            - name: BLOCK_SCAN_CHUNK_SIZE
+              value: "10000"
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
