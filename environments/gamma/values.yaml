@@ -1,21 +1,23 @@
-# ################### GLOBAL ###################
+################ WARNING: ################
+# THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
 
 global:
   environmentName: gamma
   gcp:
-    projectId: hnt-live-gamma # TODO: make sure we don't reuse this on other environments
+    projectId: hnt-live-gamma 
     gke:
       clusterLocation: us-east4
-      clusterName: main-cluster-gamma # TODO: always update
+      clusterName: main-cluster-gamma
   chains:
     river:
-      chainId: "6524490" # TODO: always update
-      contractAddresses:
-        riverRegistry: "0xf18E98D36A6bd1aDb52F776aCc191E69B491c070" # TODO: always update this accross environments
+      chainId: "6524490"
+      contractAddresses: 
+        riverRegistry: '0xf18E98D36A6bd1aDb52F776aCc191E69B491c070'
+
 
 appOfApps:
   default:
-    valuesFile: ../../environments/gamma/values.yaml # TODO: always update
+    valuesFile: ../../environments/gamma/values.yaml 
     spec:
       project: default
       source:
@@ -23,41 +25,18 @@ appOfApps:
         targetRevision: main
 
   applications:
-    - name: external-secrets
-      disable: true
-      namespace: external-secrets
-      values: |
-        external-secrets:
-          serviceAccount:
-            create: true
-            name: main-service-account
-            annotations:
-              iam.gke.io/gcp-service-account: main-service-account@hnt-live-gamma.iam.gserviceaccount.com # TODO: make sure you replace the project ID with the correct one. turn this into a tpl
-    - name: cert-manager
+    cert-manager:
       disable: true
       namespace: cert-manager
-
-    # - name: argocd
-    #   disable: true
-    #   namespace: argocd
-    - name: datadog
+    datadog:
       disable: true
       namespace: datadog
-    - name: metrics-aggregator
+    external-secrets:
+      disable: true
+      namespace: external-secrets
+    metrics-aggregator:
       disable: true
       namespace: default
-    - name: notification-service
+    notification-service:
       disable: true
       namespace: default
-      values: |
-        apnsTownsAppIdentifier: com.towns.internal # TODO: make sure you update this on other environments
-        image:
-          tag: dev # TODO: always update
-        # ingress:
-        #   hosts:
-        #     - host: river-notification-service-gamma.towns.com #TODO: always update
-        #       paths:
-        #         - path: /
-        #           pathType: Prefix
-
-# TODO: should we set up a solo ingress that routes to the correct service in the correct app?

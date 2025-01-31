@@ -1,0 +1,27 @@
+################ WARNING: ################
+# THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
+
+global:
+  environmentName: {{ global.environmentName }}
+  gcp:
+    projectId: hnt-live-{{ global.environmentName }} 
+    gke:
+      clusterLocation: us-east4
+      clusterName: main-cluster-{{ global.environmentName }}
+  chains:
+    river:
+      chainId: "{{ chains.river.chainId }}"
+      contractAddresses: 
+        {{ chains.river.contractAddresses | to_yaml }}
+
+appOfApps:
+  default:
+    valuesFile: ../../environments/{{global.environmentName}}/values.yaml 
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/HereNotThere/argocd
+        targetRevision: main
+
+  applications:
+    {{ appOfApps.applications | to_yaml | indent(4) }}

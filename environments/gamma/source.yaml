@@ -1,0 +1,28 @@
+# ################### GLOBAL ###################
+
+global:
+  environmentName: gamma
+
+chains:
+  river:
+    chainId: 6524490
+    contractAddresses:
+      riverRegistry: "0xf18E98D36A6bd1aDb52F776aCc191E69B491c070"
+
+appOfApps:
+  applications:
+    cert-manager:
+      disable: true
+      namespace: cert-manager
+    datadog:
+      disable: true
+      namespace: datadog
+    external-secrets:
+      disable: true
+      namespace: external-secrets
+    metrics-aggregator:
+      disable: true
+      namespace: default
+    notification-service:
+      disable: true
+      namespace: default
