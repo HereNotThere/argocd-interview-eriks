@@ -11,18 +11,18 @@ chains:
 
 appOfApps:
   applications:
-    cert-manager:
+    - name: cert-manager
       disable: true
       namespace: cert-manager
-    datadog:
+    - name: datadog
       disable: true
       namespace: datadog
-    external-secrets:
+    - name: external-secrets
       disable: true
       namespace: external-secrets
-    metrics-aggregator:
+    - name: metrics-aggregator
       disable: true
       namespace: default
-    notification-service:
-      disable: false
+    - name: notification-service
+      disable: true
       namespace: default

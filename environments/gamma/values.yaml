@@ -24,18 +24,18 @@ appOfApps:
         targetRevision: main
 
   applications:
-    - name: cert-manager
-      disable: true
+    - disable: true
+      name: cert-manager
       namespace: cert-manager
-    - name: datadog
-      disable: true
+    - disable: true
+      name: datadog
       namespace: datadog
-    - name: external-secrets
-      disable: true
+    - disable: true
+      name: external-secrets
       namespace: external-secrets
-    - name: metrics-aggregator
-      disable: true
+    - disable: true
+      name: metrics-aggregator
       namespace: default
-    - name: notification-service
-      disable: true
+    - disable: true
+      name: notification-service
       namespace: default
