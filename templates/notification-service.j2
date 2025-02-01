@@ -2,11 +2,11 @@
 # THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
 
 apnsTownsAppIdentifier: {{ notificationService.apnsTownsAppIdentifier }}
-  image:
-    tag: {{ notificationService.image.tag }}
-  ingress:
-    hosts:
-      - host: river-notification-service-{{ global.environmentName }}.towns.com 
-        paths:
-          - path: /
-            pathType: Prefix
+image:
+  tag: {{ notificationService.image.tag }}
+ingress:
+  hosts:
+    - host: river-notification-service-{{ global.environmentName }}.towns.com 
+      paths:
+        - path: /
+          pathType: Prefix

@@ -2,11 +2,11 @@
 # THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
 
 apnsTownsAppIdentifier: com.towns.internal
-  image:
-    tag: dev
-  ingress:
-    hosts:
-      - host: river-notification-service-gamma.towns.com 
-        paths:
-          - path: /
-            pathType: Prefix
+image:
+  tag: dev
+ingress:
+  hosts:
+    - host: river-notification-service-gamma.towns.com
+      paths:
+        - path: /
+          pathType: Prefix
