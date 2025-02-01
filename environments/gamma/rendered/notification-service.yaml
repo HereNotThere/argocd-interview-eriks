@@ -10,3 +10,12 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+resources:
+  limits:
+    cpu: 1
+    memory: 7.5Gi
+    # TODO: don't hardcode the memory limit
+  requests:
+    cpu: 1
+    memory: 7.5Gi
+    # TODO: don't hardcode the memory request
