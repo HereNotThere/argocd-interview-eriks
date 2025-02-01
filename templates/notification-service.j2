@@ -1,12 +1,12 @@
 ################ WARNING: ################
 # THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
 
-apnsTownsAppIdentifier: com.towns.internal
+apnsTownsAppIdentifier: {{ notificationService.apnsTownsAppIdentifier }}
   image:
-    tag: dev
+    tag: {{ notificationService.image.tag }}
     ingress:
       hosts:
-        - host: river-notification-service-gamma.towns.com 
+        - host: river-notification-service-{{ global.environmentName }}.towns.com 
           paths:
             - path: /
               pathType: Prefix

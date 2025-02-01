@@ -26,3 +26,8 @@ appOfApps:
     - name: notification-service
       disable: false
       namespace: default
+
+notificationService:
+  image:
+    tag: dev
+  apnsTownsAppIdentifier: com.towns.internal
