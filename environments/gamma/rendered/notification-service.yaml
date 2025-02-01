@@ -4,9 +4,9 @@
 apnsTownsAppIdentifier: com.towns.internal
   image:
     tag: dev
-    ingress:
-      hosts:
-        - host: river-notification-service-gamma.towns.com 
-          paths:
-            - path: /
-              pathType: Prefix
+  ingress:
+    hosts:
+      - host: river-notification-service-gamma.towns.com 
+        paths:
+          - path: /
+            pathType: Prefix

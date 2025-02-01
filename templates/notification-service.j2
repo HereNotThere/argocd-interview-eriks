@@ -4,9 +4,9 @@
 apnsTownsAppIdentifier: {{ notificationService.apnsTownsAppIdentifier }}
   image:
     tag: {{ notificationService.image.tag }}
-    ingress:
-      hosts:
-        - host: river-notification-service-{{ global.environmentName }}.towns.com 
-          paths:
-            - path: /
-              pathType: Prefix
+  ingress:
+    hosts:
+      - host: river-notification-service-{{ global.environmentName }}.towns.com 
+        paths:
+          - path: /
+            pathType: Prefix
