@@ -18,11 +18,10 @@ spec:
     helm:
       valueFiles:
       - './values.yaml'
-      {{- with .valueFiles }}
-      {{- range . }}
+      {{- range .valueFiles }}
       - '{{ . }}'
       {{- end }}
-      {{- end }}
+      
       
   destination:
     namespace: {{ .namespace }}
