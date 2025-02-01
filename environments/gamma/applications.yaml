@@ -13,7 +13,8 @@ spec:
     path: charts/app-of-apps
     helm:
       valueFiles:
-        - ../../environments/gamma/values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/app-of-apps.yaml
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc

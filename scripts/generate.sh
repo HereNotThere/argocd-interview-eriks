@@ -7,5 +7,5 @@ echo "Generating values for $ENV"
 
 python ./templates/environment.py \
   --params "./environments/${ENV}/source.yaml" \
-  --destination "./environments/${ENV}/values.yaml" \
-  --template "./templates/environment.j2"
+  --destination "./environments/${ENV}/rendered" \
+  --templates "./templates"

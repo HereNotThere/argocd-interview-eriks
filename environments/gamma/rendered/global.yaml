@@ -1,0 +1,15 @@
+################ WARNING: ################
+# THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
+
+global:
+  environmentName: gamma
+  gcp:
+    projectId: hnt-live-gamma 
+    gke:
+      clusterLocation: us-east4
+      clusterName: main-cluster-gamma
+  chains:
+    river:
+      chainId: "6524490"
+      contractAddresses: 
+        riverRegistry: '0xf18E98D36A6bd1aDb52F776aCc191E69B491c070'

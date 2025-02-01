@@ -1,0 +1,22 @@
+################ WARNING: ################
+# THIS FILE IS GENERATED VIA scripts/generate.sh. DO NOT MODIFY IT DIRECTLY!!!
+
+appOfApps:
+  default:
+    valuesFile: ../../environments/{{global.environmentName}}/values.yaml 
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/HereNotThere/argocd
+        targetRevision: main
+
+  applications:
+    #iterate over all applications and append a key,value pair for each
+    {% for app in appOfApps.applications %}
+    - name: {{app.name}}
+      disable: {{app.disable | lower }}
+      namespace: {{app.namespace}}
+      valuesFile:
+        - ../../environments/{{global.environmentName}}/rendered/global.yaml
+        - ../../environments/{{global.environmentName}}/rendered/{{app.name}}.yaml
+    {% endfor %}

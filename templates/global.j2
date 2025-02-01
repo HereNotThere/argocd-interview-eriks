@@ -13,15 +13,3 @@ global:
       chainId: "{{ chains.river.chainId }}"
       contractAddresses: 
         {{ chains.river.contractAddresses | to_yaml }}
-
-appOfApps:
-  default:
-    valuesFile: ../../environments/{{global.environmentName}}/values.yaml 
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/HereNotThere/argocd
-        targetRevision: main
-
-  applications:
-    {{ appOfApps.applications | to_yaml | indent(4) }}
