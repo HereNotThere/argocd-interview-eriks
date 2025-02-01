@@ -18,7 +18,7 @@ appOfApps:
       disable: true
       namespace: datadog
     - name: external-secrets
-      disable: true
+      disable: false
       namespace: external-secrets
     - name: metrics-aggregator
       disable: true
