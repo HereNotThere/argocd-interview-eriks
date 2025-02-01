@@ -28,7 +28,7 @@ appOfApps:
         - ../../environments/gamma/rendered/datadog.yaml
     
     - name: external-secrets
-      disable: true
+      disable: false
       namespace: external-secrets
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
