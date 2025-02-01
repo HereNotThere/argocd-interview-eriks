@@ -21,7 +21,7 @@ appOfApps:
         - ../../environments/gamma/rendered/cert-manager.yaml
     
     - name: datadog
-      disable: true
+      disable: false
       namespace: datadog
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
@@ -35,7 +35,7 @@ appOfApps:
         - ../../environments/gamma/rendered/external-secrets.yaml
     
     - name: metrics-aggregator
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
