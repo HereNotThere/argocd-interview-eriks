@@ -16,35 +16,35 @@ appOfApps:
     - name: cert-manager
       disable: true
       namespace: cert-manager
-      valuesFile:
+      valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/cert-manager.yaml
     
     - name: datadog
       disable: true
       namespace: datadog
-      valuesFile:
+      valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/datadog.yaml
     
     - name: external-secrets
       disable: true
       namespace: external-secrets
-      valuesFile:
+      valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/external-secrets.yaml
     
     - name: metrics-aggregator
       disable: true
       namespace: default
-      valuesFile:
+      valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/metrics-aggregator.yaml
     
     - name: notification-service
       disable: false
       namespace: default
-      valuesFile:
+      valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/notification-service.yaml
     

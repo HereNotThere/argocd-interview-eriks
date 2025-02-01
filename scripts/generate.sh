@@ -6,6 +6,6 @@ fi
 echo "Generating values for $ENV"
 
 python ./templates/environment.py \
-  --params "./environments/${ENV}/source.yaml" \
+  --params "./environments/${ENV}/values.yaml" \
   --destination "./environments/${ENV}/rendered" \
   --templates "./templates"

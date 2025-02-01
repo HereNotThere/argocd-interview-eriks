@@ -18,10 +18,10 @@ spec:
     helm:
       valueFiles:
       - './values.yaml'
-      - {{ default $.Values.appOfApps.default.valuesFile .valuesFile }}
-      {{- with .values }}
-      values:
-        {{- toYaml . | nindent 8 }}
+      {{- with .valueFiles }}
+      {{- range . }}
+      - '{{ . }}'
+      {{- end }}
       {{- end }}
       
   destination:

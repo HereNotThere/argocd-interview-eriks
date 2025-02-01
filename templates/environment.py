@@ -4,6 +4,16 @@ import yaml
 from yaml import dump, Dumper
 import os
 
+TEMPLATE_NAMES = (
+  'global', 
+  'app-of-apps', 
+  'notification-service', 
+  'cert-manager', 
+  'datadog', 
+  'external-secrets', 
+  'metrics-aggregator'
+)
+
 class MyDumper(Dumper):
     def increase_indent(self, flow=False, indentless=False):
         return super(MyDumper, self).increase_indent(flow, False)
@@ -39,18 +49,24 @@ def run():
   with open(args.params, 'r') as f:
       params_str = yaml.load(f, Loader=yaml.FullLoader)
 
-  template_names = ('global', 'app-of-apps')
 
-  for template_name in template_names:
-    template_file = f'{args.templates}/{template_name}.j2'
-    with open(template_file, 'r') as f:
-      template_str = f.read()
-    template = environment.from_string(template_str)
-    values = template.render(params_str)
-
-
+  for template_name in TEMPLATE_NAMES:
+    
     destination = f'{args.destination}/{template_name}.yaml'
-    with open(destination, 'w') as f:
-        f.write(values)
+    template_file = f'{args.templates}/{template_name}.j2'
+
+    # check if the template file exists
+    if not os.path.exists(template_file):
+      print(f'Template file {template_file} does not exist. Generating empty render file...')
+      with open(destination, 'w') as f:
+        f.write("")
+    else:
+      with open(template_file, 'r') as f:
+        template_str = f.read()
+      template = environment.from_string(template_str)
+      rendered = template.render(params_str)
+
+      with open(destination, 'w') as f:
+          f.write(rendered)
 
 run()
