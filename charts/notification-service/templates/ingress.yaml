@@ -17,4 +17,4 @@ spec:
               service:
                 name: {{ include "notification-service.fullname" $ }}
                 port:
-                number: {{ $.Values.service.port }}
+                  number: {{ $.Values.service.port }}
