@@ -26,6 +26,9 @@ appOfApps:
     - name: cert-manager
       namespace: cert-manager
       disable: false
+    - name: external-dns
+      namespace: external-dns
+      disable: false
 
 notificationService:
   image:
