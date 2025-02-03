@@ -4,3 +4,6 @@ cert-manager:
 
 letsencrypt:
   email: kerem@hntlabs.com
+
+cloudflare:
+  email: kerem@hntlabs.com
