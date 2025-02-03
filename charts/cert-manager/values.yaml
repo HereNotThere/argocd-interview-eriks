@@ -1,2 +1,5 @@
+crds:
+  enabled: true
+
 letsencrypt:
   email: kerem@hntlabs.com
