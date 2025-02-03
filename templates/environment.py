@@ -11,6 +11,7 @@ TEMPLATE_NAMES = (
   'cert-manager', 
   'datadog', 
   'external-secrets', 
+  'external-dns',
   'metrics-aggregator',
   'cert-manager',
 )
