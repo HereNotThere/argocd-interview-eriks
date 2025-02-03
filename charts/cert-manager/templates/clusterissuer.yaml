@@ -5,7 +5,7 @@ metadata:
   labels:
     argocd.argoproj.io/instance: cert-manager
   name: letsencrypt
-  namespace: cert-manager
+  namespace: {{ .Release.Namespace }}
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
