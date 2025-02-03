@@ -10,4 +10,5 @@ spec:
     name: letsencrypt
     kind: ClusterIssuer
   dnsNames:
-    - river-notification-service-{{ .Values.global.environmentName }}.towns.com
+    - {{ include "notification-service.domainName" . }}
+

@@ -53,3 +53,10 @@ Selector labels
 app.kubernetes.io/name: {{ include "notification-service.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Domain name
+*/}}
+{{- define "notification-service.domainName" -}}
+{{- printf "river-notification-service-%s.towns.com" .Values.global.environmentName }}
+{{- end }}
