@@ -1,6 +1,5 @@
 external-dns:
-  provider:
-    name: cloudflare
+  provider: cloudflare
   env:
     - name: CF_API_KEY
       valueFrom:
