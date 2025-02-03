@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: river-notification-service-tls
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: river-notification-service-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - river-notification-service-{{ .Values.global.environmentName }}.towns.com
