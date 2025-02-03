@@ -7,6 +7,7 @@ endif
 init:
 	helm repo add argo https://argoproj.github.io/argo-helm
 	helm repo add external-secrets https://charts.external-secrets.io
+	helm repo add external-dns https://charts.bitnami.com/bitnami
 	helm repo add jetstack https://charts.jetstack.io 
 	helm repo update
 
