@@ -17,6 +17,7 @@ appOfApps:
       disable: false
       namespace: datadog
       valueFiles:
+        - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/datadog.yaml
     
@@ -24,6 +25,7 @@ appOfApps:
       disable: false
       namespace: external-secrets
       valueFiles:
+        - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/external-secrets.yaml
     
@@ -31,6 +33,7 @@ appOfApps:
       disable: false
       namespace: default
       valueFiles:
+        - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/metrics-aggregator.yaml
     
@@ -38,6 +41,7 @@ appOfApps:
       disable: false
       namespace: default
       valueFiles:
+        - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/notification-service.yaml
     
@@ -45,6 +49,7 @@ appOfApps:
       disable: false
       namespace: cert-manager
       valueFiles:
+        - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/cert-manager.yaml
     
