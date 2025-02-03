@@ -13,13 +13,6 @@ appOfApps:
   applications:
     #iterate over all applications and append a key,value pair for each
     
-    - name: cert-manager
-      disable: true
-      namespace: cert-manager
-      valueFiles:
-        - ../../environments/gamma/rendered/global.yaml
-        - ../../environments/gamma/rendered/cert-manager.yaml
-    
     - name: datadog
       disable: false
       namespace: datadog
@@ -47,4 +40,11 @@ appOfApps:
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/notification-service.yaml
+    
+    - name: cert-manager
+      disable: false
+      namespace: cert-manager
+      valueFiles:
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/cert-manager.yaml
     

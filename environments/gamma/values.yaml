@@ -11,9 +11,6 @@ chains:
 
 appOfApps:
   applications:
-    - name: cert-manager
-      namespace: cert-manager
-      disable: true
     - name: datadog
       namespace: datadog
       disable: false
@@ -25,6 +22,9 @@ appOfApps:
       disable: false
     - name: notification-service
       namespace: default
+      disable: false
+    - name: cert-manager
+      namespace: cert-manager
       disable: false
 
 notificationService:

@@ -11,7 +11,8 @@ TEMPLATE_NAMES = (
   'cert-manager', 
   'datadog', 
   'external-secrets', 
-  'metrics-aggregator'
+  'metrics-aggregator',
+  'cert-manager',
 )
 
 class MyDumper(Dumper):

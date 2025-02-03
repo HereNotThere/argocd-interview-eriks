@@ -15,3 +15,4 @@ Discussion:
   - Is it possible to maintain argocd within argocd?
   - Each cluster will have datadog-agent running
   - Secrets?
+# TODO: make room for datadog agent on every node
