@@ -3,3 +3,4 @@ external-dns:
   cloudflare:
     secretName: cloudflare-secret
     email: kerem@hntlabs.com
+    proxied: false
