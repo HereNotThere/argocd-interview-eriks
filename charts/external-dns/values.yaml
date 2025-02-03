@@ -1,10 +1,10 @@
 external-dns:
   provider: cloudflare
+  cloudflare:
+    email: kerem@hntlabs.com
   env:
     - name: CF_API_KEY
       valueFrom:
         secretKeyRef:
           name: cloudflare-secret
           key: api_key
-    - name: CF_API_EMAIL
-      value: kerem@hntlabs.com
