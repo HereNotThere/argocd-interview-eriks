@@ -7,6 +7,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "main-alb-ip"
 spec:
+  tls:
+    - hosts:
+        - {{ include "notification-service.domainName" . }}
+      secretName: river-notification-service-tls
   rules:
     - host: {{ include "notification-service.domainName" . }}
       http:
