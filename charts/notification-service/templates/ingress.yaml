@@ -6,6 +6,8 @@ metadata:
     {{- include "notification-service.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "main-alb-ip"
+    kubernetes.io/ingress.class: gce
+    kubernetes.io/ingress.allow-http: "true"
 spec:
   tls:
     - hosts:
