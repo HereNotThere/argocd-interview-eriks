@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Update Infra
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ on:
     types: [custom-event]
 
 jobs:
-  Common_CI:
+  update_infra:
     permissions: write-all
     runs-on: "ubuntu-latest"
     timeout-minutes: 5
