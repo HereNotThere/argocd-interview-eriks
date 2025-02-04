@@ -8,6 +8,9 @@ render_values: _check_env
 		--params "./environments/${ENV}/values.yaml" \
 		--destination "./environments/${ENV}/rendered" \
 		--templates "./templates"
+	
+	@echo "Values rendered for $(ENV)"
+	$(MAKE) _format_values
 
 # Creates the environment in the cluster
 init: _check_env _add_helm_repos
@@ -21,6 +24,10 @@ init: _check_env _add_helm_repos
 	kubectl wait --for=condition=Ready pod -l app.kubernetes.io/name=argocd-server -n argocd --timeout=300s
 
 	kubectl apply -f "./environments/${ENV}/applications.yaml"
+
+_format_values:
+	@echo "Formatting values.yaml files"
+	yarn prettier:fix
 
 # Checks if the ENV variable is set
 _check_env:
