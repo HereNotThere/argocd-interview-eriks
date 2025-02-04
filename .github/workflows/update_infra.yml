@@ -106,7 +106,7 @@ jobs:
           # Get the date and time
           DATE=$(date)
 
-          git commit -m "Auto-update values: $ENV - $DATE"
+          git commit -m "${DATE} - Update infra for ${ENV}"
           git push origin ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
