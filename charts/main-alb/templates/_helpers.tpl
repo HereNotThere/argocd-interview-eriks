@@ -76,3 +76,10 @@ Notification Service domain name
 {{- define "notification-service.domainName" -}}
 {{- printf "river-notification-service-%s.towns.com" .Values.global.environmentName }}
 {{- end }}
+
+{{/*
+All host names to attach to the ALB. A comma separated list of all the host names that should be attached to the ALB.
+*/}}
+{{- define "main-alb.hosts" -}}
+{{ include "argocd.domainName" . }}, {{ include "notification-service.domainName" . }}
+{{- end }}

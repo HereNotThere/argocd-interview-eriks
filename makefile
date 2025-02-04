@@ -1,4 +1,6 @@
 export ENV 
+export CHART
+export NAMESPACE
 
 # Renders values.yaml files for the specified environment
 render_values: _check_env
@@ -20,7 +22,7 @@ debug_chart: _check_env
 		exit 1; \
 	fi
 
-	if [ -z "$NAMESPACE" ]; then \
+	if [ -z "$(NAMESPACE)" ]; then \
 		echo "ERROR: NAMESPACE is not set"; \
 		exit 1; \
 	fi
