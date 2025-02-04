@@ -13,6 +13,13 @@ appOfApps:
   applications:
     #iterate over all applications and append a key,value pair for each
 
+    - name: argocd
+      disable: false
+      namespace: argocd
+      valueFiles:
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/argocd.yaml
+
     - name: datadog
       disable: false
       namespace: datadog

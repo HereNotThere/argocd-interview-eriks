@@ -11,6 +11,9 @@ chains:
 
 appOfApps:
   applications:
+    - name: argocd
+      namespace: argocd
+      disable: false
     - name: datadog
       namespace: datadog
       disable: false

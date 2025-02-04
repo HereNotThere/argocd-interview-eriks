@@ -14,6 +14,7 @@ TEMPLATE_NAMES = (
   'external-dns',
   'metrics-aggregator',
   'cert-manager',
+  'argocd'
 )
 
 GENERATED_FILE_WARNING_MESSAGE = """############### WARNING ####################
