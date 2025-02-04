@@ -27,7 +27,7 @@ jobs:
     timeout-minutes: 5
 
     concurrency:
-      group: ci-${{ github.event.inputs.environment || github.event.client_payload.environment }}
+      group: deploy-${{ github.event.inputs.environment || github.event.client_payload.environment }}
       cancel-in-progress: false
 
     steps:
