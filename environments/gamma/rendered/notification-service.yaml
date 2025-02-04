@@ -7,7 +7,7 @@ image:
   tag: dev
 ingress:
   hosts:
-    - host: river-notification-service-gamma.towns.com 
+    - host: river-notification-service-gamma.towns.com
       paths:
         - path: /
           pathType: Prefix

@@ -4,7 +4,7 @@
 
 appOfApps:
   default:
-    valuesFile: ../../environments/gamma/values.yaml 
+    valuesFile: ../../environments/gamma/values.yaml
     spec:
       project: default
       source:
@@ -13,46 +13,45 @@ appOfApps:
 
   applications:
     #iterate over all applications and append a key,value pair for each
-    
+
     - name: datadog
       disable: false
       namespace: datadog
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/datadog.yaml
-    
+
     - name: external-secrets
       disable: false
       namespace: external-secrets
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/external-secrets.yaml
-    
+
     - name: metrics-aggregator
       disable: false
       namespace: default
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/metrics-aggregator.yaml
-    
+
     - name: notification-service
       disable: false
       namespace: default
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/notification-service.yaml
-    
+
     - name: cert-manager
       disable: false
       namespace: cert-manager
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/cert-manager.yaml
-    
+
     - name: external-dns
       disable: false
       namespace: external-dns
       valueFiles:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/external-dns.yaml
-    
