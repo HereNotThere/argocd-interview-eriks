@@ -60,3 +60,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{/*
+Argocd Domain name
+*/}}
+{{- define "argocd.domainName" -}}
+{{- printf "argocd-%s.towns.com" .Values.global.environmentName }}
+{{- end }}
+
+
+{{/*
+Notification Service domain name
+*/}}
+{{- define "notification-service.domainName" -}}
+{{- printf "river-notification-service-%s.towns.com" .Values.global.environmentName }}
+{{- end }}

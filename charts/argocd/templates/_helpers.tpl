@@ -50,10 +50,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "argocd.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Domain name
-*/}}
-{{- define "argocd.domainName" -}}
-{{- printf "argocd-%s.towns.com" .Values.global.environmentName }}
-{{- end }}

@@ -4,23 +4,23 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: main-alb-tls
-  namespace: { { .Release.Namespace } }
+  namespace: {{ .Release.Namespace }}
 spec:
   secretName: main-alb-tls
   issuerRef:
     name: letsencrypt
     kind: ClusterIssuer
   dnsNames:
-    - { { include "notification-service.domainName" . } }
-    - { { include "argocd.domainName" . } }
+    - {{ include "notification-service.domainName" . }}
+    - {{ include "argocd.domainName" . }}
 ---
 ### MAIN ALB ###
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: { { include "main-alb.fullname" . } }
-  labels: { { - include "main-alb.labels" . | nindent 4 } }
+  name: {{ include "main-alb.fullname" . }}
+  labels: {{- include "main-alb.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.global-static-ip-name: "main-alb-ip"
     kubernetes.io/ingress.class: gce
@@ -30,11 +30,11 @@ metadata:
 spec:
   tls:
     - hosts:
-        - { { include "notification-service.domainName" . } }
-        - { { include "argocd.domainName" . } }
+        - {{ include "notification-service.domainName" . }}
+        - {{ include "argocd.domainName" . }}
       secretName: main-alb-tls
   rules:
-    - host: { { include "notification-service.domainName" . } }
+    - host: {{ include "notification-service.domainName" . }}
       http:
         paths:
           - path: "/"
