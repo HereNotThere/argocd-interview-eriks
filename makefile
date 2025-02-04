@@ -2,7 +2,7 @@ export ENV
 
 # Renders values.yaml files for the specified environment
 render_values: _check_env
-	@echo "Generating values for $(ENV)"
+	@echo "Rendering values for $(ENV)"
 
 	ENV=$(ENV) python ./templates/environment.py \
 		--params "./environments/${ENV}/values.yaml" \
@@ -25,6 +25,20 @@ init: _check_env _add_helm_repos
 
 	kubectl apply -f "./environments/${ENV}/applications.yaml"
 
+# Calls the python ./templates/set_values.py script to set values
+set_values:
+	@echo "Setting values for $(ENV)"
+
+	@echo "Before setting values:"
+	cat "./environments/${ENV}/values.yaml"
+
+	python ./templates/set_values.py --file="./environments/${ENV}/values.yaml" $(ARGS)
+	$(MAKE) render_values ENV=$(ENV)
+
+	@echo "After setting values:"
+	cat "./environments/${ENV}/values.yaml"
+
+# Formats the values.yaml files
 _format_values:
 	@echo "Formatting values.yaml files"
 	yarn prettier:fix
