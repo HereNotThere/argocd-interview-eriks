@@ -14,7 +14,7 @@ on:
           - "omega"
           - "delta"
       notificationServiceImageTag:
-        description: "Notification service image tag"
+        description: "notificationService.image.tag"
         type: string
         required: false
   repository_dispatch:
