@@ -18,7 +18,7 @@ on:
         type: string
         required: false
   repository_dispatch:
-    types: [custom-event]
+    types: [update-infra]
 
 jobs:
   update_infra:
