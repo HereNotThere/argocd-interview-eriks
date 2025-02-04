@@ -4,7 +4,6 @@
 
 appOfApps:
   default:
-    valuesFile: ../../environments/gamma/values.yaml
     spec:
       project: default
       source:
