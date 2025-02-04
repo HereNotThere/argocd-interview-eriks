@@ -81,5 +81,5 @@ Notification Service domain name
 All host names to attach to the ALB. A comma separated list of all the host names that should be attached to the ALB.
 */}}
 {{- define "main-alb.hosts" -}}
-{{ include "argocd.domainName" . }}, {{ include "notification-service.domainName" . }}
+{{ include "argocd.domainName" . }},{{ include "notification-service.domainName" . }}
 {{- end }}
