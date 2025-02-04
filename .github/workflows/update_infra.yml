@@ -26,6 +26,10 @@ jobs:
     runs-on: "ubuntu-latest"
     timeout-minutes: 5
 
+    concurrency:
+      group: ci-${{ github.event.inputs.environment || github.event.client_payload.environment }}
+      cancel-in-progress: false
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
