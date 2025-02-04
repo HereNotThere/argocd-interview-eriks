@@ -1,0 +1,14 @@
+{
+  "name": "argocd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:HereNotThere/argocd.git",
+  "author": "Kerem Kazan <kerem.kazan@gmail.com>",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^3.4.2"
+  },
+  "scripts": {
+    "prettier:fix": "prettier --write ./environments/*"
+  }
+}
