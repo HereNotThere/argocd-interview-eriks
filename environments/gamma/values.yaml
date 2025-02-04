@@ -20,17 +20,23 @@ appOfApps:
     - name: external-secrets
       namespace: external-secrets
       disable: false
-    - name: metrics-aggregator
-      namespace: default
-      disable: false
-    - name: notification-service
-      namespace: default
-      disable: false
     - name: cert-manager
       namespace: cert-manager
       disable: false
     - name: external-dns
       namespace: external-dns
+      disable: false
+    - name: main-alb
+      namespace: default
+      disable: false
+    - name: xchain-monitor
+      namespace: default
+      disable: true
+    - name: metrics-aggregator
+      namespace: default
+      disable: false
+    - name: notification-service
+      namespace: default
       disable: false
 
 notificationService:

@@ -7,14 +7,16 @@ import os
 TEMPLATE_NAMES = (
   'global', 
   'app-of-apps', 
-  'notification-service', 
   'cert-manager', 
   'datadog', 
   'external-secrets', 
   'external-dns',
-  'metrics-aggregator',
   'cert-manager',
-  'argocd'
+  'argocd',
+  'main-alb',
+  'notification-service', 
+  'metrics-aggregator',
+  'xchain-monitor',
 )
 
 GENERATED_FILE_WARNING_MESSAGE = """############### WARNING ####################

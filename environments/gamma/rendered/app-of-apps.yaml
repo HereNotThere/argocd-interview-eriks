@@ -37,22 +37,6 @@ appOfApps:
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/external-secrets.yaml
 
-    - name: metrics-aggregator
-      disable: false
-      namespace: default
-      valueFiles:
-        - ./values.yaml
-        - ../../environments/gamma/rendered/global.yaml
-        - ../../environments/gamma/rendered/metrics-aggregator.yaml
-
-    - name: notification-service
-      disable: false
-      namespace: default
-      valueFiles:
-        - ./values.yaml
-        - ../../environments/gamma/rendered/global.yaml
-        - ../../environments/gamma/rendered/notification-service.yaml
-
     - name: cert-manager
       disable: false
       namespace: cert-manager
@@ -68,3 +52,35 @@ appOfApps:
         - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/external-dns.yaml
+
+    - name: main-alb
+      disable: false
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/main-alb.yaml
+
+    - name: xchain-monitor
+      disable: true
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/xchain-monitor.yaml
+
+    - name: metrics-aggregator
+      disable: false
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/metrics-aggregator.yaml
+
+    - name: notification-service
+      disable: false
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/notification-service.yaml
