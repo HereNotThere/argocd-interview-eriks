@@ -12,6 +12,31 @@ render_values: _check_env
 	@echo "Values rendered for $(ENV)"
 	$(MAKE) _format_values
 
+
+# Uses helm-template to render the chart for the specified environment
+debug_chart: _check_env
+	if [ -z "$(CHART)" ]; then \
+		echo "ERROR: CHART is not set"; \
+		exit 1; \
+	fi
+
+	if [ -z "$NAMESPACE" ]; then \
+		echo "ERROR: NAMESPACE is not set"; \
+		exit 1; \
+	fi
+
+	@echo "Debugging chart $(CHART) for $(ENV)"
+
+	helm template ./charts/$(CHART) \
+		--name-template $(CHART) \
+		--namespace $(NAMESPACE) \
+		--kube-version 1.31 \
+		--values ./charts/$(CHART)/values.yaml \
+		--values ./environments/$(ENV)/rendered/global.yaml \
+		--values ./environments/$(ENV)/rendered/main-alb.yaml \
+		--include-crds \
+		--debug
+
 # Creates the environment in the cluster
 init: _check_env _add_helm_repos
 	@echo "Creating environment $(ENV)"
