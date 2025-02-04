@@ -1,0 +1,87 @@
+name: Continuous Integration
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment to deploy to"
+        type: choice
+        required: true
+        default: "gamma"
+        options:
+          - "gamma"
+          - "alpha"
+          - "omega"
+          - "delta"
+      notificationServiceImageTag:
+        description: "Notification service image tag"
+        type: string
+        required: false
+  repository_dispatch:
+    types: [custom-event]
+
+jobs:
+  Common_CI:
+    permissions: write-all
+    runs-on: "ubuntu-latest"
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+
+      - name: Install python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install node dependencies
+        run: yarn install
+
+      - name: Determine values to update
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "Workflow dispatch event detected"
+            ENV="${{ github.event.inputs.environment }}"
+            NOTIFICATION_SERVICE_IMAGE_TAG="${{ github.event.inputs.notificationServiceImageTag }}"
+
+          elif [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            echo "Repository dispatch event detected"
+            ENV="${{ github.event.client_payload.environment }}"
+            NOTIFICATION_SERVICE_IMAGE_TAG="${{ github.event.client_payload.notificationServiceImageTag }}"
+
+          else
+            echo "Unknown event type: ${{ github.event_name }}, exiting"
+            exit 1
+          fi
+
+          if [[ -z "$ENV" ]]; then
+            echo "Environment not set, exiting"
+            exit 1
+          else
+            echo "Environment set to $ENV"
+          fi
+
+          VALUES=""
+
+          # if the notification service tag is set
+          if [[ -n "$NOTIFICATION_SERVICE_IMAGE_TAG" ]]; then
+            VALUES="notificationService.image.tag=$NOTIFICATION_SERVICE_IMAGE_TAG"
+          fi
+
+          echo "VALUES=${VALUES}" >> $GITHUB_ENV
+          echo "ENV=${ENV}" >> $GITHUB_ENV
+
+      - name: Update values
+        env:
+          ENV: ${{ env.ENV }}
+          VALUES: ${{ env.VALUES }}
+        run: ENV=${ENV} VALUES=${VALUES} make set_values
