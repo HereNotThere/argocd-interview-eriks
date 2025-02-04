@@ -32,7 +32,7 @@ set_values:
 	@echo "Before setting values:"
 	cat "./environments/${ENV}/values.yaml"
 
-	python ./templates/set_values.py --file="./environments/${ENV}/values.yaml" $(ARGS)
+	python ./templates/set_values.py --file="./environments/${ENV}/values.yaml" --set $(VALUES)
 	$(MAKE) render_values ENV=$(ENV)
 
 	@echo "After setting values:"
