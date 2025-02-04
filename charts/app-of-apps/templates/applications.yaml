@@ -17,7 +17,6 @@ spec:
     path: charts/{{ .name }}
     helm:
       valueFiles:
-      - './values.yaml'
       {{- range .valueFiles }}
       - '{{ . }}'
       {{- end }}

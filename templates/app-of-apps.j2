@@ -13,6 +13,7 @@ appOfApps:
       disable: {{app.disable | lower }}
       namespace: {{app.namespace}}
       valueFiles:
+        - ./values.yaml
         - ../../environments/{{global.environmentName}}/rendered/global.yaml
         - ../../environments/{{global.environmentName}}/rendered/{{app.name}}.yaml
     {% endfor %}
