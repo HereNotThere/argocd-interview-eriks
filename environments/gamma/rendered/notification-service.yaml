@@ -4,7 +4,7 @@
 
 apnsTownsAppIdentifier: com.towns.internal
 image:
-  tag: mainnet
+  tag: b952905
 ingress:
   hosts:
     - host: river-notification-service-gamma.towns.com
