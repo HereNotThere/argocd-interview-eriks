@@ -1,3 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: river-node-wildcard-tls
+  namespace: {{ .Release.Namespace }}
+spec:
+  secretName: river-node-wildcard-tls
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.test-nodes.{{ .Values.global.environmentName }}.towns.com"
+    - "*.nodes.{{ .Values.global.environmentName }}.towns.com"
+
 {{- range .Values.nodes }}
 
 apiVersion: apps/v1
@@ -20,6 +34,17 @@ spec:
           image: nginx
           ports:
             - containerPort: 80
+          env:
+            - name: TLSCONFIG__CERT
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-wildcard-tls
+                  key: tls.crt
+            - name: TLSCONFIG__KEY
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-wildcard-tls
+                  key: tls.key
 ---
 apiVersion: v1
 kind: Service

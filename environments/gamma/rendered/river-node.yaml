@@ -39,9 +39,6 @@ nodes:
   - nodeType: stream
     nodeNumber: 11
 
-  - nodeType: archive
-    nodeNumber: 1
-
 resources:
   limits:
     cpu: 0.5
