@@ -51,4 +51,4 @@ riverNode:
   image:
     tag: dev
   numStreamNodes: 11
-  numArchiveNodes: 0
+  numArchiveNodes: 1
