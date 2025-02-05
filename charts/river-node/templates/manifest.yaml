@@ -54,7 +54,7 @@ metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
   annotations:
-    networking.gke.io/load-balancer-type: "External"
+    cloud.google.com/l4-rbs: enabled
     networking.gke.io/load-balancer-ip-addresses: "river-{{ .nodeType }}-{{ .nodeNumber }}-ip-address"
     external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
 spec:
