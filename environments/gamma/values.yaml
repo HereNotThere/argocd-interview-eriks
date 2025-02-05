@@ -41,5 +41,5 @@ appOfApps:
 
 notificationService:
   image:
-    tag: b952905
+    tag: dev
   apnsTownsAppIdentifier: com.towns.internal
