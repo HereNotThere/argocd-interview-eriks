@@ -4,42 +4,43 @@
 
 image:
   tag: dev
-  nodes:
-    - nodeType: stream
-      nodeNumber: 1
 
-    - nodeType: stream
-      nodeNumber: 2
+nodes:
+  - nodeType: stream
+    nodeNumber: 1
 
-    - nodeType: stream
-      nodeNumber: 3
+  - nodeType: stream
+    nodeNumber: 2
 
-    - nodeType: stream
-      nodeNumber: 4
+  - nodeType: stream
+    nodeNumber: 3
 
-    - nodeType: stream
-      nodeNumber: 5
+  - nodeType: stream
+    nodeNumber: 4
 
-    - nodeType: stream
-      nodeNumber: 6
+  - nodeType: stream
+    nodeNumber: 5
 
-    - nodeType: stream
-      nodeNumber: 7
+  - nodeType: stream
+    nodeNumber: 6
 
-    - nodeType: stream
-      nodeNumber: 8
+  - nodeType: stream
+    nodeNumber: 7
 
-    - nodeType: stream
-      nodeNumber: 9
+  - nodeType: stream
+    nodeNumber: 8
 
-    - nodeType: stream
-      nodeNumber: 10
+  - nodeType: stream
+    nodeNumber: 9
 
-    - nodeType: stream
-      nodeNumber: 11
+  - nodeType: stream
+    nodeNumber: 10
 
-    - nodeType: archive
-      nodeNumber: 1
+  - nodeType: stream
+    nodeNumber: 11
+
+  - nodeType: archive
+    nodeNumber: 1
 
 resources:
   limits:

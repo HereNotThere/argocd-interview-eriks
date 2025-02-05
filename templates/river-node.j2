@@ -1,15 +1,15 @@
 image:
   tag: {{ riverNode.image.tag }}
-  nodes:
-    {% for i in range(1, riverNode.numStreamNodes + 1) %}
-    - nodeType: stream
-      nodeNumber: {{ i }}
-    {% endfor %}
-    {% for i in range(1, riverNode.numArchiveNodes + 1) %}
-    - nodeType: archive
-      nodeNumber: {{ i }}
-    {% endfor %}
 
+nodes:
+  {% for i in range(1, riverNode.numStreamNodes + 1) %}
+  - nodeType: stream
+    nodeNumber: {{ i }}
+  {% endfor %}
+  {% for i in range(1, riverNode.numArchiveNodes + 1) %}
+  - nodeType: archive
+    nodeNumber: {{ i }}
+  {% endfor %}
 
 resources:
   limits:
