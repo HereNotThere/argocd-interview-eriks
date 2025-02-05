@@ -53,8 +53,9 @@ kind: Service
 metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
-  external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
-  kubernetes.io/ingress.global-static-ip-name: "river-{{ .nodeType }}-{{ .nodeNumber }}-ip-address"
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
+    kubernetes.io/ingress.global-static-ip-name: "river-{{ .nodeType }}-{{ .nodeNumber }}-ip-address"
 spec:
   selector:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
