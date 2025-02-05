@@ -18,3 +18,4 @@ Discussion:
 # TODO: make room for datadog agent on every node
 # TODO: enable multi-line log processing in datadog
 # TODO: create a single app-of-apps template that lists every single app, instead of passing them down as a list through the values.yaml file
+# TODO: figure out health checks
