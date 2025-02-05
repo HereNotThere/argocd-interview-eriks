@@ -12,6 +12,8 @@ spec:
     - "*.test-nodes.{{ .Values.global.environmentName }}.towns.com"
     - "*.nodes.{{ .Values.global.environmentName }}.towns.com"
 
+---
+
 {{- range .Values.nodes }}
 
 apiVersion: apps/v1
