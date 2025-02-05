@@ -1,12 +1,6 @@
 apnsTownsAppIdentifier: {{ notificationService.apnsTownsAppIdentifier }}
 image:
   tag: {{ notificationService.image.tag }}
-ingress:
-  hosts:
-    - host: river-notification-service-{{ global.environmentName }}.towns.com 
-      paths:
-        - path: /
-          pathType: Prefix
 resources:
   limits:
     cpu: 1

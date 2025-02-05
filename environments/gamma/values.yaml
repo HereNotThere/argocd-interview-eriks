@@ -38,8 +38,17 @@ appOfApps:
     - name: notification-service
       namespace: default
       disable: false
+    - name: river-node
+      namespace: default
+      disable: false
 
 notificationService:
   image:
     tag: b952905
   apnsTownsAppIdentifier: com.towns.internal
+
+riverNode:
+  image:
+    tag: dev
+  numStreamNodes: 11
+  numArchiveNodes: 0

@@ -1,0 +1,12 @@
+image:
+  tag: {{ riverNode.image.tag }}
+numStreamNodes: {{ riverNode.numStreamNodes }}
+numArchiveNodes: {{ riverNode.numArchiveNodes }}
+resources:
+  limits:
+    cpu: 0.5
+    memory: 1G
+    # TODO: don't hardcode limits
+  requests:
+    cpu: 0.5
+    memory: 1G
