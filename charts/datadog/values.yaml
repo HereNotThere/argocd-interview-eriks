@@ -7,7 +7,7 @@ datadog:
     logs:
       enabled: true
       containerCollectAll: false
-      auto_multi_line_detection: true
+      autoMultiLineDetection: true
 
   agents:
     containers:
