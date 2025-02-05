@@ -35,7 +35,7 @@ debug_chart: _check_env
 		--kube-version 1.31 \
 		--values ./charts/$(CHART)/values.yaml \
 		--values ./environments/$(ENV)/rendered/global.yaml \
-		--values ./environments/$(ENV)/rendered/main-alb.yaml \
+		--values ./environments/$(ENV)/rendered/$(CHART).yaml \
 		--include-crds \
 		--debug
 
