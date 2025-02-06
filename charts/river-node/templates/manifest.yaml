@@ -35,7 +35,12 @@ spec:
         - name: nginx
           image: nginx
           ports:
+            - containerPort: 443
             - containerPort: 80
+          volumeMounts:
+          - name: certs
+            mountPath: "/etc/nginx/certs"
+            readOnly: true
           env:
             - name: TLSCONFIG__CERT
               valueFrom:
@@ -47,6 +52,11 @@ spec:
                 secretKeyRef:
                   name: river-node-wildcard-tls
                   key: tls.key
+      volumes:
+        - name: certs
+          secret:
+            secretName: river-node-wildcard-tls
+
 ---
 apiVersion: v1
 kind: Service
@@ -63,6 +73,9 @@ spec:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   type: LoadBalancer
   ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 443
     - protocol: TCP
       port: 80
       targetPort: 80
