@@ -14,6 +14,44 @@ spec:
 
 ---
 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-river-node-test-config
+  namespace: {{ .Release.Namespace }}
+data:
+  nginx.conf: |
+    server {
+        listen 80;
+        server_name _;
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl http2;
+        server_name _;
+
+        ssl_certificate /etc/nginx/certs/tls.crt;
+        ssl_certificate_key /etc/nginx/certs/tls.key;
+
+        ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_ciphers HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers on;
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_timeout 10m;
+        ssl_stapling on;
+        ssl_stapling_verify on;
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html;
+        }
+
+        error_page 497 https://$host$request_uri;
+    }
+
+---
+
 {{- range .Values.nodes }}
 
 apiVersion: apps/v1
@@ -41,6 +79,9 @@ spec:
           - name: certs
             mountPath: "/etc/nginx/certs"
             readOnly: true
+          - name: nginx-config
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
           env:
             - name: TLSCONFIG__CERT
               valueFrom:
@@ -56,6 +97,9 @@ spec:
         - name: certs
           secret:
             secretName: river-node-wildcard-tls
+        - name: nginx-config
+          configMap:
+            name: nginx-argocd-wrapper-config
 
 ---
 apiVersion: v1
@@ -64,7 +108,6 @@ metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
   annotations:
-    cloud.google.com/l4-rbs: enabled
     networking.gke.io/load-balancer-type: "External"
     networking.gke.io/load-balancer-ip-addresses: "river-{{ .nodeType }}-{{ .nodeNumber }}-ip-address"
     external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
@@ -76,9 +119,6 @@ spec:
     - protocol: TCP
       port: 443
       targetPort: 443
-    - protocol: TCP
-      port: 80
-      targetPort: 80
 ---
 
 {{- end }}
