@@ -74,7 +74,6 @@ spec:
           image: nginx
           ports:
             - containerPort: 443
-            - containerPort: 80
           volumeMounts:
           - name: certs
             mountPath: "/etc/nginx/certs"
