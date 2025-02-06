@@ -90,7 +90,7 @@ spec:
             secretName: river-node-wildcard-tls
         - name: nginx-config
           configMap:
-            name: nginx-argocd-wrapper-config
+            name: nginx-river-node-test-config
 
 ---
 apiVersion: v1
