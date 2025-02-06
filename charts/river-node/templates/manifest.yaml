@@ -21,6 +21,9 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   nginx.conf: |
+    events {
+      worker_connections 1024;
+    }
     http {
       server {
           listen 443 ssl http2;
