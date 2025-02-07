@@ -40,7 +40,7 @@ appOfApps:
       disable: false
     - name: river-node
       namespace: default
-      disable: true
+      disable: false
 
 notificationService:
   image:
