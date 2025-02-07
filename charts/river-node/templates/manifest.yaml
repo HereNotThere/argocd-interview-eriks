@@ -70,9 +70,11 @@ spec:
         - name: nginx
           image: nginx
           ports:
-            # give 2 ports: 443 and 80
+            # give 2 ports: 443 and 80. give them names so we can reference them in the service
             - containerPort: 443
+              name: https
             - containerPort: 80
+              name: http
             
           volumeMounts:
           - name: certs
@@ -114,12 +116,14 @@ spec:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   type: LoadBalancer
   ports:
-    - protocol: TCP
+    - name: https
+      protocol: TCP
       port: 443
-      targetPort: 443
-    - protocol: TCP
+      targetPort: https
+    - name: http
+      protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: http
 
 ---
 
