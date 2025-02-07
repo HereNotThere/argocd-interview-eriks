@@ -106,6 +106,8 @@ kind: Service
 metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
+  annotations:
+    cloud.google.com/l4-rbs: "enabled"
 spec:
   selector:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
