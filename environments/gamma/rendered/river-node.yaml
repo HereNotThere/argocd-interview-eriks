@@ -9,6 +9,9 @@ nodes:
   - nodeType: stream
     nodeNumber: 1
 
+  - nodeType: stream
+    nodeNumber: 2
+
 resources:
   limits:
     cpu: 0.5
