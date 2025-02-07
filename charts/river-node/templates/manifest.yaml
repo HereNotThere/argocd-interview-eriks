@@ -71,7 +71,7 @@ spec:
           image: nginx
           ports:
             # give 2 ports: 443 and 80
-            # - containerPort: 443
+            - containerPort: 443
             - containerPort: 80
             
           volumeMounts:
@@ -109,7 +109,7 @@ metadata:
 spec:
   selector:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
