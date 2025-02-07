@@ -50,5 +50,5 @@ notificationService:
 riverNode:
   image:
     tag: dev
-  numStreamNodes: 11
+  numStreamNodes: 1
   numArchiveNodes: 0
