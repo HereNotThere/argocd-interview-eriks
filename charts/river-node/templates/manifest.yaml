@@ -103,8 +103,6 @@ kind: Service
 metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
 spec:
   selector:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
