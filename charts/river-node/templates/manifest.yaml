@@ -70,7 +70,10 @@ spec:
         - name: nginx
           image: nginx
           ports:
+            # give 2 ports: 443 and 80
             - containerPort: 443
+            - containerPort: 80
+            
           volumeMounts:
           - name: certs
             mountPath: "/etc/nginx/certs"
@@ -109,8 +112,9 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 443
-      targetPort: 443
+      port: 80
+      targetPort: 80
+
 ---
 
 {{- end }}
