@@ -1,0 +1,26 @@
+{{- range .Values.nodes }}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+  namespace: {{ $.Release.Namespace }}
+  annotations:
+    cloud.google.com/l4-rbs: "enabled"
+    external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
+spec:
+  selector:
+    app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+  type: LoadBalancer
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: https
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: http
+---
+
+{{- end }}

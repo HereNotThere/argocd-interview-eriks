@@ -1,0 +1,55 @@
+{{- range .Values.nodes }}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+  template:
+    metadata:
+      labels:
+        app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            # give 2 ports: 443 and 80. give them names so we can reference them in the service
+            - containerPort: 443
+              name: https
+            - containerPort: 80
+              name: http
+            
+          volumeMounts:
+          - name: certs
+            mountPath: "/etc/nginx/certs"
+            readOnly: true
+          - name: nginx-config
+            mountPath: /etc/nginx/nginx.conf
+            subPath: nginx.conf
+          env:
+            - name: TLSCONFIG__CERT
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-wildcard-tls
+                  key: tls.crt
+            - name: TLSCONFIG__KEY
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-wildcard-tls
+                  key: tls.key
+      volumes:
+        - name: certs
+          secret:
+            secretName: river-node-wildcard-tls
+        - name: nginx-config
+          configMap:
+            name: nginx-river-node-test-config
+---
+
+{{- end }}
