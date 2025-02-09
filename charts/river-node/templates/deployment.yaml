@@ -14,11 +14,7 @@ spec:
     matchLabels:
       app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   template:
-    annotations:
-    # TODO: add prometheus annotations
-    # TODO: consider adding node url
-    # TODO: consider adding node number
-      ad.datadoghq.com/notification-service.logs: '[{"service": "river-node"}]' 
+    # TODO: add logging
     metadata:
       labels:
         app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
