@@ -105,7 +105,7 @@ spec:
             - name: RIVER_DATABASE_ISOLATIONLEVEL
               value: "READ COMMITTED"
             - name: STANDBYONSTART
-              value: {{ .standbyOnStart }}
+              value: {{ .standbyOnStart | quote }}
             - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
               value: "true"
             - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
