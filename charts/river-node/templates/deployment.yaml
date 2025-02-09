@@ -37,6 +37,11 @@ spec:
             mountPath: /etc/nginx/nginx.conf
             subPath: nginx.conf
           env:
+            - name: WALLETPRIVATEKEY
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: wallet_private_key
             - name: DATABASE__PASSWORD
               valueFrom:
                 secretKeyRef:
