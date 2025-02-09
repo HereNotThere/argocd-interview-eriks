@@ -6,11 +6,17 @@ nodes:
   - nodeType: stream
     nodeNumber: {{ i }}
     hostname: river{{ i }}.nodes.{{ global.environmentName }}.towns.com
+    runMode: full
+    standbyOnStart: true
+    dbUser: river{{ i}}
   {% endfor %}
   {% for i in range(1, riverNode.numArchiveNodes + 1) %}
   - nodeType: archive
     nodeNumber: {{ i }}
     hostname: archive{{ i }}.nodes.{{ global.environmentName }}.towns.com
+    runMode: archive
+    standbyOnStart: false
+    dbUser: archive{{ i }}
   {% endfor %}
 
 resources:

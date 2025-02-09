@@ -5,8 +5,5 @@ global:
     gke:
       clusterLocation: us-east4
       clusterName: main-cluster-{{ global.environmentName }}
-  chains:
-    river:
-      chainId: "{{ chains.river.chainId }}"
-      contractAddresses: 
-        {{ chains.river.contractAddresses | to_yaml }}
+  chains: 
+    {{ chains | to_yaml | indent(4) }}

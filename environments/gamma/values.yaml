@@ -8,6 +8,11 @@ chains:
     chainId: 6524490
     contractAddresses:
       riverRegistry: "0xf18E98D36A6bd1aDb52F776aCc191E69B491c070"
+  base:
+    chainId: 84532
+    contractAddresses:
+      spaceArchitect: "0x968696BC59431Ef085441641f550C8e2Eaca8BEd"
+      baseRegistry: "0x08cC41b782F27d62995056a4EF2fCBAe0d3c266F"
 
 appOfApps:
   applications:

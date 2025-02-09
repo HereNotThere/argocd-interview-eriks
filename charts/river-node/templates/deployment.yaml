@@ -25,7 +25,10 @@ spec:
           ports:
             - containerPort: 443
               name: https
-
+            - containerPort: 8081
+              name: metrics
+            - containerPort: 8082
+              name: pprof
           volumeMounts:
           - name: certs
             mountPath: "/etc/nginx/certs"
@@ -34,6 +37,28 @@ spec:
             mountPath: /etc/nginx/nginx.conf
             subPath: nginx.conf
           env:
+            - name: DATABASE__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: db_password
+            - name: DATABASE__HOST
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: db_host
+            - name: DATABASE__USER
+              value: {{ .dbUser }}
+            - name: DATABASE__PORT
+              value: "5432"
+            - name: DATABASE__DATABASE
+              value: river
+            - name: DATABASE__EXTRA
+              value: "?sslmode=disable&pool_max_conns=50"
+            - name: ARCHITECTCONTRACT__VERSION
+              value: "v3"
+            - name: WALLETLINKCONTRACT__VERSION
+              value: "v3"
             - name: TLSCONFIG__CERT
               valueFrom:
                 secretKeyRef:
@@ -44,6 +69,58 @@ spec:
                 secretKeyRef:
                   name: river-node-wildcard-tls
                   key: tls.key
+            - name: CHAINSSTRING
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: chains_string
+            - name: RUN_MODE
+              value: {{ .runMode }}
+            - name: ENABLEDEBUGENDPOINTS
+              value: "true"
+            - name: BASECHAIN__CHAINID
+              value: {{ required "base chainId required" $.Values.global.chains.base.chainId | quote }}
+            - name: RIVERCHAIN__CHAINID
+              value: {{ required "river chainId required" $.Values.global.chains.river.chainId | quote }}
+            - name: SCRUBBINGCONFIG__SCRUBELIGIBLEDURATION
+              value: "3600000000000"
+            - name: DATABASE__MIGRATESTREAMCREATION
+              value: "true"
+            - name: METRICS__ENABLED
+              value: "true"
+            - name: PORT
+              value: "443"
+            - name: METRICS__PORT
+              value: "8081"
+            - name: STORAGE_TYPE
+              value: "postgres"
+            - name: SKIP_GENKEY
+              value: "true"
+            - name: LOG__FORMAT
+              value: "json"
+            - name: LOG__LEVEL
+              value: "info"
+            - name: LOG__NOCOLOR
+              value: "true"
+            - name: RIVER_DATABASE_ISOLATIONLEVEL
+              value: "READ COMMITTED"
+            - name: STANDBYONSTART
+              value: {{ .standbyOnStart }}
+            - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
+              value: "true"
+            - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
+              value: "true"
+            - name: RIVER_PERFORMANCETRACKING_OTLPINSECURE
+              value: "true"
+            - name: ENABLEMLS
+              value: "false" 
+            {{- if eq .nodeType "archive" }}
+            - name: ARCHIVE__ARCHIVEID
+              value: "true"
+            {{- end }}
+            # TODO: make sure dd_oltp is setup and accepting connections at :4317
+            
+            # TODO: if archive node, add prometheus annotations (archive_node_docker_labels on terraform)
       volumes:
         - name: certs
           secret:
