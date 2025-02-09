@@ -82,6 +82,16 @@ spec:
               value: {{ required "base chainId required" $.Values.global.chains.base.chainId | quote }}
             - name: RIVERCHAIN__CHAINID
               value: {{ required "river chainId required" $.Values.global.chains.river.chainId | quote }}
+            - name: BASECHAIN__NETWORKURL
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: base_chain_rpc_url
+            - name: RIVERCHAIN__NETWORKURL
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: river_chain_rpc_url
             - name: SCRUBBINGCONFIG__SCRUBELIGIBLEDURATION
               value: "3600000000000"
             - name: DATABASE__MIGRATESTREAMCREATION
