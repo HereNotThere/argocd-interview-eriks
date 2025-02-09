@@ -48,7 +48,7 @@ spec:
             - name: REGISTRYCONTRACT__ADDRESS
               value: {{ required "riverRegistry contract address required" .Values.global.chains.river.contractAddresses.riverRegistry }}
             - name: RIVERCHAIN__CHAINID
-              value: {{ $.Values.global.chains.river.chainId }}
+              value: {{ $.Values.global.chains.river.chainId | quote }}
             - name: PORT
               value: {{ required "service port required" .Values.service.port | quote }}
             - name: LOG__FORMAT

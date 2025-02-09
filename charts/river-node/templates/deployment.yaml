@@ -84,9 +84,9 @@ spec:
             - name: ENABLEDEBUGENDPOINTS
               value: "true"
             - name: BASECHAIN__CHAINID
-              value: {{ required "base chainId required" $.Values.global.chains.base.chainId  }}
+              value: {{ required "base chainId required" $.Values.global.chains.base.chainId | quote }}
             - name: RIVERCHAIN__CHAINID
-              value: {{ required "river chainId required" $.Values.global.chains.river.chainId }}
+              value: {{ required "river chainId required" $.Values.global.chains.river.chainId | quote }}
             - name: BASECHAIN__NETWORKURL
               valueFrom:
                 secretKeyRef:
