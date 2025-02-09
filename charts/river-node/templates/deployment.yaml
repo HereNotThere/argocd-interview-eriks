@@ -19,12 +19,9 @@ spec:
         - name: nginx
           image: nginx
           ports:
-            # give 2 ports: 443 and 80. give them names so we can reference them in the service
             - containerPort: 443
               name: https
-            - containerPort: 80
-              name: http
-            
+
           volumeMounts:
           - name: certs
             mountPath: "/etc/nginx/certs"

@@ -8,36 +8,47 @@ image:
 nodes:
   - nodeType: stream
     nodeNumber: 1
+    hostname: river1.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 2
+    hostname: river2.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 3
+    hostname: river3.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 4
+    hostname: river4.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 5
+    hostname: river5.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 6
+    hostname: river6.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 7
+    hostname: river7.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 8
+    hostname: river8.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 9
+    hostname: river9.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 10
+    hostname: river10.nodes.gamma.towns.com
 
   - nodeType: stream
     nodeNumber: 11
+    hostname: river11.nodes.gamma.towns.com
 
 resources:
   limits:

@@ -5,10 +5,12 @@ nodes:
   {% for i in range(1, riverNode.numStreamNodes + 1) %}
   - nodeType: stream
     nodeNumber: {{ i }}
+    hostname: river{{ i }}.nodes.{{ global.environmentName }}.towns.com
   {% endfor %}
   {% for i in range(1, riverNode.numArchiveNodes + 1) %}
   - nodeType: archive
     nodeNumber: {{ i }}
+    hostname: archive{{ i }}.nodes.{{ global.environmentName }}.towns.com
   {% endfor %}
 
 resources:

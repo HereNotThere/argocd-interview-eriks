@@ -7,7 +7,7 @@ metadata:
   namespace: {{ $.Release.Namespace }}
   annotations:
     cloud.google.com/l4-rbs: "enabled"
-    external-dns.alpha.kubernetes.io/hostname: "{{ .nodeType }}-{{ .nodeNumber }}.test-nodes.{{ $.Values.global.environmentName }}.towns.com"
+    external-dns.alpha.kubernetes.io/hostname: {{ .hostname }}
 spec:
   selector:
     app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
@@ -17,10 +17,6 @@ spec:
       protocol: TCP
       port: 443
       targetPort: https
-    - name: http
-      protocol: TCP
-      port: 80
-      targetPort: http
 ---
 
 {{- end }}
