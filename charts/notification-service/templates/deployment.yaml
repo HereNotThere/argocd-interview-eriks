@@ -15,7 +15,7 @@ spec:
     metadata:
       annotations:
         # TODO: add prometheus annotations
-        ad.datadoghq.com/notification-service.logs: '[{"service": "notification-service"}]' # TODO: fix env tag
+        ad.datadoghq.com/notification-service.logs: '[{"service": "notification-service"}]' 
       labels:
         {{- include "notification-service.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}

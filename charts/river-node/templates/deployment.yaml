@@ -6,11 +6,18 @@ metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
 spec:
+  type: Recreate #Tell k8s to recreate the pod when the deployment is updated
+  # TODO: use rolling update strategy
   replicas: 1
   selector:
     matchLabels:
       app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   template:
+    annotations:
+    # TODO: add prometheus annotations
+    # TODO: consider adding node url
+    # TODO: consider adding node number
+      ad.datadoghq.com/notification-service.logs: '[{"service": "river-node"}]' 
     metadata:
       labels:
         app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
