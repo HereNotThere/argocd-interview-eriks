@@ -83,10 +83,6 @@ spec:
               value: {{ .runMode }}
             - name: ENABLEDEBUGENDPOINTS
               value: "true"
-            - name: BASECHAIN__CHAINID
-              value: {{ required "base chainId required" $.Values.global.chains.base.chainId  }}
-            - name: RIVERCHAIN__CHAINID
-              value: {{ required "river chainId required" $.Values.global.chains.river.chainId }}
             - name: BASECHAIN__NETWORKURL
               valueFrom:
                 secretKeyRef:
