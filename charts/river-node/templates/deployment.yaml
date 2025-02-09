@@ -6,8 +6,9 @@ metadata:
   name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
 spec:
-  type: Recreate #Tell k8s to recreate the pod when the deployment is updated
   # TODO: use rolling update strategy
+  strategy:
+    type: Recreate
   replicas: 1
   selector:
     matchLabels:
