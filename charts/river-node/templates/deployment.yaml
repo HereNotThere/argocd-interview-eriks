@@ -14,10 +14,12 @@ spec:
     matchLabels:
       app: river-node-{{ .nodeType }}-{{ .nodeNumber }}
   template:
-    # TODO: add logging
     metadata:
       labels:
         app: river-node-{{ .nodeType }}-{{ .nodeNumber }}
+      annotations:
+        # TODO: add prometheus annotations for archive nodes
+        ad.datadoghq.com/.logs: '[{"service": "river-node", "node_url": "https://{{ .hostname }}"}]' 
     spec:
       containers:
         - name: river-node
