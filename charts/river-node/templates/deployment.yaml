@@ -55,7 +55,7 @@ spec:
             - name: ARCHITECTCONTRACT__ADDRESS
               value: {{ required "spaceArchitect contract address required" $.Values.global.chains.base.contractAddresses.spaceArchitect }}
             - name: WALLET_LINK_CONTRACT__ADDRESS
-              value: {{ required "baseRegistry contract address required" $.Values.global.chains.base.contractAddresses.spaceArchitect }}
+              value: {{ required "baseRegistry contract address required" $.Values.global.chains.base.contractAddresses.baseRegistry }}
             - name: REGISTRYCONTRACT__ADDRESS
               value: {{ required "riverRegistry contract address required" $.Values.global.chains.river.contractAddresses.riverRegistry }}
             - name: ENTITLEMENT_CONTRACT__ADDRESS
