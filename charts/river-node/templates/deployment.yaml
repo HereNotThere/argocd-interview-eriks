@@ -33,9 +33,6 @@ spec:
             - name: tls-secret
               mountPath: /etc/tls-secret
               readOnly: true
-            - name: certs
-              mountPath: /etc/certs
-              readOnly: true
           env:
             - name: WALLETPRIVATEKEY
               valueFrom:
