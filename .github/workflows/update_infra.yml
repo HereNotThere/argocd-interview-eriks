@@ -17,6 +17,10 @@ on:
         description: "notificationService.image.tag"
         type: string
         required: false
+      riverNodeImageTag:
+        description: "riverNode.image.tag"
+        type: string
+        required: false
   repository_dispatch:
     types: [update-infra]
 
@@ -56,11 +60,13 @@ jobs:
             echo "Workflow dispatch event detected"
             ENV="${{ github.event.inputs.environment }}"
             NOTIFICATION_SERVICE_IMAGE_TAG="${{ github.event.inputs.notificationServiceImageTag }}"
+            RIVER_NODE_IMAGE_TAG="${{ github.event.inputs.riverNodeImageTag }}"
 
           elif [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
             echo "Repository dispatch event detected"
             ENV="${{ github.event.client_payload.environment }}"
             NOTIFICATION_SERVICE_IMAGE_TAG="${{ github.event.client_payload.notificationServiceImageTag }}"
+            RIVER_NODE_IMAGE_TAG="${{ github.event.client_payload.riverNodeImageTag }}"
 
           else
             echo "Unknown event type: ${{ github.event_name }}, exiting"
@@ -79,6 +85,11 @@ jobs:
           # if the notification service tag is set
           if [[ -n "$NOTIFICATION_SERVICE_IMAGE_TAG" ]]; then
             VALUES="notificationService.image.tag=$NOTIFICATION_SERVICE_IMAGE_TAG"
+          fi
+
+          # if the river node tag is set
+          if [[ -n "$RIVER_NODE_IMAGE_TAG" ]]; then
+            VALUES="$VALUES riverNode.image.tag=$RIVER_NODE_IMAGE_TAG"
           fi
 
           echo "VALUES=${VALUES}" >> $GITHUB_ENV
