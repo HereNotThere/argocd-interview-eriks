@@ -21,6 +21,7 @@ spec:
         # TODO: add prometheus annotations for archive nodes
         # TODO: re-enable logs
         # ad.datadoghq.com/river-node.logs: '[{"service": "river-node", "node_url": "https://{{ .hostname }}"}]' 
+        # TODO: add health checks
     spec:
       containers:
         - name: river-node
