@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: river-node
-          image: public.ecr.aws/h5v6m2x1/river:dev # TODO: make the image tag configurable
+          image: public.ecr.aws/h5v6m2x1/river:{{ $.Values.image.tag }}
           ports:
             - containerPort: 443
               name: https
