@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}
   namespace: {{ $.Release.Namespace }}
 spec:
   # TODO: use rolling update strategy
@@ -12,16 +12,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+      app: river-node-{{ .nodeType }}-{{ .nodeNumber }}
   template:
     # TODO: add logging
     metadata:
       labels:
-        app: nginx-river-node-test-{{ .nodeType }}-{{ .nodeNumber }}
+        app: river-node-{{ .nodeType }}-{{ .nodeNumber }}
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: river-node
+          image: public.ecr.aws/h5v6m2x1/river:dev # TODO: make the image tag configurable
           ports:
             - containerPort: 443
               name: https
@@ -29,13 +29,6 @@ spec:
               name: metrics
             - containerPort: 8082
               name: pprof
-          volumeMounts:
-          - name: certs
-            mountPath: "/etc/nginx/certs"
-            readOnly: true
-          - name: nginx-config
-            mountPath: /etc/nginx/nginx.conf
-            subPath: nginx.conf
           env:
             - name: WALLETPRIVATEKEY
               valueFrom:
@@ -144,13 +137,6 @@ spec:
             # TODO: make sure dd_oltp is setup and accepting connections at :4317
             
             # TODO: if archive node, add prometheus annotations (archive_node_docker_labels on terraform)
-      volumes:
-        - name: certs
-          secret:
-            secretName: river-node-wildcard-tls
-        - name: nginx-config
-          configMap:
-            name: nginx-river-node-test-config
 ---
 
 {{- end }}
