@@ -29,6 +29,13 @@ spec:
               name: metrics
             - containerPort: 8082
               name: pprof
+          volumeMounts:
+            - name: tls-secret
+              mountPath: /etc/tls-secret
+              readOnly: true
+            - name: certs
+              mountPath: /etc/certs
+              readOnly: true
           env:
             - name: WALLETPRIVATEKEY
               valueFrom:
@@ -66,15 +73,9 @@ spec:
             - name: WALLETLINKCONTRACT__VERSION
               value: "v3"
             - name: TLSCONFIG__CERT
-              valueFrom:
-                secretKeyRef:
-                  name: river-node-wildcard-tls
-                  key: tls.crt
+              value: /etc/tls-secret/tls.crt
             - name: TLSCONFIG__KEY
-              valueFrom:
-                secretKeyRef:
-                  name: river-node-wildcard-tls
-                  key: tls.key
+              value: /etc/tls-secret/tls.key
             - name: CHAINSSTRING
               valueFrom:
                 secretKeyRef:
@@ -137,6 +138,10 @@ spec:
             # TODO: make sure dd_oltp is setup and accepting connections at :4317
             
             # TODO: if archive node, add prometheus annotations (archive_node_docker_labels on terraform)
+      volumes:
+        - name: tls-secret
+          secret:
+            secretName: river-node-wildcard-tls
 ---
 
 {{- end }}
