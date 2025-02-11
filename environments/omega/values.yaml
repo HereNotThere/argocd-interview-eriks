@@ -25,6 +25,10 @@ riverNode:
   numStreamNodes: 0
   numArchiveNodes: 2
 
+argocd:
+  externalAccess:
+    enabled: false
+
 appOfApps:
   applications:
     # - name: argocd
