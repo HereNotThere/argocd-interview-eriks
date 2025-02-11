@@ -49,7 +49,7 @@ appOfApps:
 
 notificationService:
   image:
-    tag: "86248e7"
+    tag: "58fb293"
   apnsTownsAppIdentifier: com.towns.internal
 
 riverNode:
