@@ -2,43 +2,58 @@
 
 global:
   environmentName: omega
-  gcp:
-    projectId: hnt-live-omega # TODO: make sure we don't reuse this on other environments
-    gke:
-      clusterLocation: us-east4
-      clusterName: main-cluster-omega # always update
-  chains:
-    river:
-      chainId: "550" # TODO: always update
-      contractAddresses:
-        riverRegistry: "0x1298c03Fde548dc433a452573E36A713b38A0404" # TODO: always update this accross environments
+
+chains:
+  river:
+    chainId: "550"
+    contractAddresses:
+      riverRegistry: "0x1298c03Fde548dc433a452573E36A713b38A0404"
+  base:
+    chainId: "8453"
+    contractAddresses:
+      spaceArchitect: "0x9978c826d93883701522d2CA645d5436e5654252"
+      baseRegistry: "0x7c0422b31401C936172C897802CF0373B35B7698"
+
+notificationService:
+  image:
+    tag: "mainnet"
+  apnsTownsAppIdentifier: com.towns.ios # TODO: always change
+
+riverNode:
+  image:
+    tag: mainnet
+  numStreamNodes: 0
+  numArchiveNodes: 2
 
 appOfApps:
-  default:
-    valuesFile: ../../environments/omega/values.yaml # TODO: always update
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/HereNotThere/argocd
-        targetRevision: main
-
   applications:
-    - name: external-secrets
-      disable: false
-      namespace: external-secrets
-      values: |
-        external-secrets:
-          serviceAccount:
-            create: true
-            name: main-service-account
-            annotations:
-              iam.gke.io/gcp-service-account: main-service-account@hnt-live-omega.iam.gserviceaccount.com # TODO: make sure you replace the project ID with the correct one. turn this into a tpl
+    # - name: argocd
+    #   namespace: argocd
+    #   disable: false
     - name: datadog
-      disable: false
       namespace: datadog
+      disable: false
+    - name: external-secrets
+      namespace: external-secrets
+      disable: false
+    - name: cert-manager
+      namespace: cert-manager
+      disable: false
+    - name: external-dns
+      namespace: external-dns
+      disable: false
+    # - name: main-alb
+    #   namespace: default
+    #   disable: false
     - name: xchain-monitor
-      disable: true
       namespace: default
-      values: |
-        image:
-          tag: 78d5c910f736345b02388284f46a0a5391a5d416
+      disable: false
+    - name: metrics-aggregator
+      namespace: default
+      disable: true
+    - name: notification-service
+      namespace: default
+      disable: true
+    - name: river-node
+      namespace: default
+      disable: true

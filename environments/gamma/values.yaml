@@ -14,6 +14,17 @@ chains:
       spaceArchitect: "0x968696BC59431Ef085441641f550C8e2Eaca8BEd"
       baseRegistry: "0x08cC41b782F27d62995056a4EF2fCBAe0d3c266F"
 
+notificationService:
+  image:
+    tag: "2edd06f"
+  apnsTownsAppIdentifier: com.towns.internal # TODO: always change
+
+riverNode:
+  image:
+    tag: 40daedd
+  numStreamNodes: 11
+  numArchiveNodes: 0
+
 appOfApps:
   applications:
     - name: argocd
@@ -46,14 +57,3 @@ appOfApps:
     - name: river-node
       namespace: default
       disable: false
-
-notificationService:
-  image:
-    tag: "2edd06f"
-  apnsTownsAppIdentifier: com.towns.internal
-
-riverNode:
-  image:
-    tag: 40daedd
-  numStreamNodes: 11
-  numArchiveNodes: 0
