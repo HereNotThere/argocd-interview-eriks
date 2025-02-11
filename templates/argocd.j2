@@ -1,4 +1,4 @@
 argo-cd:
   configs:
     params:
-      server.insecure: {{ argocd.externalAccess}}
+      server.insecure: {{ argocd.externalAccess.enabled | to_yaml }}
