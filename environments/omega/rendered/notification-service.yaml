@@ -7,10 +7,8 @@ image:
   tag: mainnet
 resources:
   limits:
-    cpu: 1
-    memory: 7.5Gi
-    # TODO: don't hardcode the memory limit
+    cpu: "1"
+    memory: 72Gi
   requests:
-    cpu: 1
-    memory: 7.5Gi
-    # TODO: don't hardcode the memory request
+    cpu: "1"
+    memory: 72Gi

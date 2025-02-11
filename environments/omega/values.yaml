@@ -17,6 +17,13 @@ chains:
 notificationService:
   image:
     tag: "mainnet"
+  resources:
+    limits:
+      cpu: "1"
+      memory: "72Gi"
+    requests:
+      cpu: "1"
+      memory: "72Gi"
   apnsTownsAppIdentifier: com.towns.ios # TODO: always change
 
 riverNode:

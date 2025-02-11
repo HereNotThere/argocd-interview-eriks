@@ -18,6 +18,13 @@ notificationService:
   image:
     tag: "135ee8e"
   apnsTownsAppIdentifier: com.towns.internal # TODO: always change
+  resources:
+    requests:
+      cpu: 1
+      memory: 7.5Gi
+    limits:
+      cpu: 1
+      memory: 7.5Gi
 
 riverNode:
   image:
