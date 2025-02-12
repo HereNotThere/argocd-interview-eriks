@@ -148,8 +148,8 @@ spec:
               memory: "512Mi"
               cpu: "500m"
         # TODO: delete me
-        - name: busybox
-          image: busybox
+        - name: delete-me
+          image: postgres:latest
           command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
           resources:
             requests:
