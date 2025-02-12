@@ -7,8 +7,6 @@ spec:
   strategy:
     type: Recreate 
   template:
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       serviceAccountName: main-service-account
       containers:
         - name: migrator
@@ -52,16 +50,3 @@ spec:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: database_password
-
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
