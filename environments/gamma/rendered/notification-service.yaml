@@ -4,7 +4,7 @@
 
 apnsTownsAppIdentifier: com.towns.internal
 image:
-  tag: 38ce591
+  tag: 00c2cf7
 resources:
   limits:
     cpu: 1
