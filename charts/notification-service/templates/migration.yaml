@@ -7,46 +7,50 @@ spec:
   strategy:
     type: Recreate
   template:
-    serviceAccountName: main-service-account
-    containers:
-      - name: migrator
-        image: postgres:latest
-        command: ["sh", "-c", "echo Hello Kubernetes! && sleep 3600"]
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-        env:
-          - name: TARGET_DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: notification-service-secrets
-                key: alloy_db_host
-          - name: TARGET_DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: notification-service-secrets
-                key: alloy_db_root_user
-          - name: TARGET_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: notification-service-secrets
-                key: alloy_db_root_password
-          - name: SOURCE_DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: notification-service-secrets
-                key: database_host
-          - name: SOURCE_DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: notification-service-secrets
-                key: notification_service
-          - name: SOURCE_DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: notification-service-secrets
-                key: database_password
+    metadata:
+      labels:
+        app: notification-service-migration
+    spec:
+      serviceAccountName: main-service-account
+      containers:
+        - name: migrator
+          image: postgres:latest
+          command: ["sh", "-c", "echo Hello Kubernetes! && sleep 3600"]
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          env:
+            - name: TARGET_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: alloy_db_host
+            - name: TARGET_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: alloy_db_root_user
+            - name: TARGET_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: alloy_db_root_password
+            - name: SOURCE_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: database_host
+            - name: SOURCE_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: notification_service
+            - name: SOURCE_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: database_password
