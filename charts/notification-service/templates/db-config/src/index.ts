@@ -2,12 +2,12 @@ import { Client, DatabaseError } from 'pg'
 import { z } from 'zod'
 
 const envSchema = z.object({
-    DB_HOST: z.string(),
-    DB_DATABASE: z.string(),
-    DB_ROOT_USER: z.string(),
-    DB_ROOT_PASSWORD: z.string(),
-    DB_NOTIFICATION_SERVICE_USER: z.string(),
-    DB_NOTIFICATION_SERVICE_USER_PASSWORD: z.string(),
+    DB_HOST: z.string().min(1),
+    DB_DATABASE: z.string().min(1),
+    DB_ROOT_USER: z.string().min(1),
+    DB_ROOT_PASSWORD: z.string().min(1),
+    DB_NOTIFICATION_SERVICE_USER: z.string().min(1),
+    DB_NOTIFICATION_SERVICE_USER_PASSWORD: z.string().min(1),
 })
 
 const env = envSchema.parse(process.env)
