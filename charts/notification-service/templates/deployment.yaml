@@ -129,35 +129,6 @@ spec:
               value: {{ required "apnsTownsAppIdentifier is required" .Values.apnsTownsAppIdentifier | quote }}
             - name: NOTIFICATIONS__WEBPUSH__VAPID__SUBJECT
               value: "support@towns.com"
-        - name: cloud-sql-proxy
-          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:latest
-          args:
-            - "--address=0.0.0.0"
-            - "--port=5432"
-            - {{ $.Values.global.gcp.projectId }}:{{ $.Values.global.gcp.region }}:notification-service-db-primary
-          securityContext:
-            runAsNonRoot: true
-            allowPrivilegeEscalation: false
-          ports:
-            - containerPort: 5432
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
-        # TODO: delete me
-        - name: delete-me
-          image: postgres:latest
-          command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
-          resources:
-            requests:
-              memory: "128Mi"
-              cpu: "100m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
