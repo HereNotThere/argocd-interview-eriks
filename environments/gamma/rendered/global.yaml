@@ -6,6 +6,7 @@ global:
   environmentName: gamma
   gcp:
     projectId: hnt-live-gamma
+    region: us-east4
     gke:
       clusterLocation: us-east4
       clusterName: main-cluster-gamma

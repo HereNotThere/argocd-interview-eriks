@@ -54,3 +54,13 @@ spec:
                 name: nginx-argocd-wrapper
                 port:
                   number: 80
+
+---
+### MAIN SERVICE ACCOUNT ###
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: main-service-account
+  namespace: default
+  annotations:
+    iam.gke.io/gcp-service-account: main-service-account@{{ .Values.global.gcp.projectId }}.iam.gserviceaccount.com

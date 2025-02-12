@@ -6,6 +6,7 @@ global:
   environmentName: omega
   gcp:
     projectId: hnt-live-omega
+    region: us-east4
     gke:
       clusterLocation: us-east4
       clusterName: main-cluster-omega
