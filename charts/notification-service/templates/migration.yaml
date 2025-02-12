@@ -48,10 +48,7 @@ spec:
                   name: notification-service-secrets
                   key: database_host
             - name: SOURCE_DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: notification-service-secrets
-                  key: notification_service
+              value: notification_service
             - name: SOURCE_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
