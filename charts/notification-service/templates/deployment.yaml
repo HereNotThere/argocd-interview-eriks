@@ -147,6 +147,17 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+        # TODO: delete me
+        - name: busybox
+          image: busybox
+          command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
