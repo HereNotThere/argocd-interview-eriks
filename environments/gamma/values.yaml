@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "facce6c"
+    tag: "b64e3ca"
   apnsTownsAppIdentifier: com.towns.internal # TODO: always change
 
 riverNode:
