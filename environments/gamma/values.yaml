@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: 1beac1b
+    tag: 88bf183
   numStreamNodes: 11
   numArchiveNodes: 0
 
