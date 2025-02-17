@@ -5,7 +5,8 @@ metadata:
   labels:
     {{- include "notification-service.labels" . | nindent 4 }}
 spec:
-  replicas: 0
+  # just to avoid accidentally copying the wrong config to a new environment, we explicitly expect this flag to be set with the environment name
+  replicas: {{ ternary 1 0 (eq .Values.dbMigrationStatus "complete-{{ .Values.global.environmentName }}") }}
   strategy:
     type: Recreate #Tell k8s to recreate the pod when the deployment is updated
   selector:
