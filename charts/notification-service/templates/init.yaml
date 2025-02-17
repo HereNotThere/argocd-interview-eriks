@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: notification-service-init-job
+spec:
+  backoffLimit: 3 # Number of retries before marking the job as failed
+  ttlSecondsAfterFinished: 3600 # Auto-delete completed job after 1 hour
+  template:
+    metadata:
+      labels:
+        app: notification-service-init-job
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: notification-service-init-job
+          image: node:20 # Node.js with TypeScript installed
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
+              cd /app/scripts/notification-service-db-config &&
+              yarn install &&
+              yarn dev
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: alloy_db_host
+            - name: DB_DATABASE
+              value: river
+            - name: DB_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: alloy_db_root_user
+            - name: DB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: alloy_db_root_password
+            - name: DB_NOTIFICATION_SERVICE_USER
+              value: notification_service
+            - name: DB_NOTIFICATION_SERVICE_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: database_password
