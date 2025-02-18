@@ -16,6 +16,7 @@ spec:
           command: ["/bin/sh", "-c"]
           args:
             - |
+              apt-get update && apt-get install -y postgresql-client &&
               git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
               cd /app/scripts/notification-service-db-config &&
               bash ./run.sh
