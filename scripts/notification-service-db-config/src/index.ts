@@ -8,6 +8,7 @@ const envSchema = z.object({
     TARGET_DB_ROOT_PASSWORD: z.string().min(1),
     TARGET_DB_APP_USER: z.string().min(1),
     TARGET_DB_APP_PASSWORD: z.string().min(1),
+    INIT_CREATE_SCHEMA: z.string().transform((val) => val === 'true'),
 })
 
 const env = envSchema.parse(process.env)
@@ -162,7 +163,12 @@ const createNotificationServiceDbUser = async () => {
 
 export const run = async () => {
     await createNotificationServiceDbUser()
-    await createSchema()
+
+    if (env.INIT_CREATE_SCHEMA) {
+        await createSchema()
+    } else {
+        console.log('skipping schema creation')
+    }
 
     console.log('success')
 }
