@@ -14,7 +14,7 @@
         "ts-node": "10.9.2"
     },
     "scripts": {
-        "init": "ts-node --transpile-only src/index.ts"
+        "db:init": "ts-node --transpile-only src/index.ts"
     },
     "author": "",
     "license": "ISC"

@@ -6,7 +6,7 @@ set -eo pipefail
 init() {
   echo "Running init-db"
   yarn install
-  yarn init
+  yarn db:init
 }
 
 migrate() {
