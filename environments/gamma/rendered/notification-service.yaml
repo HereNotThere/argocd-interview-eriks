@@ -13,4 +13,4 @@ resources:
     cpu: 1
     memory: 7.5Gi
 
-dbMigrationStatus: complete-gamma
+dbMigrationStatus: gamma
