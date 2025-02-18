@@ -8,62 +8,12 @@ const envSchema = z.object({
     TARGET_DB_ROOT_PASSWORD: z.string().min(1),
     TARGET_DB_APP_USER: z.string().min(1),
     TARGET_DB_APP_PASSWORD: z.string().min(1),
-    INIT_CREATE_SCHEMA: z.string().transform((val) => val === 'true'),
 })
 
 const env = envSchema.parse(process.env)
 
 function isDBAlreadyExistsError(e: unknown) {
     return e instanceof DatabaseError && (e.code == '42P04' || e.code == '23505')
-}
-
-const createSchema = async () => {
-    const schemaName = 'notification_service'
-    // create schema if not exists
-    console.log('creating schema')
-
-    let error
-
-    const pgClient = new Client({
-        host: env.TARGET_DB_HOST,
-        database: env.TARGET_DB_DATABASE,
-        password: env.TARGET_DB_APP_PASSWORD,
-        user: env.TARGET_DB_APP_USER,
-        port: 5432,
-        ssl: {
-            rejectUnauthorized: false,
-        },
-    })
-
-    try {
-        console.log('connecting')
-        await pgClient.connect()
-        console.log('connected')
-
-        const createSchemaQuery = `
-      DO
-      $do$
-      BEGIN
-        IF NOT EXISTS (
-          SELECT FROM pg_catalog.pg_namespace WHERE nspname = '${schemaName}'
-        ) THEN
-          CREATE SCHEMA ${schemaName};
-        END IF;
-      END
-      $do$
-    `
-        await pgClient.query(createSchemaQuery)
-        console.log('done creating schema')
-    } catch (e) {
-        console.error('error creating schema: ', e)
-        error = e
-    } finally {
-        await pgClient.end()
-    }
-
-    if (error) {
-        throw error
-    }
 }
 
 const createNotificationServiceDbUser = async () => {
@@ -163,13 +113,6 @@ const createNotificationServiceDbUser = async () => {
 
 export const run = async () => {
     await createNotificationServiceDbUser()
-
-    if (env.INIT_CREATE_SCHEMA) {
-        await createSchema()
-    } else {
-        console.log('skipping schema creation')
-    }
-
     console.log('success')
 }
 

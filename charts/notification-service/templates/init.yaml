@@ -74,6 +74,3 @@ spec:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: source_db_password
-
-            - name: INIT_CREATE_SCHEMA
-              value: "false"
