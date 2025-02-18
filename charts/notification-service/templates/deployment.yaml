@@ -77,16 +77,19 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
-                  key: database_password
+                  key: target_db_app_password
             - name: DATABASE__HOST
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
-                  key: database_host
+                  key: target_db_host
             - name: DATABASE__PORT
               value: "5432"
             - name: DATABASE__USER
-              value: notification_service
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: target_db_app_user
             - name: DATABASE__DATABASE
               value: river
             - name: DATABASE__EXTRA

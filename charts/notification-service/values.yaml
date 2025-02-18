@@ -95,4 +95,4 @@ tolerations: []
 
 affinity: {}
 
-dbMigrationStatus: "incomplete"
+dbMigrationStatus: "hold"

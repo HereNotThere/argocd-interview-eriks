@@ -3,8 +3,7 @@ kind: Job
 metadata:
   name: notification-service-init-job
 spec:
-  backoffLimit: 3 # Number of retries before marking the job as failed
-  ttlSecondsAfterFinished: 3600 # Auto-delete completed job after 1 hour
+  backoffLimit: 0
   template:
     metadata:
       labels:
@@ -19,30 +18,58 @@ spec:
             - |
               git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
               cd /app/scripts/notification-service-db-config &&
-              yarn install &&
-              yarn dev
+              bash ./run.sh
           env:
-            - name: DB_HOST
+            - name: TARGET_DB_HOST
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
-                  key: alloy_db_host
-            - name: DB_DATABASE
+                  key: target_db_host
+
+            - name: TARGET_DB_DATABASE
               value: river
-            - name: DB_ROOT_USER
+
+            - name: TARGET_DB_ROOT_USER
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
-                  key: alloy_db_root_user
-            - name: DB_ROOT_PASSWORD
+                  key: target_db_root_user
+
+            - name: TARGET_DB_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
-                  key: alloy_db_root_password
-            - name: DB_NOTIFICATION_SERVICE_USER
-              value: notification_service
-            - name: DB_NOTIFICATION_SERVICE_USER_PASSWORD
+                  key: target_db_root_password
+
+            - name: TARGET_DB_APP_USER
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
-                  key: database_password
+                  key: target_db_app_user
+
+            - name: TARGET_DB_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: target_db_app_password
+
+            - name: SOURCE_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: source_db_host
+
+            - name: SOURCE_DB_DATABASE
+              value: river
+
+            - name: SOURCE_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: source_db_user
+
+            - name: SOURCE_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: source_db_password
