@@ -166,3 +166,8 @@ export const run = async () => {
 
     console.log('success')
 }
+
+run().catch((e) => {
+    console.error('error: ', e)
+    process.exit(1)
+})
