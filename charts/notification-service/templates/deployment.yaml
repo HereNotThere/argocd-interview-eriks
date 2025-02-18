@@ -73,27 +73,34 @@ spec:
               value: "true"
             - name: DISABLEHTTPS
               value: "true"
+
             - name: DATABASE__PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: target_db_app_password
+
             - name: DATABASE__HOST
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: target_db_host
+
             - name: DATABASE__PORT
               value: "5432"
+
             - name: DATABASE__USER
               valueFrom:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: target_db_app_user
+
             - name: DATABASE__DATABASE
               value: river
+
             - name: DATABASE__EXTRA
               value: "?sslmode=disable&pool_max_conns=1000"
+
             - name: RIVERCHAIN__NETWORKURL
               valueFrom:
                 secretKeyRef:
