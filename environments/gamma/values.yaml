@@ -18,7 +18,7 @@ notificationService:
   image:
     tag: "e0f23fa"
   apnsTownsAppIdentifier: com.towns.internal # TODO: always change
-  dbMigrationStatus: "gamma"
+  # dbMigrationStatus: "gamma"
   resources:
     requests:
       cpu: 1
@@ -65,7 +65,7 @@ appOfApps:
       disable: false
     - name: notification-service
       namespace: default
-      disable: false
+      disable: true
     - name: river-node
       namespace: default
       disable: false
