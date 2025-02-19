@@ -1,6 +1,6 @@
 apnsTownsAppIdentifier: {{ notificationService.apnsTownsAppIdentifier }}
 image:
-  tag: {{ notificationService.image.tag }}
+  tag: "{{ notificationService.image.tag }}"
 resources:
   {{ notificationService.resources | to_yaml | indent(2) }}
 dbMigrationStatus: {{ notificationService.dbMigrationStatus }}
