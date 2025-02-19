@@ -3,7 +3,7 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 image:
-  tag: 427e850
+  tag: 5810110
 
 nodes:
   - nodeType: stream
