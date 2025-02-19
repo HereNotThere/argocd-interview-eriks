@@ -78,7 +78,7 @@ appOfApps:
         - ../../environments/gamma/rendered/metrics-aggregator.yaml
 
     - name: notification-service
-      disable: false
+      disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
