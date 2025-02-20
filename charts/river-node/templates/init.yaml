@@ -45,10 +45,7 @@ spec:
                   key: target_db_root_password
 
             - name: TARGET_DB_APP_USER
-              valueFrom:
-                secretKeyRef:
-                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
-                  key: target_db_app_user
+              value: {{ .dbUser }}
 
             - name: TARGET_DB_APP_PASSWORD
               valueFrom:
