@@ -3,17 +3,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: river-node-db-init-job-{{ .nodeType }}-{{ .nodeNumber }}
+  name: river-node-init-job-{{ .nodeType }}-{{ .nodeNumber }}
 spec:
   backoffLimit: 0
   template:
     metadata:
       labels:
-        app: river-node-db-init-job-{{ .nodeType }}-{{ .nodeNumber }}
+        app: river-node-init-job-{{ .nodeType }}-{{ .nodeNumber }}
     spec:
       restartPolicy: Never
       containers:
-        - name: river-node-db-init-job
+        - name: river-node-init-job
           image: node:20 # Node.js with TypeScript installed
           command: ["/bin/sh", "-c"]
           resources:
