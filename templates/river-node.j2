@@ -19,6 +19,8 @@ nodes:
     dbUser: archive{{ i }}
   {% endfor %}
 
+dbMigrationStatus: {{ riverNode.dbMigrationStatus }}
+
 resources:
   limits:
     cpu: 0.5

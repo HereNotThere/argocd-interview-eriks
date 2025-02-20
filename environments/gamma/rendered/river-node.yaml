@@ -83,6 +83,8 @@ nodes:
     standbyOnStart: true
     dbUser: river11
 
+dbMigrationStatus:
+
 resources:
   limits:
     cpu: 0.5
