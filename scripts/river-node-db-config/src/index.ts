@@ -21,7 +21,7 @@ function isDBAlreadyExistsError(e: unknown) {
 }
 
 const createDbUser = async () => {
-    console.log('creating notification service db user')
+    console.log('db user')
 
     const pgClient = new Client({
         host: env.TARGET_DB_HOST,

@@ -16,6 +16,9 @@ spec:
         - name: river-node-init-job
           image: node:20 # Node.js with TypeScript installed
           command: ["/bin/sh", "-c"]
+          resources:
+            requests:
+              storage: "40Gi"
           args:
             - |
               apt-get update && apt-get install -y postgresql-client &&
