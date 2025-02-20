@@ -18,7 +18,7 @@ spec:
           command: ["/bin/sh", "-c"]
           resources:
             requests:
-              storage: "40Gi"
+              ephemeral-storage: "40Gi"
           args:
             - |
               apt-get update && apt-get install -y postgresql-client &&
