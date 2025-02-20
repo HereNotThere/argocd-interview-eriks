@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "description": "",
     "dependencies": {
+        "ethereumjs-util": "^7.1.5",
+        "ethereumjs-wallet": "^1.0.2",
         "pg": "8.11.3",
         "zod": "^3.21.4"
     },
@@ -10,8 +12,8 @@
         "@types/pg": "8.11.6",
         "esbuild": "0.25.0",
         "prettier": "3.5.0",
-        "typescript": "5.7.3",
-        "ts-node": "10.9.2"
+        "ts-node": "10.9.2",
+        "typescript": "5.7.3"
     },
     "scripts": {
         "db:init": "ts-node --transpile-only src/index.ts"

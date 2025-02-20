@@ -47,12 +47,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
-                  key: db_password
+                  key: target_db_app_password
             - name: DATABASE__HOST
               valueFrom:
                 secretKeyRef:
                   name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
-                  key: db_host
+                  key: target_db_host
             - name: ARCHITECTCONTRACT__ADDRESS
               value: {{ required "spaceArchitect contract address required" $.Values.global.chains.base.contractAddresses.spaceArchitect }}
             - name: WALLET_LINK_CONTRACT__ADDRESS

@@ -1,5 +1,8 @@
 import { Client, DatabaseError } from 'pg'
 import { z } from 'zod'
+import { toBuffer } from 'ethereumjs-util'
+import Wallet from 'ethereumjs-wallet'
+import fs from 'fs'
 
 const envSchema = z.object({
     TARGET_DB_HOST: z.string().min(1),
@@ -8,6 +11,7 @@ const envSchema = z.object({
     TARGET_DB_ROOT_PASSWORD: z.string().min(1),
     TARGET_DB_APP_USER: z.string().min(1),
     TARGET_DB_APP_PASSWORD: z.string().min(1),
+    WALLET_PRIVATE_KEY: z.string().min(1),
 })
 
 const env = envSchema.parse(process.env)
@@ -111,9 +115,29 @@ const createDbUser = async () => {
     }
 }
 
+const generateWalletFromPrivateKey = (privateKey: string) => {
+    console.log('generating from private key')
+    // Ensure the private key starts with '0x'
+    if (!privateKey.startsWith('0x')) {
+        privateKey = '0x' + privateKey
+    }
+
+    // Create a wallet from the private key
+    return Wallet.fromPrivateKey(toBuffer(privateKey))
+}
+
+const getSchemaName = () => {
+    const wallet = generateWalletFromPrivateKey(env.WALLET_PRIVATE_KEY)
+    const address = wallet.getAddressString()
+    return `s${address.toLowerCase()}`
+}
+
 export const run = async () => {
     await createDbUser()
-    console.log('success')
+    const schemaName = getSchemaName()
+    console.log('schema name: ', schemaName)
+    fs.writeFileSync('/tmp/schema-name', schemaName)
+    console.log('wrote schema name to /tmp/schema-name')
 }
 
 run().catch((e) => {

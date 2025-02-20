@@ -52,8 +52,11 @@ migrate() {
       exit 1
   fi
 
+  # The schema name is saved to /tmp/schema-name. read it, and use it:
+  SCHEMA_NAME=$(cat /tmp/schema-name)
+
   export PGPASSWORD=$SOURCE_DB_PASSWORD
-  pg_dump -h $SOURCE_DB_HOST -U $SOURCE_DB_USER -d $SOURCE_DB_DATABASE -F d -j 4 -f /tmp/dump
+  pg_dump -n $SCHEMA_NAME -h $SOURCE_DB_HOST -U $SOURCE_DB_USER -d $SOURCE_DB_DATABASE -F d -j 4 -f /tmp/dump
 
   export PGPASSWORD=$TARGET_DB_APP_PASSWORD
   pg_restore -h $TARGET_DB_HOST -U $TARGET_DB_APP_USER -d $TARGET_DB_DATABASE -j 4 -O -x -F d /tmp/dump
