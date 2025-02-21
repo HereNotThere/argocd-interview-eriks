@@ -52,8 +52,24 @@ migrate() {
       exit 1
   fi
 
-  # The schema name is saved to /tmp/schema-name. read it, and use it:
-  SCHEMA_NAME=$(cat /tmp/schema-name)
+  if [ -z "$NODE_TYPE" ]; then
+      echo "NODE_TYPE is not set. Exiting."
+      exit 1
+  fi
+
+  if [ -z "$NODE_NUMBER" ]; then
+      echo "NODE_NUMBER is not set. Exiting."
+      exit 1
+  fi
+
+  if [ NODE_TYPE == "stream" ]; then
+    # The schema name is saved to /tmp/schema-name. read it, and use it:
+    SCHEMA_NAME=$(cat /tmp/schema-name)
+  elif [ NODE_TYPE == "archive" ]; then
+    SCHEMA_NAME="arch${NODE_NUMBER}"
+  else
+    exit 1
+  fi
 
   echo "Schema name is $SCHEMA_NAME"
   echo "Beginning pgdump..."

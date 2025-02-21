@@ -82,5 +82,11 @@ spec:
                 secretKeyRef:
                   name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
                   key: wallet_private_key
+
+            - name: NODE_TYPE
+              value: {{ .nodeType }}
+            
+            - name: NODE_NUMBER
+              value: {{ .nodeNumber }}
 ---
 {{- end }}
