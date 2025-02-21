@@ -70,7 +70,7 @@ appOfApps:
         - ../../environments/omega/rendered/xchain-monitor.yaml
 
     - name: metrics-aggregator
-      disable: false
+      disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
