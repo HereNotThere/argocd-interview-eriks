@@ -42,11 +42,11 @@ spec:
               protocol: TCP
           readinessProbe:
             httpGet:
-              path: /status
+              path: /status?blockchain=0
               port: http
           livenessProbe:
             httpGet:
-              path: /status
+              path: /status?blockchain=0
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
