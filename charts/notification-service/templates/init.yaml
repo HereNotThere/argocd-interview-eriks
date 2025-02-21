@@ -1,3 +1,4 @@
+{{- if eq .Values.dbMigrationStatus "hold" }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -74,3 +75,4 @@ spec:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: source_db_password
+{{- end }}
