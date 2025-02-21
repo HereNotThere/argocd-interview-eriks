@@ -1,0 +1,6 @@
+{% for app in appOfApps.applications %}
+{% if app.name == "notification-service" %}
+  notificationService:
+    disable: {{ app.disable | lower}}
+{% endif %}
+{% endfor %}

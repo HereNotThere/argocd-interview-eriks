@@ -34,6 +34,7 @@ spec:
         - {{ include "argocd.domainName" . }}
       secretName: main-alb-tls
   rules:
+    {{- if not .Values.notificationService.disable }}
     - host: {{ include "notification-service.domainName" . }}
       http:
         paths:
@@ -44,6 +45,7 @@ spec:
                 name: notification-service
                 port:
                   number: 80
+    {{- end }}
     - host: {{ include "argocd.domainName" . }}
       http:
         paths:
