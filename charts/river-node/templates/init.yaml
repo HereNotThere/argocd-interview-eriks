@@ -87,6 +87,6 @@ spec:
               value: {{ .nodeType }}
             
             - name: NODE_NUMBER
-              value: {{ .nodeNumber }}
+              value: "{{ .nodeNumber }}"
 ---
 {{- end }}
