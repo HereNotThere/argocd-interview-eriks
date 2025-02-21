@@ -78,7 +78,7 @@ appOfApps:
         - ../../environments/omega/rendered/metrics-aggregator.yaml
 
     - name: notification-service
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml
