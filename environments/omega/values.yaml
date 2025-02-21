@@ -64,7 +64,7 @@ appOfApps:
       disable: false
     - name: notification-service
       namespace: default
-      disable: false
+      disable: true
     - name: river-node
       namespace: default
       disable: true
