@@ -13,6 +13,14 @@ appOfApps:
   applications:
     #iterate over all applications and append a key,value pair for each
 
+    - name: argocd
+      disable: false
+      namespace: argocd
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/omega/rendered/global.yaml
+        - ../../environments/omega/rendered/argocd.yaml
+
     - name: datadog
       disable: false
       namespace: datadog
@@ -45,6 +53,14 @@ appOfApps:
         - ../../environments/omega/rendered/global.yaml
         - ../../environments/omega/rendered/external-dns.yaml
 
+    - name: main-alb
+      disable: false
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/omega/rendered/global.yaml
+        - ../../environments/omega/rendered/main-alb.yaml
+
     - name: xchain-monitor
       disable: false
       namespace: default
@@ -54,7 +70,7 @@ appOfApps:
         - ../../environments/omega/rendered/xchain-monitor.yaml
 
     - name: metrics-aggregator
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml
