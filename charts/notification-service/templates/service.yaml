@@ -4,6 +4,8 @@ metadata:
   name: {{ include "notification-service.fullname" . }}
   labels:
     {{- include "notification-service.labels" . | nindent 4 }}
+  annotations:
+    cloud.google.com/backend-config: '{"default": "{{ include "notification-service.fullname" . }}" }'
 spec:
   type: {{ .Values.service.type }}
   ports:
