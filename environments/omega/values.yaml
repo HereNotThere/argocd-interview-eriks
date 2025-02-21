@@ -38,9 +38,9 @@ argocd:
 
 appOfApps:
   applications:
-    # - name: argocd
-    #   namespace: argocd
-    #   disable: false
+    - name: argocd
+      namespace: argocd
+      disable: false
     - name: datadog
       namespace: datadog
       disable: false
@@ -53,9 +53,9 @@ appOfApps:
     - name: external-dns
       namespace: external-dns
       disable: false
-    # - name: main-alb
-    #   namespace: default
-    #   disable: false
+    - name: main-alb
+      namespace: default
+      disable: false
     - name: xchain-monitor
       namespace: default
       disable: false

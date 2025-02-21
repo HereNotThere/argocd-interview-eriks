@@ -3,7 +3,7 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 image:
-  tag: mainnet
+  tag: "mainnet"
 
 nodes:
   - nodeType: archive
@@ -19,6 +19,8 @@ nodes:
     runMode: archive
     standbyOnStart: false
     dbUser: archive2
+
+dbMigrationStatus:
 
 resources:
   limits:

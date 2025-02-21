@@ -4,7 +4,7 @@
 
 apnsTownsAppIdentifier: com.towns.ios
 image:
-  tag: mainnet
+  tag: "mainnet"
 resources:
   limits:
     cpu: "1"
@@ -12,3 +12,5 @@ resources:
   requests:
     cpu: "1"
     memory: 72Gi
+
+dbMigrationStatus:
