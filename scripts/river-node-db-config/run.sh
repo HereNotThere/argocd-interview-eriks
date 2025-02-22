@@ -87,7 +87,7 @@ migrate() {
     -h "$SOURCE_DB_HOST" \
     -U "$SOURCE_DB_USER" \
     -d "$SOURCE_DB_DATABASE" \
-    -n "$SCHEMA_NAME"          # dump only this schema 
+    -n "$SCHEMA_NAME" \        # dump only this schema 
     -f /tmp/dump
 
 
