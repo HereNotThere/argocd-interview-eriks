@@ -74,8 +74,10 @@ migrate() {
   echo "Schema name is $SCHEMA_NAME"
   echo "Beginning pgdump... on $SOURCE_DB_HOST"
 
+  mkdir -p /tmp/pg-dump
+
   export PGPASSWORD=$SOURCE_DB_PASSWORD
-  pg_dump -n $SCHEMA_NAME -h $SOURCE_DB_HOST -U $SOURCE_DB_USER -d $SOURCE_DB_DATABASE -F d -j 12 -Z 0 -v -f tmp/pg-dump
+  pg_dump -n $SCHEMA_NAME -h $SOURCE_DB_HOST -U $SOURCE_DB_USER -d $SOURCE_DB_DATABASE -F d -j 12 -Z 0 -v -f /tmp/pg-dump
 
   echo "Finished pgdump. Restoring to target db..."
 
