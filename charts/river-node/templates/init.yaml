@@ -18,7 +18,7 @@ spec:
           command: ["/bin/sh", "-c"]
           resources:
             requests:
-              ephemeral-storage: "1Ti"
+              ephemeral-storage: "450Gi"
               memory: "12Gi"
               cpu: "10"
           args:
