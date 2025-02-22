@@ -106,7 +106,7 @@ migrate() {
     -h "$TARGET_DB_HOST" \
     -U "$TARGET_DB_APP_USER" \
     -d "$TARGET_DB_DATABASE" \
-    /tmp/dump
+    -f /tmp/dump
 
   echo "Finished migrate-db"
 }
