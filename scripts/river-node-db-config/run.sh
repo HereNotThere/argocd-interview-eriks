@@ -78,17 +78,17 @@ migrate() {
   # 1) Set the source DB password for pg_dump
   export PGPASSWORD="$SOURCE_DB_PASSWORD"
 
-  # 2) Run pg_dump in directory format with parallel jobs
   pg_dump \
-    -F d          \            # "directory" format (allows parallel dump/restore)
-    -j 12         \            # use 12 parallel jobs
-    -Z 0          \            # disable compression for speed
-    -v            \            # verbose output
+    -F d              \  # "directory" format (allows parallel dump/restore)
+    -j 12             \  # use 12 parallel jobs
+    -Z 0              \  # disable compression for speed
+    -v                \  # verbose output
     -h "$SOURCE_DB_HOST" \
     -U "$SOURCE_DB_USER" \
     -d "$SOURCE_DB_DATABASE" \
-    -n "$SCHEMA_NAME" \        # dump only this schema 
-    -f /tmp/dump
+    -n "$SCHEMA_NAME"  \  # dump only this schema
+    -f /tmp/pg-dump         # output directory for the dump
+
 
 
   echo "Finished pgdump. Restoring to target db..."
@@ -106,7 +106,7 @@ migrate() {
     -h "$TARGET_DB_HOST" \
     -U "$TARGET_DB_APP_USER" \
     -d "$TARGET_DB_DATABASE" \
-    -f /tmp/dump
+    /tmp/pg-dump
 
   echo "Finished migrate-db"
 }
