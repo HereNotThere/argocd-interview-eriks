@@ -20,7 +20,7 @@ nodes:
     standbyOnStart: false
     dbUser: archive2
 
-dbMigrationStatus:
+dbMigrationStatus: omega
 
 resources:
   limits:

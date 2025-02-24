@@ -28,6 +28,7 @@ notificationService:
   apnsTownsAppIdentifier: com.towns.ios # TODO: always change
 
 riverNode:
+  dbMigrationStatus: "omega"
   image:
     tag: "mainnet"
   numStreamNodes: 0
