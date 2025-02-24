@@ -25,6 +25,7 @@ notificationService:
       cpu: "1"
       memory: "72Gi"
   apnsTownsAppIdentifier: com.towns.ios.alpha
+  dbMigrationStatus: "hold"
 
 riverNode:
   image:

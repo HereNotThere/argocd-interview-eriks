@@ -13,4 +13,4 @@ resources:
     cpu: "1"
     memory: 72Gi
 
-dbMigrationStatus:
+dbMigrationStatus: hold
