@@ -1,0 +1,70 @@
+# ################### GLOBAL ###################
+
+global:
+  environmentName: omega
+
+chains:
+  river:
+    chainId: "6524490"
+    contractAddresses:
+      riverRegistry: "0x44354786EacBEBf981453A05728E1653Bc3c5def"
+  base:
+    chainId: "84532"
+    contractAddresses:
+      spaceArchitect: "0xC09Ac0FFeecAaE5100158247512DC177AeacA3e3"
+      baseRegistry: "0x0230a9d28bc48a90d6f5e5112b24319ec1b14c52"
+
+notificationService:
+  image:
+    tag: "testnet"
+  resources:
+    limits:
+      cpu: "1"
+      memory: "72Gi"
+    requests:
+      cpu: "1"
+      memory: "72Gi"
+  apnsTownsAppIdentifier: com.towns.ios.alpha
+
+riverNode:
+  image:
+    tag: "testnet"
+  numStreamNodes: 10
+  numArchiveNodes: 0
+
+argocd:
+  externalAccess:
+    enabled: false
+
+appOfApps:
+  applications:
+    - name: argocd
+      namespace: argocd
+      disable: true
+    - name: datadog
+      namespace: datadog
+      disable: true
+    - name: external-secrets
+      namespace: external-secrets
+      disable: true
+    - name: cert-manager
+      namespace: cert-manager
+      disable: true
+    - name: external-dns
+      namespace: external-dns
+      disable: true
+    - name: main-alb
+      namespace: default
+      disable: true
+    - name: xchain-monitor
+      namespace: default
+      disable: true
+    - name: metrics-aggregator
+      namespace: default
+      disable: true
+    - name: notification-service
+      namespace: default
+      disable: true
+    - name: river-node
+      namespace: default
+      disable: true
