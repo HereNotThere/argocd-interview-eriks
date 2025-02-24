@@ -12,12 +12,61 @@ const envSchema = z.object({
     TARGET_DB_APP_USER: z.string().min(1),
     TARGET_DB_APP_PASSWORD: z.string().min(1),
     WALLET_PRIVATE_KEY: z.string().min(1),
+    NODE_TYPE: z.string().min(1),
 })
 
 const env = envSchema.parse(process.env)
 
 function isDBAlreadyExistsError(e: unknown) {
     return e instanceof DatabaseError && (e.code == '42P04' || e.code == '23505')
+}
+
+const createSchema = async (schemaName: string) => {
+    // create schema if not exists
+    console.log('creating schema')
+
+    let error
+
+    const pgClient = new Client({
+        host: env.TARGET_DB_HOST,
+        database: env.TARGET_DB_DATABASE,
+        password: env.TARGET_DB_APP_PASSWORD,
+        user: env.TARGET_DB_APP_USER,
+        port: 5432,
+        ssl: {
+            rejectUnauthorized: false,
+        },
+    })
+
+    try {
+        console.log('connecting')
+        await pgClient.connect()
+        console.log('connected')
+
+        const createSchemaQuery = `
+      DO
+      $do$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT FROM pg_catalog.pg_namespace WHERE nspname = '${schemaName}'
+        ) THEN
+          CREATE SCHEMA ${schemaName};
+        END IF;
+      END
+      $do$
+    `
+        await pgClient.query(createSchemaQuery)
+        console.log('done creating schema')
+    } catch (e) {
+        console.error('error creating schema: ', e)
+        error = e
+    } finally {
+        await pgClient.end()
+    }
+
+    if (error) {
+        throw error
+    }
 }
 
 const createDbUser = async () => {
@@ -136,6 +185,11 @@ export const run = async () => {
     await createDbUser()
     const schemaName = getSchemaName()
     console.log('schema name: ', schemaName)
+    if (env.NODE_TYPE === 'archive') {
+        console.log('archive node, creating schema')
+        await createSchema(schemaName)
+        console.log('created schema')
+    }
     fs.writeFileSync('/tmp/schema-name', schemaName)
     console.log('wrote schema name to /tmp/schema-name')
 }
