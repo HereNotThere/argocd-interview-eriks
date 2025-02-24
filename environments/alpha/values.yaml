@@ -18,14 +18,14 @@ notificationService:
   image:
     tag: "testnet"
   resources:
-    limits:
-      cpu: "1"
-      memory: "72Gi"
     requests:
-      cpu: "1"
-      memory: "72Gi"
+      cpu: 1
+      memory: 7.5Gi
+    limits:
+      cpu: 1
+      memory: 7.5Gi
   apnsTownsAppIdentifier: com.towns.ios.alpha
-  dbMigrationStatus: "hold"
+  dbMigrationStatus: "alpha"
 
 riverNode:
   image:
