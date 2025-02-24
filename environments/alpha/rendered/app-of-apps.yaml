@@ -22,7 +22,7 @@ appOfApps:
         - ../../environments/alpha/rendered/argocd.yaml
 
     - name: datadog
-      disable: false
+      disable: true
       namespace: datadog
       valueFiles:
         - ./values.yaml
@@ -30,7 +30,7 @@ appOfApps:
         - ../../environments/alpha/rendered/datadog.yaml
 
     - name: external-secrets
-      disable: false
+      disable: true
       namespace: external-secrets
       valueFiles:
         - ./values.yaml
@@ -38,7 +38,7 @@ appOfApps:
         - ../../environments/alpha/rendered/external-secrets.yaml
 
     - name: cert-manager
-      disable: false
+      disable: true
       namespace: cert-manager
       valueFiles:
         - ./values.yaml
@@ -46,7 +46,7 @@ appOfApps:
         - ../../environments/alpha/rendered/cert-manager.yaml
 
     - name: external-dns
-      disable: false
+      disable: true
       namespace: external-dns
       valueFiles:
         - ./values.yaml
