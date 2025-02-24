@@ -30,7 +30,7 @@ appOfApps:
         - ../../environments/alpha/rendered/datadog.yaml
 
     - name: external-secrets
-      disable: true
+      disable: false
       namespace: external-secrets
       valueFiles:
         - ./values.yaml
