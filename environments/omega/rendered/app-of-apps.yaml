@@ -86,7 +86,7 @@ appOfApps:
         - ../../environments/omega/rendered/notification-service.yaml
 
     - name: river-node
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml

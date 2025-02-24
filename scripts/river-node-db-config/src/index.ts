@@ -13,6 +13,7 @@ const envSchema = z.object({
     TARGET_DB_APP_PASSWORD: z.string().min(1),
     WALLET_PRIVATE_KEY: z.string().min(1),
     NODE_TYPE: z.string().min(1),
+    NODE_NUMBER: z.string().min(1),
 })
 
 const env = envSchema.parse(process.env)
@@ -176,6 +177,9 @@ const generateWalletFromPrivateKey = (privateKey: string) => {
 }
 
 const getSchemaName = () => {
+    if (env.NODE_TYPE === 'archive') {
+        return `arch${env.NODE_NUMBER}`
+    }
     const wallet = generateWalletFromPrivateKey(env.WALLET_PRIVATE_KEY)
     const address = wallet.getAddressString()
     return `s${address.toLowerCase()}`
@@ -189,6 +193,8 @@ export const run = async () => {
         console.log('archive node, creating schema')
         await createSchema(schemaName)
         console.log('created schema')
+    } else {
+        console.log('full node, not creating schema')
     }
     fs.writeFileSync('/tmp/schema-name', schemaName)
     console.log('wrote schema name to /tmp/schema-name')
