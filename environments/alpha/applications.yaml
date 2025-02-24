@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-of-apps-omega # TODO: always update
+  name: app-of-apps-alpha # TODO: always update
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,8 +13,8 @@ spec:
     path: charts/app-of-apps
     helm:
       valueFiles:
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/app-of-apps.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/app-of-apps.yaml
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
