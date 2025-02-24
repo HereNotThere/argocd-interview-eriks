@@ -1,7 +1,7 @@
 # ################### GLOBAL ###################
 
 global:
-  environmentName: omega
+  environmentName: alpha
 
 chains:
   river:
