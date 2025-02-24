@@ -15,7 +15,6 @@ chains:
       baseRegistry: "0x7c0422b31401C936172C897802CF0373B35B7698"
 
 notificationService:
-  dbMigrationStatus: "omega"
   image:
     tag: "mainnet"
   resources:
@@ -69,4 +68,4 @@ appOfApps:
       disable: false
     - name: river-node
       namespace: default
-      disable: false
+      disable: true

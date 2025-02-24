@@ -134,7 +134,7 @@ spec:
               value: "false" 
             {{- if eq .nodeType "archive" }}
             - name: ARCHIVE__ARCHIVEID
-              value: "true"
+              value: {{ .nodeNumber | quote }}
             {{- end }}
             # TODO: make sure dd_oltp is setup and accepting connections at :4317
             
