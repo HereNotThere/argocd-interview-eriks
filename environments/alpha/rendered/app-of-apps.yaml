@@ -46,7 +46,7 @@ appOfApps:
         - ../../environments/alpha/rendered/cert-manager.yaml
 
     - name: external-dns
-      disable: true
+      disable: false
       namespace: external-dns
       valueFiles:
         - ./values.yaml

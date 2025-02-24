@@ -52,7 +52,7 @@ appOfApps:
       disable: true
     - name: external-dns
       namespace: external-dns
-      disable: true
+      disable: false
     - name: main-alb
       namespace: default
       disable: true
