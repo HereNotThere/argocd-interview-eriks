@@ -5,4 +5,4 @@
 datadog:
   datadog:
     tags:
-      - "env:omega"
+      - "env:alpha"

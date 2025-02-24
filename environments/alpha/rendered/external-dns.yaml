@@ -3,4 +3,4 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 external-dns:
-  txtOwnerId: k8s-cluster-hnt-live-omega
+  txtOwnerId: k8s-cluster-hnt-live-alpha

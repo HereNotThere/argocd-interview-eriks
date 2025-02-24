@@ -8,70 +8,70 @@ image:
 nodes:
   - nodeType: stream
     nodeNumber: 1
-    hostname: river1.nodes.omega.towns.com
+    hostname: river1.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river1
 
   - nodeType: stream
     nodeNumber: 2
-    hostname: river2.nodes.omega.towns.com
+    hostname: river2.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river2
 
   - nodeType: stream
     nodeNumber: 3
-    hostname: river3.nodes.omega.towns.com
+    hostname: river3.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river3
 
   - nodeType: stream
     nodeNumber: 4
-    hostname: river4.nodes.omega.towns.com
+    hostname: river4.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river4
 
   - nodeType: stream
     nodeNumber: 5
-    hostname: river5.nodes.omega.towns.com
+    hostname: river5.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river5
 
   - nodeType: stream
     nodeNumber: 6
-    hostname: river6.nodes.omega.towns.com
+    hostname: river6.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river6
 
   - nodeType: stream
     nodeNumber: 7
-    hostname: river7.nodes.omega.towns.com
+    hostname: river7.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river7
 
   - nodeType: stream
     nodeNumber: 8
-    hostname: river8.nodes.omega.towns.com
+    hostname: river8.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river8
 
   - nodeType: stream
     nodeNumber: 9
-    hostname: river9.nodes.omega.towns.com
+    hostname: river9.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river9
 
   - nodeType: stream
     nodeNumber: 10
-    hostname: river10.nodes.omega.towns.com
+    hostname: river10.nodes.alpha.towns.com
     runMode: full
     standbyOnStart: true
     dbUser: river10

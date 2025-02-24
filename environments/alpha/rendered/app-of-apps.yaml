@@ -18,77 +18,77 @@ appOfApps:
       namespace: argocd
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/argocd.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/argocd.yaml
 
     - name: datadog
       disable: true
       namespace: datadog
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/datadog.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/datadog.yaml
 
     - name: external-secrets
       disable: true
       namespace: external-secrets
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/external-secrets.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/external-secrets.yaml
 
     - name: cert-manager
       disable: true
       namespace: cert-manager
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/cert-manager.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/cert-manager.yaml
 
     - name: external-dns
       disable: true
       namespace: external-dns
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/external-dns.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/external-dns.yaml
 
     - name: main-alb
       disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/main-alb.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/main-alb.yaml
 
     - name: xchain-monitor
       disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/xchain-monitor.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/xchain-monitor.yaml
 
     - name: metrics-aggregator
       disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/metrics-aggregator.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/metrics-aggregator.yaml
 
     - name: notification-service
       disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/notification-service.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/notification-service.yaml
 
     - name: river-node
       disable: true
       namespace: default
       valueFiles:
         - ./values.yaml
-        - ../../environments/omega/rendered/global.yaml
-        - ../../environments/omega/rendered/river-node.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/river-node.yaml
