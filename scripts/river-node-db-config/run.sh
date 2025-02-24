@@ -65,26 +65,42 @@ migrate() {
   if [ $NODE_TYPE == "stream" ]; then
     # The schema name is saved to /tmp/schema-name. read it, and use it:
     SCHEMA_NAME=$(cat /tmp/schema-name)
+    echo "Schema name is $SCHEMA_NAME"
+    echo "Beginning pgdump... on $SOURCE_DB_HOST"
+
+    mkdir -p /tmp/pg-dump
+
+    export PGPASSWORD=$SOURCE_DB_PASSWORD
+    pg_dump \
+      -n $SCHEMA_NAME \
+      -h $SOURCE_DB_HOST \
+      -U $SOURCE_DB_USER \
+      -d $SOURCE_DB_DATABASE \
+      -F d \
+      -j 12 \
+      -v \
+      -f /tmp/pg-dump
+
+    echo "Finished pgdump. Restoring to target db..."
+
+    export PGPASSWORD=$TARGET_DB_APP_PASSWORD
+    pg_restore \
+      -h $TARGET_DB_HOST \
+      -U $TARGET_DB_APP_USER \
+      -d $TARGET_DB_DATABASE \
+      -j 12 \
+      -O \
+      -x \
+      -v \
+      -F d \
+      /tmp/pg-dump
+
+    echo "Finished migrate-db"
   elif [ $NODE_TYPE == "archive" ]; then
-    SCHEMA_NAME="arch${NODE_NUMBER}"
+    echo "Archive node. Skipping pgdump and restore."
   else
     exit 1
   fi
-
-  echo "Schema name is $SCHEMA_NAME"
-  echo "Beginning pgdump... on $SOURCE_DB_HOST"
-
-  mkdir -p /tmp/pg-dump
-
-  export PGPASSWORD=$SOURCE_DB_PASSWORD
-  pg_dump -n $SCHEMA_NAME -h $SOURCE_DB_HOST -U $SOURCE_DB_USER -d $SOURCE_DB_DATABASE -F d -j 12 -Z 0 -v -f /tmp/pg-dump
-
-  echo "Finished pgdump. Restoring to target db..."
-
-  export PGPASSWORD=$TARGET_DB_APP_PASSWORD
-  pg_restore -h $TARGET_DB_HOST -U $TARGET_DB_APP_USER -d $TARGET_DB_DATABASE -j 12 -O -x -v -F d /tmp/pg-dump
-
-  echo "Finished migrate-db"
 }
 
 init
