@@ -35,7 +35,7 @@ riverNode:
 
 argocd:
   externalAccess:
-    enabled: false
+    enabled: true
 
 appOfApps:
   applications:
