@@ -26,7 +26,7 @@ spec:
               apk add --no-cache nodejs npm git &&
               git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
               cd /app/scripts/river-node-db-config &&
-              bash ./run.sh 
+              ./run.sh 
           env:
             - name: TARGET_DB_HOST
               valueFrom:
