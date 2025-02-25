@@ -80,5 +80,7 @@ dbMigrationStatus: alpha
 
 race: True
 
-resources: null
-  ...
+resources:
+  requests:
+    cpu: 1
+    memory: 2Gi

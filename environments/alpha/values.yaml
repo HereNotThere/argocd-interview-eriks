@@ -35,9 +35,9 @@ riverNode:
   numArchiveNodes: 0
   race: true
   resources:
-  requests:
-    cpu: 1
-    memory: 2Gi
+    requests:
+      cpu: 1
+      memory: 2Gi
 
 argocd:
   externalAccess:
