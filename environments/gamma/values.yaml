@@ -30,7 +30,7 @@ notificationService:
 riverNode:
   image:
     tag: "7a45d5d"
-  numStreamNodes: 1
+  numStreamNodes: 11
   numArchiveNodes: 0
 
 argocd:
