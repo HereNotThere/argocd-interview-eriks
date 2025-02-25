@@ -6,3 +6,19 @@ argo-cd:
   configs:
     params:
       server.insecure: true
+
+  server:
+    podAnnotations:
+      ad.datadoghq.com/argocd-server.logs: '[{"source": "argo-cd", "service": "argocd-server"}]'
+
+  repoServer:
+    podAnnotations:
+      ad.datadoghq.com/argocd-repo-server.logs: '[{"source": "argo-cd", "service": "argocd-repo-server"}]'
+
+  dex:
+    podAnnotations:
+      ad.datadoghq.com/argocd-dex-server.logs: '[{"source": "argo-cd", "service": "argocd-dex-server"}]'
+
+  applicationController:
+    podAnnotations:
+      ad.datadoghq.com/argocd-application-controller.logs: '[{"source": "argo-cd", "service": "argocd-application-controller"}]'
