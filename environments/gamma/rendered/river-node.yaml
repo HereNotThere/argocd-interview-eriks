@@ -83,7 +83,7 @@ nodes:
     standbyOnStart: true
     dbUser: river11
 
-dbMigrationStatus: hold
+dbMigrationStatus: gamma
 
 resources:
   limits:

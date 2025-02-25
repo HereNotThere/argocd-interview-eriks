@@ -32,6 +32,7 @@ riverNode:
     tag: "7a45d5d"
   numStreamNodes: 11
   numArchiveNodes: 0
+  dbMigrationStatus: "gamma"
 
 argocd:
   externalAccess:
