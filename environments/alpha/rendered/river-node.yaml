@@ -76,7 +76,7 @@ nodes:
     standbyOnStart: true
     dbUser: river10
 
-dbMigrationStatus: hold
+dbMigrationStatus: alpha
 
 race: True
 
