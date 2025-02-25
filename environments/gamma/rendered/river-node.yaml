@@ -13,83 +13,12 @@ nodes:
     standbyOnStart: true
     dbUser: river1
 
-  - nodeType: stream
-    nodeNumber: 2
-    hostname: river2.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river2
-
-  - nodeType: stream
-    nodeNumber: 3
-    hostname: river3.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river3
-
-  - nodeType: stream
-    nodeNumber: 4
-    hostname: river4.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river4
-
-  - nodeType: stream
-    nodeNumber: 5
-    hostname: river5.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river5
-
-  - nodeType: stream
-    nodeNumber: 6
-    hostname: river6.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river6
-
-  - nodeType: stream
-    nodeNumber: 7
-    hostname: river7.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river7
-
-  - nodeType: stream
-    nodeNumber: 8
-    hostname: river8.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river8
-
-  - nodeType: stream
-    nodeNumber: 9
-    hostname: river9.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river9
-
-  - nodeType: stream
-    nodeNumber: 10
-    hostname: river10.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river10
-
-  - nodeType: stream
-    nodeNumber: 11
-    hostname: river11.nodes.gamma.towns.com
-    runMode: full
-    standbyOnStart: true
-    dbUser: river11
-
-dbMigrationStatus:
+dbMigrationStatus: hold
 
 resources:
   limits:
     cpu: 0.5
     memory: 1G
-    # TODO: don't hardcode limits
   requests:
     cpu: 0.5
     memory: 1G
