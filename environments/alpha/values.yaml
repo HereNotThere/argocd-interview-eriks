@@ -32,6 +32,7 @@ riverNode:
     tag: "55e3181"
   numStreamNodes: 10
   numArchiveNodes: 0
+  race: true
 
 argocd:
   externalAccess:

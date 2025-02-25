@@ -78,6 +78,8 @@ nodes:
 
 dbMigrationStatus: hold
 
+race: True
+
 resources:
   limits:
     cpu: 0.5

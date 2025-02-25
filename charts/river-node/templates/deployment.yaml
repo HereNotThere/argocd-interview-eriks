@@ -134,6 +134,8 @@ spec:
               value: "true"
             - name: ENABLEMLS
               value: "false" 
+            - name: RACE
+              value: "{{ $.Values.race }}"
             {{- if eq .nodeType "archive" }}
             - name: ARCHIVE__ARCHIVEID
               value: {{ .nodeNumber | quote }}

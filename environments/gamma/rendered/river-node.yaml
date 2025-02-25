@@ -85,6 +85,8 @@ nodes:
 
 dbMigrationStatus: gamma
 
+race: false
+
 resources:
   requests:
     cpu: 0.5

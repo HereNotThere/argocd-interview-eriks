@@ -21,6 +21,8 @@ nodes:
 
 dbMigrationStatus: {{ riverNode.dbMigrationStatus | default('hold') }}
 
+race: {{ riverNode.race | default('false') }}
+
 resources: 
 {{ riverNode.resources | default({
   "limits": {

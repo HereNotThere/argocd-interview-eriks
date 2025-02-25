@@ -22,6 +22,8 @@ nodes:
 
 dbMigrationStatus: omega
 
+race: false
+
 resources:
   limits:
     cpu: 0.5
