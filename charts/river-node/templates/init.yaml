@@ -24,7 +24,6 @@ spec:
           args:
             - |
               apk add --no-cache nodejs npm &&
-              apt-get update && apt-get install -y postgresql-client &&
               git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
               cd /app/scripts/river-node-db-config &&
               bash ./run.sh 
