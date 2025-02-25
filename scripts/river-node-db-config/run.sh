@@ -97,6 +97,16 @@ migrate() {
     echo "Calling copy"
     ./river_migrate_db copy --bypass --verbose
 
+    # if node number is even, run with -b
+    if [ $((NODE_NUMBER % 2)) -eq 0 ]; then
+      echo "Running validation with -b"
+      ./river_migrate_db validate -b
+    else
+      echo "Running validation without -b"
+      ./river_migrate_db validate
+    fi
+
+
     echo "Finished migrate-db"
   elif [ $NODE_TYPE == "archive" ]; then
     echo "Archive node. Skipping pgdump and restore."
