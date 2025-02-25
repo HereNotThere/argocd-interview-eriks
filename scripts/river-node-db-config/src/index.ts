@@ -189,13 +189,7 @@ export const run = async () => {
     await createDbUser()
     const schemaName = getSchemaName()
     console.log('schema name: ', schemaName)
-    if (env.NODE_TYPE === 'archive') {
-        console.log('archive node, creating schema')
-        await createSchema(schemaName)
-        console.log('created schema')
-    } else {
-        console.log('full node, not creating schema')
-    }
+    await createSchema(schemaName)
     fs.writeFileSync('/tmp/schema-name', schemaName)
     console.log('wrote schema name to /tmp/schema-name')
 }
