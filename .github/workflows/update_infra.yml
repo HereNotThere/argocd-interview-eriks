@@ -118,6 +118,22 @@ jobs:
           DATE=$(date)
 
           git commit -m "${DATE} - Update infra for ${ENV}"
-          git push origin ${{ github.ref_name }}
+
+          # A loop to retry the push if it fails. Exit 1 if it fails after 10 attempts.
+          n=0
+          until [ $n -ge 10 ]
+          do
+            git push origin ${{ github.ref_name }} && break
+            n=$[$n+1]
+            sleep 15
+          done
+
+          if [ $n -ge 10 ]; then
+            echo "Failed to push changes to GitHub after 10 attempts."
+            exit 1
+          else
+            echo "Changes pushed to GitHub."
+          fi
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
