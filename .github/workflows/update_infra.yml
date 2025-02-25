@@ -126,6 +126,7 @@ jobs:
             git push origin ${{ github.ref_name }} && break
             n=$[$n+1]
             sleep 15
+            git pull origin ${{ github.ref_name }}
           done
 
           if [ $n -ge 10 ]; then
