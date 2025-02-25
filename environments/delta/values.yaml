@@ -34,13 +34,13 @@ riverNode:
 
 argocd:
   externalAccess:
-    enabled: false
+    enabled: true
 
 appOfApps:
   applications:
     - name: argocd
       namespace: argocd
-      disable: true
+      disable: false
     - name: datadog
       namespace: datadog
       disable: false
@@ -55,7 +55,7 @@ appOfApps:
       disable: false
     - name: main-alb
       namespace: default
-      disable: true
+      disable: false
     - name: xchain-monitor
       namespace: default
       disable: true

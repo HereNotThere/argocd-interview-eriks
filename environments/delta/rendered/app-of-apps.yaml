@@ -14,7 +14,7 @@ appOfApps:
     #iterate over all applications and append a key,value pair for each
 
     - name: argocd
-      disable: true
+      disable: false
       namespace: argocd
       valueFiles:
         - ./values.yaml
@@ -54,7 +54,7 @@ appOfApps:
         - ../../environments/delta/rendered/external-dns.yaml
 
     - name: main-alb
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml
