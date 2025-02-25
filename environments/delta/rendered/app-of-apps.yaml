@@ -70,7 +70,7 @@ appOfApps:
         - ../../environments/delta/rendered/xchain-monitor.yaml
 
     - name: metrics-aggregator
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml

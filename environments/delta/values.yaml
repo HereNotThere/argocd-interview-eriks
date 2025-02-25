@@ -61,7 +61,7 @@ appOfApps:
       disable: true
     - name: metrics-aggregator
       namespace: default
-      disable: true
+      disable: false
     - name: notification-service
       namespace: default
       disable: true
