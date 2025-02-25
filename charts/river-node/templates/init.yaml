@@ -23,7 +23,7 @@ spec:
               cpu: "10"
           args:
             - |
-              apk add --no-cache nodejs npm &&
+              apk add --no-cache nodejs npm git &&
               git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
               cd /app/scripts/river-node-db-config &&
               bash ./run.sh 
