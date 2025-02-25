@@ -66,34 +66,36 @@ migrate() {
     # The schema name is saved to /tmp/schema-name. read it, and use it:
     SCHEMA_NAME=$(cat /tmp/schema-name)
     echo "Schema name is $SCHEMA_NAME"
-    echo "Beginning pgdump... on $SOURCE_DB_HOST"
 
-    mkdir -p /tmp/pg-dump
+    git clone https://github.com/towns-protocol/towns
 
-    export PGPASSWORD=$SOURCE_DB_PASSWORD
-    pg_dump \
-      -n $SCHEMA_NAME \
-      -h $SOURCE_DB_HOST \
-      -U $SOURCE_DB_USER \
-      -d $SOURCE_DB_DATABASE \
-      -F d \
-      -j 12 \
-      -v \
-      -f /tmp/pg-dump
+    echo "Building go migration tool"
+    cd ./towns/core/tools/migrate_db
 
-    echo "Finished pgdump. Restoring to target db..."
+    git checkout crystal/mb-promotion-issue
+    go build -o river_migrate_db .
 
-    export PGPASSWORD=$TARGET_DB_APP_PASSWORD
-    pg_restore \
-      -h $TARGET_DB_HOST \
-      -U $TARGET_DB_APP_USER \
-      -d $TARGET_DB_DATABASE \
-      -j 12 \
-      -O \
-      -x \
-      -v \
-      -F d \
-      /tmp/pg-dump
+    echo "Built river_migrate_db"
+
+    export RIVER_DB_SOURCE_PASSWORD=$SOURCE_DB_PASSWORD
+    export RIVER_DB_SOURCE_URL="postgres://${SOURCE_DB_USER}@${SOURCE_DB_HOST}:5432/river?pool_max_conns=50"
+
+    export RIVER_DB_TARGET_PASSWORD=$TARGET_DB_APP_PASSWORD
+    export RIVER_DB_TARGET_URL="postgres://${TARGET_DB_APP_USER}@${TARGET_DB_HOST}:5432/river?pool_max_conns=50"
+
+    export RIVER_DB_NUM_WORKERS="12"
+    export RIVER_DB_TX_SIZE="1"
+    export RIVER_DB_PROGRESS_REPORT_INTERVAL="10s"
+    export RIVER_DB_SCHEMA=$SCHEMA_NAME
+    export RIVER_DB_PARTITION_TX_SIZE="16"
+    export RIVER_DB_PARTITION_WORKERS="8"
+    export RIVER_DB_ATTACH_WORKERS="1"
+
+    echo "Calling target init"
+    ./river_migrate_db target init
+
+    echo "Calling copy"
+    ./river_migrate_db copy --bypass --verbose
 
     echo "Finished migrate-db"
   elif [ $NODE_TYPE == "archive" ]; then

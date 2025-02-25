@@ -14,7 +14,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: river-node-init-job
-          image: node:20 # Node.js with TypeScript installed
+          image: golang:1.23.3-alpine3.20 # Node.js with TypeScript installed
           command: ["/bin/sh", "-c"]
           resources:
             requests:
@@ -23,10 +23,11 @@ spec:
               cpu: "10"
           args:
             - |
+              apk add --no-cache nodejs npm &&
               apt-get update && apt-get install -y postgresql-client &&
               git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
               cd /app/scripts/river-node-db-config &&
-              bash ./run.sh
+              bash ./run.sh 
           env:
             - name: TARGET_DB_HOST
               valueFrom:
