@@ -1,0 +1,70 @@
+# ################### GLOBAL ###################
+
+global:
+  environmentName: delta
+
+chains:
+  river:
+    chainId: "6524490"
+    contractAddresses:
+      riverRegistry: "0x9Db19dB285cEd37099D40d27D51B75C4dFa05652"
+  base:
+    chainId: "84532"
+    contractAddresses:
+      spaceArchitect: "0x4e652CdB4715861dDCc4dF159af32223B40c8187"
+      baseRegistry: "0xa7932228e6dAfb7A74dc8085F8bADAa993d4c592"
+
+notificationService:
+  image:
+    tag: "testnet"
+  resources:
+    requests:
+      cpu: 1
+      memory: 7.5Gi
+    limits:
+      cpu: 1
+      memory: 7.5Gi
+  apnsTownsAppIdentifier: com.towns.ios.delta
+
+riverNode:
+  image:
+    tag: "testnet"
+  numStreamNodes: 10
+  numArchiveNodes: 0
+
+argocd:
+  externalAccess:
+    enabled: false
+
+appOfApps:
+  applications:
+    - name: argocd
+      namespace: argocd
+      disable: true
+    - name: datadog
+      namespace: datadog
+      disable: true
+    - name: external-secrets
+      namespace: external-secrets
+      disable: true
+    - name: cert-manager
+      namespace: cert-manager
+      disable: true
+    - name: external-dns
+      namespace: external-dns
+      disable: true
+    - name: main-alb
+      namespace: default
+      disable: true
+    - name: xchain-monitor
+      namespace: default
+      disable: true
+    - name: metrics-aggregator
+      namespace: default
+      disable: true
+    - name: notification-service
+      namespace: default
+      disable: true
+    - name: river-node
+      namespace: default
+      disable: true
