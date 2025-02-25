@@ -67,4 +67,4 @@ appOfApps:
       disable: true
     - name: river-node
       namespace: default
-      disable: true
+      disable: false
