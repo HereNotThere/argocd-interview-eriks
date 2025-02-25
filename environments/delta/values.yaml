@@ -43,16 +43,16 @@ appOfApps:
       disable: true
     - name: datadog
       namespace: datadog
-      disable: true
+      disable: false
     - name: external-secrets
       namespace: external-secrets
       disable: false
     - name: cert-manager
       namespace: cert-manager
-      disable: true
+      disable: false
     - name: external-dns
       namespace: external-dns
-      disable: true
+      disable: false
     - name: main-alb
       namespace: default
       disable: true

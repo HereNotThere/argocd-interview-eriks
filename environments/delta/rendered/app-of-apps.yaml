@@ -22,7 +22,7 @@ appOfApps:
         - ../../environments/delta/rendered/argocd.yaml
 
     - name: datadog
-      disable: true
+      disable: false
       namespace: datadog
       valueFiles:
         - ./values.yaml
@@ -38,7 +38,7 @@ appOfApps:
         - ../../environments/delta/rendered/external-secrets.yaml
 
     - name: cert-manager
-      disable: true
+      disable: false
       namespace: cert-manager
       valueFiles:
         - ./values.yaml
@@ -46,7 +46,7 @@ appOfApps:
         - ../../environments/delta/rendered/cert-manager.yaml
 
     - name: external-dns
-      disable: true
+      disable: false
       namespace: external-dns
       valueFiles:
         - ./values.yaml
