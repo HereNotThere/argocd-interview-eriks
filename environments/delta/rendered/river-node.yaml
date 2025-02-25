@@ -76,13 +76,12 @@ nodes:
     standbyOnStart: true
     dbUser: river10
 
-dbMigrationStatus:
+dbMigrationStatus: hold
 
 resources:
   limits:
     cpu: 0.5
     memory: 1G
-    # TODO: don't hardcode limits
   requests:
     cpu: 0.5
     memory: 1G

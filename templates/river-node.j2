@@ -19,13 +19,16 @@ nodes:
     dbUser: archive{{ i }}
   {% endfor %}
 
-dbMigrationStatus: {{ riverNode.dbMigrationStatus }}
+dbMigrationStatus: {{ riverNode.dbMigrationStatus | default('hold') }}
 
-resources:
-  limits:
-    cpu: 0.5
-    memory: 1G
-    # TODO: don't hardcode limits
-  requests:
-    cpu: 0.5
-    memory: 1G
+resources: 
+{{ riverNode.resources | default({
+  "limits": {
+    "cpu": 0.5,
+    "memory": "1G"
+  },
+  "requests": {
+    "cpu": 0.5,
+    "memory": "1G"
+  }
+}) | to_yaml | indent(2, True) }}

@@ -26,6 +26,8 @@ spec:
       containers:
         - name: river-node
           image: public.ecr.aws/h5v6m2x1/river:{{ $.Values.image.tag }}
+          resources:
+            {{- toYaml $.Values.resources | nindent 12 }}
           ports:
             - containerPort: 443
               name: https
