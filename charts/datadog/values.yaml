@@ -12,6 +12,12 @@ datadog:
       containerCollectAll: false
       autoMultiLineDetection: true
 
+    otlp_config:
+      receiver:
+        protocols:
+          grpc:
+            enabled: true
+
   agents:
     containers:
       agent:
@@ -41,9 +47,3 @@ datadog:
     enabled: true
     metricsProvider:
       enabled: true
-
-  otlp_config:
-    receiver:
-      protocols:
-        grpc:
-          enabled: true
