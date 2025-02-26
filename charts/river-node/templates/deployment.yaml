@@ -136,6 +136,8 @@ spec:
               value: "READ COMMITTED"
             - name: STANDBYONSTART
               value: {{ .standbyOnStart | quote }}
+            - name: PERFORMANCETRACKING__PROFILINGENABLED
+              value: "true"
             - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
               value: "true"
             - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
