@@ -2,8 +2,11 @@ datadog:
   datadog:
     apiKeyExistingSecret: datadog-secret
     appKeyExistingSecret: datadog-secret
+
     prometheusScrape:
       enabled: true
+      serviceEndpoints: true
+
     logs:
       enabled: true
       containerCollectAll: false
