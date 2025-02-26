@@ -12,7 +12,7 @@ datadog:
       containerCollectAll: false
       autoMultiLineDetection: true
 
-    otlp_config:
+    otlp:
       receiver:
         protocols:
           grpc:
