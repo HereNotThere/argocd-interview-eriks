@@ -21,9 +21,9 @@ spec:
             "openmetrics": {
               "instances": [
                 {
-                  "openmetrics_endpoint": "http://%%host%%:%%port%%/metrics",
+                  "openmetrics_endpoint": "http://%%host%%:80/metrics",
                   "namespace": "notification-service",
-                  "metrics": [".*"]
+                  "metrics": ["*"]
                 }
               ]
             }

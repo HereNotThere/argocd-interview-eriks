@@ -22,6 +22,16 @@ spec:
         # TODO: re-enable logs
         ad.datadoghq.com/river-node.logs: '[{"service": "river-node", "node_url": "https://{{ .hostname }}"}]' 
         # TODO: add health checks
+        {{- if eq .nodeType "archive" }}
+        ad.datadoghq.com/notification-service.instances: >
+          [
+            {
+              "prometheus_url": "http://%%host%%:8081/metrics",
+              "namespace": "archive_node",
+              "metrics": ["*"],
+            }
+          ]
+        {{- end }}
     spec:
       containers:
         - name: river-node
@@ -144,7 +154,6 @@ spec:
             - name: ARCHIVE__ARCHIVEID
               value: {{ .nodeNumber | quote }}
             {{- end }}
-            # TODO: make sure dd_oltp is setup and accepting connections at :4317
             
             # TODO: if archive node, add prometheus annotations (archive_node_docker_labels on terraform)
       volumes:

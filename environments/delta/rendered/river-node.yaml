@@ -12,6 +12,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river1
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river1.nodes.delta.towns.com"
+    nodeUrl: https://river1.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 2
@@ -19,6 +21,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river2
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river2.nodes.delta.towns.com"
+    nodeUrl: https://river2.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 3
@@ -26,6 +30,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river3
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river3.nodes.delta.towns.com"
+    nodeUrl: https://river3.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 4
@@ -33,6 +39,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river4
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river4.nodes.delta.towns.com"
+    nodeUrl: https://river4.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 5
@@ -40,6 +48,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river5
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river5.nodes.delta.towns.com"
+    nodeUrl: https://river5.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 6
@@ -47,6 +57,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river6
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river6.nodes.delta.towns.com"
+    nodeUrl: https://river6.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 7
@@ -54,6 +66,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river7
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river7.nodes.delta.towns.com"
+    nodeUrl: https://river7.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 8
@@ -61,6 +75,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river8
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river8.nodes.delta.towns.com"
+    nodeUrl: https://river8.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 9
@@ -68,6 +84,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river9
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river9.nodes.delta.towns.com"
+    nodeUrl: https://river9.nodes.delta.towns.com
 
   - nodeType: stream
     nodeNumber: 10
@@ -75,6 +93,8 @@ nodes:
     runMode: full
     standbyOnStart: true
     dbUser: river10
+    ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river10.nodes.delta.towns.com"
+    nodeUrl: https://river10.nodes.delta.towns.com
 
 dbMigrationStatus: delta
 
