@@ -29,7 +29,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "91fed90"
+    tag: "bab372a"
   dbMigrationStatus: "alpha"
   numStreamNodes: 10
   numArchiveNodes: 0
