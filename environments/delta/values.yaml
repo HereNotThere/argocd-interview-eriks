@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "bab372a"
+    tag: "62ef927"
   numStreamNodes: 10
   numArchiveNodes: 0
   dbMigrationStatus: "delta"
