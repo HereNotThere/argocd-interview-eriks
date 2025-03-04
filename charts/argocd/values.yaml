@@ -1,7 +1,7 @@
 argo-cd:
   server:
     podAnnotations:
-      ad.datadoghq.com/argocd-server.checks: |
+      ad.datadoghq.com/server.checks: |
         {
           "argocd": {
             "init_config": {},
@@ -15,7 +15,7 @@ argo-cd:
 
   repoServer:
     podAnnotations:
-      ad.datadoghq.com/argocd-repo-server.checks: |
+      ad.datadoghq.com/repo-server.checks: |
         {
           "argocd": {
             "init_config": {},
@@ -29,7 +29,7 @@ argo-cd:
 
   controller:
     podAnnotations:
-      ad.datadoghq.com/argocd-application-controller.checks: |
+      ad.datadoghq.com/application-controller.checks: |
         {
           "argocd": {
             "init_config": {},
