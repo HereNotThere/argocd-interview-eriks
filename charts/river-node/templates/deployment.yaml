@@ -18,11 +18,8 @@ spec:
       labels:
         app: river-node-{{ .nodeType }}-{{ .nodeNumber }}
       annotations:
-        # TODO: add prometheus annotations for archive nodes
-        # TODO: re-enable logs
         ad.datadoghq.com/river-node.logs: '[{"source": "kubernetes", "service": "river-node", "tags": ["node_url:https://{{ .hostname }}"]}]'
         ad.datadoghq.com/river-node.tags: '[{"key": "node_url", "value": "https://{{ .hostname }}"}]'
-        # TODO: add health checks
         {{- if eq .nodeType "archive" }}
         ad.datadoghq.com/river-node.instances: >
           [
@@ -46,6 +43,14 @@ spec:
               name: metrics
             - containerPort: 8082
               name: pprof
+          readinessProbe:
+            httpGet:
+              path: /status?blockchain=0
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /status?blockchain=0
+              port: http
           volumeMounts:
             - name: tls-secret
               mountPath: /etc/tls-secret
@@ -159,8 +164,6 @@ spec:
             {{- end }}
             - name: RIVER_RIVERREGISTRY_PAGESIZE
               value: {{ required "riverRegistryPageSize is required" $.Values.riverRegistryPageSize | quote }}
-            
-            # TODO: if archive node, add prometheus annotations (archive_node_docker_labels on terraform)
       volumes:
         - name: tls-secret
           secret:
