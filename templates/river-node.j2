@@ -46,3 +46,5 @@ resources:
     "memory": "1G"
   }
 }) | to_yaml | indent(2, True) }}
+
+riverRegistryPageSize: {{ riverNode.riverRegistryPageSize | default(5000) }}

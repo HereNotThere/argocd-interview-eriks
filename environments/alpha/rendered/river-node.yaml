@@ -104,3 +104,5 @@ resources:
   requests:
     cpu: 1
     memory: 2Gi
+
+riverRegistryPageSize: 1500

@@ -156,6 +156,8 @@ spec:
             - name: ARCHIVE__ARCHIVEID
               value: {{ .nodeNumber | quote }}
             {{- end }}
+            - name: RIVER_RIVERREGISTRY_PAGESIZE
+              value: {{ required "riverRegistryPageSize is required" $.Values.riverRegistryPageSize | quote }}
             
             # TODO: if archive node, add prometheus annotations (archive_node_docker_labels on terraform)
       volumes:

@@ -31,6 +31,7 @@ riverNode:
   image:
     tag: "77c5333"
   dbMigrationStatus: "alpha"
+  riverRegistryPageSize: 1500
   numStreamNodes: 10
   numArchiveNodes: 0
   race: true
