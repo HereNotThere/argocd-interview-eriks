@@ -80,12 +80,12 @@ spec:
               value: "true"
             - name: PERFORMANCETRACKING__PROFILINGENABLED
               value: "true"
-            - name: DD_TAGS 
-              value: "{{- include "notification-service.ddTags" . }}"
+            # - name: DD_TAGS 
+            #   value: "{{- include "notification-service.ddTags" . }}"
             - name: DD_AGENT_HOST
               value: "datadog.datadog.svc.cluster.local"
             - name: DD_PROFILING_ENABLED
-              value: "true"
+              value: "false"
             - name: DISABLEHTTPS
               value: "true"
             - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
