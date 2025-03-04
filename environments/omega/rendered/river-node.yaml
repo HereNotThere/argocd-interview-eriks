@@ -30,10 +30,10 @@ race: false
 
 resources:
   limits:
-    cpu: 0.5
-    memory: 1G
+    cpu: "2"
+    memory: 8Gi
   requests:
-    cpu: 0.5
-    memory: 1G
+    cpu: "2"
+    memory: 8Gi
 
 riverRegistryPageSize: 5000

@@ -33,6 +33,13 @@ riverNode:
     tag: "mainnet"
   numStreamNodes: 0
   numArchiveNodes: 2
+  resources:
+    limits:
+      cpu: "2"
+      memory: "8Gi"
+    requests:
+      cpu: "2"
+      memory: "8Gi"
 
 argocd:
   externalAccess:
