@@ -17,6 +17,7 @@ spec:
     metadata:
       labels:
         app: river-node-{{ .nodeType }}-{{ .nodeNumber }}
+        node_url: https://{{ .hostname }}
       annotations:
         ad.datadoghq.com/river-node.logs: '[{"source": "kubernetes", "service": "river-node", "tags": ["node_url:https://{{ .hostname }}"]}]'
         ad.datadoghq.com/river-node.tags: '[{"key": "node_url", "value": "https://{{ .hostname }}"}]'
