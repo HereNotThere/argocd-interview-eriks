@@ -43,14 +43,7 @@ spec:
               name: metrics
             - containerPort: 8082
               name: pprof
-          readinessProbe:
-            httpGet:
-              path: /status?blockchain=0
-              port: http
-          livenessProbe:
-            httpGet:
-              path: /status?blockchain=0
-              port: http
+          # TODO: add liveness and readiness probes
           volumeMounts:
             - name: tls-secret
               mountPath: /etc/tls-secret
