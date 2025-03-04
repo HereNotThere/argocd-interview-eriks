@@ -27,7 +27,7 @@ argo-cd:
           }
         }
 
-  applicationController:
+  controller:
     podAnnotations:
       ad.datadoghq.com/argocd-application-controller.checks: |
         {
