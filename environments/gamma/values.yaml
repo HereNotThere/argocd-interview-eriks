@@ -33,6 +33,7 @@ riverNode:
   numStreamNodes: 11
   numArchiveNodes: 0
   dbMigrationStatus: "gamma"
+  riverRegistryPageSize: 1500
   resources:
     requests:
       cpu: 0.5

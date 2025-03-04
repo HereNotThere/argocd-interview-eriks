@@ -25,6 +25,7 @@ notificationService:
       cpu: 1
       memory: 7.5Gi
   apnsTownsAppIdentifier: com.towns.ios.delta
+  riverRegistryPageSize: 1500
 
 riverNode:
   image:
