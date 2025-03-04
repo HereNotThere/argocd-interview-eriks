@@ -24,7 +24,7 @@ spec:
         ad.datadoghq.com/river-node.tags: '[{"key": "node_url", "value": "https://{{ .hostname }}"}]'
         # TODO: add health checks
         {{- if eq .nodeType "archive" }}
-        ad.datadoghq.com/notification-service.instances: >
+        ad.datadoghq.com/river-node.instances: >
           [
             {
               "prometheus_url": "http://%%host%%:8081/metrics",
