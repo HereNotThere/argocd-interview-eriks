@@ -145,6 +145,8 @@ spec:
               value: "true"
             - name: DD_TAGS
               value: {{ .ddTags | quote }}
+            - name: DD_AGENT_HOST
+              value: "datadog.datadog.svc.cluster.local"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://datadog.datadog:4317"
             - name: ENABLEMLS
