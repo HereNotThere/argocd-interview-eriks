@@ -1,6 +1,7 @@
 argo-cd:
   server:
     podAnnotations:
+      ad.datadoghq.com/server.logs: '[{"source": "argocd", "service": "argocd-server"}]'
       ad.datadoghq.com/server.checks: |
         {
           "argocd": {
@@ -15,6 +16,7 @@ argo-cd:
 
   repoServer:
     podAnnotations:
+      ad.datadoghq.com/argocd-repo-server.logs: '[{"source": "argocd", "service": "argocd-repo-server"}]'
       ad.datadoghq.com/repo-server.checks: |
         {
           "argocd": {
@@ -29,6 +31,7 @@ argo-cd:
 
   controller:
     podAnnotations:
+      ad.datadoghq.com/argocd-application-controller.logs: '[{"source": "argocd", "service": "argocd-application-controller"}]'
       ad.datadoghq.com/application-controller.checks: |
         {
           "argocd": {
