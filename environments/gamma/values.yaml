@@ -22,10 +22,10 @@ notificationService:
   resources:
     requests:
       cpu: 1
-      memory: 7.5Gi
+      memory: 7Gi
     limits:
       cpu: 1
-      memory: 7.5Gi
+      memory: 7Gi
 
 riverNode:
   image:
