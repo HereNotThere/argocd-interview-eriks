@@ -12,11 +12,11 @@ datadog:
       containerCollectAll: false
       autoMultiLineDetection: true
 
-    otlp:
-      receiver:
-        protocols:
-          grpc:
-            enabled: true
+    # otlp:
+    #   receiver:
+    #     protocols:
+    #       grpc:
+    #         enabled: true
 
   agents:
     containers:
@@ -27,19 +27,19 @@ datadog:
             cpu: 200m
             memory: 256Mi
 
-      traceAgent:
-        # resources for the Trace Agent container
-        resources:
-          requests:
-            cpu: 100m
-            memory: 200Mi
+      # traceAgent:
+      #   # resources for the Trace Agent container
+      #   resources:
+      #     requests:
+      #       cpu: 100m
+      #       memory: 200Mi
 
-      processAgent:
-        # resources for the Process Agent container
-        resources:
-          requests:
-            cpu: 100m
-            memory: 200Mi
+      # processAgent:
+      #   # resources for the Process Agent container
+      #   resources:
+      #     requests:
+      #       cpu: 100m
+      #       memory: 200Mi
 
     priorityClassCreate: true
 
