@@ -136,7 +136,7 @@ spec:
             - name: STANDBYONSTART
               value: {{ .standbyOnStart | quote }}
             - name: PERFORMANCETRACKING__PROFILINGENABLED
-              value: "true"
+              value: "false"
             - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
               value: "false"
             - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
