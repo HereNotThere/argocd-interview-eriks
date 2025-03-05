@@ -5,4 +5,4 @@ external-dns:
     email: kerem@hntlabs.com
     proxied: false
   policy: sync
-  interval: 1m
+  interval: 5m
