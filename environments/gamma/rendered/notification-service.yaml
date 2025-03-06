@@ -8,9 +8,9 @@ image:
 resources:
   limits:
     cpu: 1
-    memory: 7Gi
+    memory: 72Gi
   requests:
     cpu: 1
-    memory: 7Gi
+    memory: 72Gi
 
 dbMigrationStatus: gamma
