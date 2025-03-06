@@ -19,13 +19,14 @@ notificationService:
     tag: "bab372a"
   apnsTownsAppIdentifier: com.towns.internal
   dbMigrationStatus: "gamma"
+  # TODO: revert these back to 7 Gi.
   resources:
     requests:
       cpu: 1
-      memory: 7Gi
+      memory: 72Gi
     limits:
       cpu: 1
-      memory: 7Gi
+      memory: 72Gi
 
 riverNode:
   image:
