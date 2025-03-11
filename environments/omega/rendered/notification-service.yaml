@@ -7,10 +7,10 @@ image:
   tag: "mainnet"
 resources:
   limits:
-    cpu: "1"
-    memory: 72Gi
+    cpu: "1.5"
+    memory: 76Gi
   requests:
-    cpu: "1"
-    memory: 72Gi
+    cpu: "1.5"
+    memory: 76Gi
 
 dbMigrationStatus: omega
