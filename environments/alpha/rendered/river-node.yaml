@@ -5,6 +5,9 @@
 image:
   tag: "7c17e43"
 
+apm:
+  enabled: false
+
 nodes:
   - nodeType: stream
     nodeNumber: 1
