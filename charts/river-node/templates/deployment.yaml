@@ -140,7 +140,7 @@ spec:
             - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
               value: {{ $.Values.apm.enabled | quote }}
             - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
-              value: "false"
+              value: "true"
             - name: RIVER_PERFORMANCETRACKING_OTLPINSECURE
               value: "true"
             - name: DD_TAGS
