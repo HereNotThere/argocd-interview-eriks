@@ -4,6 +4,9 @@
 image:
   tag: "{{ riverNode.image.tag }}"
 
+apm:
+  enabled: {{ riverNode.apmEnabled | default('false') | lower }}
+
 nodes:
   {% for i in range(1, riverNode.numStreamNodes + 1) %}
   {% set host_name = "river" ~ i ~ ".nodes." ~ global.environmentName ~ ".towns.com" %}

@@ -138,15 +138,15 @@ spec:
             - name: PERFORMANCETRACKING__PROFILINGENABLED
               value: "false"
             - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
-              value: "false"
+              value: {{ $.Values.apm.enabled | quote }}
             - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
               value: "false"
             - name: RIVER_PERFORMANCETRACKING_OTLPINSECURE
               value: "true"
-            # - name: DD_TAGS
-            #   value: {{ .ddTags | quote }}
-            # - name: DD_AGENT_HOST
-            #   value: "datadog.datadog.svc.cluster.local"
+            - name: DD_TAGS
+              value: {{ .ddTags | quote }}
+            - name: DD_AGENT_HOST
+              value: "datadog.datadog.svc.cluster.local"
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://datadog.datadog:4317"
             - name: ENABLEMLS

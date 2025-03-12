@@ -5,6 +5,9 @@
 image:
   tag: "mainnet"
 
+apm:
+  enabled: true
+
 nodes:
   - nodeType: archive
     nodeNumber: 1

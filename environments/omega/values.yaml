@@ -33,6 +33,7 @@ riverNode:
     tag: "mainnet"
   numStreamNodes: 0
   numArchiveNodes: 2
+  apmEnabled: true
   resources:
     limits:
       cpu: "2"
