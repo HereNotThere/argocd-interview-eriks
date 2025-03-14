@@ -45,7 +45,7 @@ appOfApps:
       disable: false
     - name: datadog
       namespace: datadog
-      disable: false
+      disable: true
     - name: external-secrets
       namespace: external-secrets
       disable: false
