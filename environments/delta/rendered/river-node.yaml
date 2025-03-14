@@ -3,7 +3,7 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 image:
-  tag: "7dc49b4"
+  tag: "6fc9957"
 
 apm:
   enabled: false
