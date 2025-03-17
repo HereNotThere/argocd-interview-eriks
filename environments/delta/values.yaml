@@ -32,7 +32,7 @@ riverNode:
     tag: "6fc9957"
   numStreamNodes: 10
   numArchiveNodes: 0
-  dbMigrationStatus: "delta"
+  dbMigrationStatus: "hold"
 
 argocd:
   externalAccess:
