@@ -88,14 +88,14 @@ spec:
               value: "false"
             - name: DISABLEHTTPS
               value: "true"
-            - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
-              value: "true"
-            - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
-              value: "true"
-            - name: RIVER_PERFORMANCETRACKING_OTLPINSECURE
-              value: "true"
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "http://datadog.datadog:4317"
+            # - name: RIVER_PERFORMANCETRACKING_TRACINGENABLED
+            #   value: "true"
+            # - name: RIVER_PERFORMANCETRACKING_OTLPENABLEGRPC
+            #   value: "true"
+            # - name: RIVER_PERFORMANCETRACKING_OTLPINSECURE
+            #   value: "true"
+            # - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            #   value: "http://datadog.datadog:4317"
 
             - name: DATABASE__PASSWORD
               valueFrom:
