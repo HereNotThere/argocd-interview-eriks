@@ -54,25 +54,4 @@ spec:
                 secretKeyRef:
                   name: notification-service-secrets
                   key: target_db_app_password
-
-            - name: SOURCE_DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: notification-service-secrets
-                  key: source_db_host
-
-            - name: SOURCE_DB_DATABASE
-              value: river
-
-            - name: SOURCE_DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: notification-service-secrets
-                  key: source_db_user
-
-            - name: SOURCE_DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: notification-service-secrets
-                  key: source_db_password
 {{- end }}
