@@ -30,7 +30,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "dev"
+    tag: "637daf8"
   numStreamNodes: 10
   numArchiveNodes: 0
   dbMigrationStatus: "delta"
