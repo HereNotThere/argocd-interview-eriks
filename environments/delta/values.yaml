@@ -26,13 +26,14 @@ notificationService:
       memory: 7.5Gi
   apnsTownsAppIdentifier: com.towns.ios.delta
   riverRegistryPageSize: 1500
+  dbMigrationStatus: "hold"
 
 riverNode:
   image:
     tag: "6fc9957"
   numStreamNodes: 10
   numArchiveNodes: 0
-  dbMigrationStatus: "hold"
+  dbMigrationStatus: "delta"
 
 argocd:
   externalAccess:
