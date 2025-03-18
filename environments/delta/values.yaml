@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "testnet"
+    tag: "7b290f9"
   resources:
     requests:
       cpu: 1
