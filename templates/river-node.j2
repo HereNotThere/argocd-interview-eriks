@@ -36,7 +36,9 @@ nodes:
 
 dbMigrationStatus: {{ riverNode.dbMigrationStatus | default('hold') }}
 
-race: {{ riverNode.race | default('false') }}
+race: {{ riverNode.race | default('false') | lower }}
+
+logLevel: {{ riverNode.logLevel | default('info') | lower }}
 
 resources: 
 {{ riverNode.resources | default({

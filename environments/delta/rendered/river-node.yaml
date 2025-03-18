@@ -101,7 +101,9 @@ nodes:
 
 dbMigrationStatus: delta
 
-race: false
+race: true
+
+logLevel: debug
 
 resources:
   limits:

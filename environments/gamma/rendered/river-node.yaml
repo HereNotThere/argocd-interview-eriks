@@ -112,6 +112,8 @@ dbMigrationStatus: gamma
 
 race: false
 
+logLevel: info
+
 resources:
   requests:
     cpu: 0.5

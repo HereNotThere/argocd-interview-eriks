@@ -101,7 +101,9 @@ nodes:
 
 dbMigrationStatus: alpha
 
-race: True
+race: true
+
+logLevel: info
 
 resources:
   requests:
