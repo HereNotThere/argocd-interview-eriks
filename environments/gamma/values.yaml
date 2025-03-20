@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "7d863a7"
+    tag: "3560b93"
   apnsTownsAppIdentifier: com.towns.internal
   dbMigrationStatus: "gamma"
   resources:
@@ -29,7 +29,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "7b290f9"
+    tag: "05b6bdd"
   numStreamNodes: 11
   numArchiveNodes: 0
   dbMigrationStatus: "gamma"

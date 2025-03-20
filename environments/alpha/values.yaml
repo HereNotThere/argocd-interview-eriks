@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "6fc9957"
+    tag: "872c9c5"
   resources:
     requests:
       cpu: 1
@@ -29,7 +29,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "7b290f9"
+    tag: "05b6bdd"
   dbMigrationStatus: "alpha"
   riverRegistryPageSize: 1500
   numStreamNodes: 10
