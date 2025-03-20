@@ -34,8 +34,6 @@ riverNode:
   numStreamNodes: 10
   numArchiveNodes: 0
   dbMigrationStatus: "delta"
-  race: true
-  logLevel: "debug"
 
 argocd:
   externalAccess:

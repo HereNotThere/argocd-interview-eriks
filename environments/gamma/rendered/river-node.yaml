@@ -110,9 +110,9 @@ nodes:
 
 dbMigrationStatus: gamma
 
-race: false
+race: true
 
-logLevel: info
+logLevel: debug
 
 resources:
   requests:
