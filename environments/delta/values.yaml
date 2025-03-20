@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "7b290f9"
+    tag: "f8a3285"
   resources:
     requests:
       cpu: 1
@@ -30,7 +30,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "7b290f9"
+    tag: "f8a3285"
   numStreamNodes: 10
   numArchiveNodes: 0
   dbMigrationStatus: "delta"
