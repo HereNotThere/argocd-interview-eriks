@@ -4,7 +4,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: river-node-migrate-job-{{ .nodeType }}-{{ .nodeNumber }}
+  name: river-node-migrate-{{ .nodeType }}-{{ .nodeNumber }}
+  annotations:
+    "helm.sh/hook": pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation
 spec:
   backoffLimit: 0
   template:
