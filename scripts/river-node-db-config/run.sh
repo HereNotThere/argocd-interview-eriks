@@ -89,7 +89,7 @@ migrate() {
     fi
     
     export RIVER_DB_SOURCE_PASSWORD=$TARGET_DB_ROOT_PASSWORD
-    export RIVER_DB_SOURCE_URL="postgres://${TARGET_DB_ROOT_USER}@${SOURCE_DB_HOST}:5432/river?pool_max_conns=50"
+    export RIVER_DB_SOURCE_URL="postgres://${TARGET_DB_ROOT_USER}@${TARGET_DB_HOST}:5432/river?pool_max_conns=50"
 
     export RIVER_DB_TARGET_PASSWORD=$TARGET_DB_APP_PASSWORD
     export RIVER_DB_TARGET_URL="postgres://${TARGET_DB_APP_USER}@${TARGET_DB_HOST}:5432/river?pool_max_conns=50"
@@ -97,7 +97,8 @@ migrate() {
     export RIVER_DB_NUM_WORKERS="12"
     export RIVER_DB_TX_SIZE="1"
     export RIVER_DB_PROGRESS_REPORT_INTERVAL="10s"
-    export RIVER_DB_SCHEMA=$SCHEMA_NAME
+    export RIVER_DB_SCHEMA="archive1"
+    export RIVER_DB_SCHEMA_TARGET_OVERWRITE=$SCHEMA_NAME
     export RIVER_DB_PARTITION_TX_SIZE="16"
     export RIVER_DB_PARTITION_WORKERS="8"
     export RIVER_DB_ATTACH_WORKERS="1"
