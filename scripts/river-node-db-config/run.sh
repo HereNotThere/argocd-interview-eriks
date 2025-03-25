@@ -103,11 +103,14 @@ migrate() {
     export RIVER_DB_PARTITION_WORKERS="8"
     export RIVER_DB_ATTACH_WORKERS="1"
 
-    echo "Calling target init"
-    ./river_migrate_db target init
+    # echo "Calling target init"
+    # ./river_migrate_db target init
 
-    echo "Calling copy"
-    ./river_migrate_db copy --bypass --verbose  --from-archiver --filter-streams-file=$STREAMS_FILE
+    # echo "Calling copy"
+    # ./river_migrate_db copy --bypass --verbose  --from-archiver --filter-streams-file=$STREAMS_FILE
+
+    echo "Calling restore-snapshot-indices"
+    ./river_migrate_db target restore-snapshot-indices
 
     echo "Finished migrate-db"
   elif [ $NODE_TYPE == "archive" ]; then
