@@ -97,7 +97,7 @@ migrate() {
     export RIVER_DB_NUM_WORKERS="12"
     export RIVER_DB_TX_SIZE="1"
     export RIVER_DB_PROGRESS_REPORT_INTERVAL="10s"
-    export RIVER_DB_SCHEMA="archive1"
+    export RIVER_DB_SCHEMA="arch1"
     export RIVER_DB_SCHEMA_TARGET_OVERWRITE=$SCHEMA_NAME
     export RIVER_DB_PARTITION_TX_SIZE="16"
     export RIVER_DB_PARTITION_WORKERS="8"
