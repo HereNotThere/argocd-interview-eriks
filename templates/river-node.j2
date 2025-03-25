@@ -34,8 +34,6 @@ nodes:
     nodeUrl: {{ node_url }}
   {% endfor %}
 
-dbMigrationStatus: {{ riverNode.dbMigrationStatus | default('hold') }}
-
 race: {{ riverNode.race | default('false') | lower }}
 
 logLevel: {{ riverNode.logLevel | default('info') | lower }}

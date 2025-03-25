@@ -82,5 +82,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-dbMigrationStatus: "hold"

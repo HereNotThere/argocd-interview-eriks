@@ -99,8 +99,6 @@ nodes:
     ddTags: "env:delta, service: river-node, mode: stream, node_url: https://river10.nodes.delta.towns.com"
     nodeUrl: https://river10.nodes.delta.towns.com
 
-dbMigrationStatus: delta
-
 race: false
 
 logLevel: info

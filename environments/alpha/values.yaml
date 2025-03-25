@@ -25,12 +25,10 @@ notificationService:
       cpu: 1
       memory: 7.5Gi
   apnsTownsAppIdentifier: com.towns.ios.alpha
-  dbMigrationStatus: "alpha"
 
 riverNode:
   image:
     tag: "1c61a3a"
-  dbMigrationStatus: "alpha"
   riverRegistryPageSize: 1500
   numStreamNodes: 10
   numArchiveNodes: 0
