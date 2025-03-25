@@ -9,7 +9,7 @@ spec:
   # TODO: use rolling update strategy
   strategy:
     type: Recreate
-  replicas: 1
+  replicas: {{ if eq .migrationStatus "done" }}1{{ else }}0{{ end }}
   selector:
     matchLabels:
       app: river-node-{{ .nodeType }}-{{ .nodeNumber }}

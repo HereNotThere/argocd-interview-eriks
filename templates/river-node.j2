@@ -20,6 +20,7 @@ nodes:
     dbUser: river{{ i }}
     ddTags: "{{ base_dd_tags}}, mode: stream, node_url: {{ node_url }}"
     nodeUrl: {{ node_url }}
+    migrationStatus: {{ riverNode.migrationStatus.stream[i] if riverNode.migrationStatus and riverNode.migrationStatus.stream and i in riverNode.migrationStatus.stream else 'done' }}
   {% endfor %}
   {% for i in range(1, riverNode.numArchiveNodes + 1) %}
   {% set host_name = "archive" ~ i ~ ".nodes." ~ global.environmentName ~ ".towns.com" %}
@@ -32,6 +33,7 @@ nodes:
     dbUser: archive{{ i }}
     ddTags: "{{ base_dd_tags}}, mode: archive, node_url: {{ node_url }}"
     nodeUrl: {{ node_url }}
+    migrationStatus: {{ riverNode.migrationStatus.archive[i] if riverNode.migrationStatus and riverNode.migrationStatus.archive and i in riverNode.migrationStatus.archive else 'done' }}
   {% endfor %}
 
 race: {{ riverNode.race | default('false') | lower }}
