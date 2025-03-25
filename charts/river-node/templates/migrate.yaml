@@ -19,9 +19,8 @@ spec:
           command: ["/bin/sh", "-c"]
           resources:
             requests:
-              ephemeral-storage: "450Gi"
-              memory: "12Gi"
-              cpu: "10"
+              memory: "4Gi"
+              cpu: "2"
           args:
             - |
               apk add --no-cache nodejs npm git &&
