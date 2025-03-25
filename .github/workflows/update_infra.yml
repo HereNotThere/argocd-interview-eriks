@@ -119,14 +119,38 @@ jobs:
 
           git commit -m "${DATE} - Update infra for ${ENV}"
 
-          # A loop to retry the push if it fails. Exit 1 if it fails after 10 attempts.
+          # A more robust retry logic with proper rebasing
           n=0
           until [ $n -ge 10 ]
           do
-            git push origin ${{ github.ref_name }} && break
-            n=$[$n+1]
-            sleep 15
-            git pull origin ${{ github.ref_name }}
+            # First fetch the latest changes
+            git fetch origin ${{ github.ref_name }}
+            
+            # Check if we need to rebase
+            if git rev-parse HEAD origin/${{ github.ref_name }} | uniq | wc -l | grep -q 2; then
+              echo "Local and remote HEADs are different, rebasing..."
+              # Use rebase to incorporate remote changes while preserving our commit
+              git rebase origin/${{ github.ref_name }}
+              
+              # If rebase failed (conflict), abort and retry
+              if [ $? -ne 0 ]; then
+                echo "Rebase failed, conflicts detected. Aborting rebase and retrying..."
+                git rebase --abort
+                n=$[$n+1]
+                sleep $(( 15 + $RANDOM % 30 ))  # Add jitter to reduce collision probability
+                continue
+              fi
+            fi
+            
+            # Try to push our changes
+            if git push origin ${{ github.ref_name }}; then
+              echo "Successfully pushed changes!"
+              break
+            else
+              echo "Push failed, retrying..."
+              n=$[$n+1]
+              sleep $(( 15 + $RANDOM % 30 ))  # Add jitter to reduce collision probability
+            fi
           done
 
           if [ $n -ge 10 ]; then
