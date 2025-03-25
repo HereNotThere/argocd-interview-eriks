@@ -30,10 +30,6 @@ riverNode:
   image:
     tag: "mainnet"
     pullPolicy: Always
-  migrationStatus:
-    stream:
-      1: "run"
-      2: "run"
   numStreamNodes: 2
   numArchiveNodes: 2
   apmEnabled: true
