@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -eo pipefail
-
+set -eox pipefail
 
 init() {
   echo "Running init-db"
@@ -72,13 +71,25 @@ migrate() {
     echo "Building go migration tool"
     cd ./towns/core/tools/migrate_db
 
-    git checkout crystal/mb-promotion-issue
+    git checkout crystal/migrate-from-archiver
     go build -o river_migrate_db .
 
     echo "Built river_migrate_db"
 
-    export RIVER_DB_SOURCE_PASSWORD=$SOURCE_DB_PASSWORD
-    export RIVER_DB_SOURCE_URL="postgres://${SOURCE_DB_USER}@${SOURCE_DB_HOST}:5432/river?pool_max_conns=50"
+    # if NODE_NUMBER is 1, set STREAMS_FILE to "0x01A7dCd51409758f220c171c209eF3E1C8b10F1E.unavailable.txt"
+    # else if NODE_NUMBER is 2, set it to 0xa7f7D83843aB78706344D3Ae882b1d4f9404F254.unavailable.txt
+    # otherwise exit with error
+    if [ $NODE_NUMBER -eq 1 ]; then
+      STREAMS_FILE="0x01A7dCd51409758f220c171c209eF3E1C8b10F1E.unavailable.txt"
+    elif [ $NODE_NUMBER -eq 2 ]; then
+      STREAMS_FILE="0xa7f7D83843aB78706344D3Ae882b1d4f9404F254.unavailable.txt"
+    else
+      echo "Invalid NODE_NUMBER. Exiting."
+      exit 1
+    fi
+    
+    export RIVER_DB_SOURCE_PASSWORD=$TARGET_DB_ROOT_PASSWORD
+    export RIVER_DB_SOURCE_URL="postgres://${TARGET_DB_ROOT_USER}@${SOURCE_DB_HOST}:5432/river?pool_max_conns=50"
 
     export RIVER_DB_TARGET_PASSWORD=$TARGET_DB_APP_PASSWORD
     export RIVER_DB_TARGET_URL="postgres://${TARGET_DB_APP_USER}@${TARGET_DB_HOST}:5432/river?pool_max_conns=50"
@@ -95,17 +106,7 @@ migrate() {
     ./river_migrate_db target init
 
     echo "Calling copy"
-    ./river_migrate_db copy --bypass --verbose
-
-    # if node number is even, run with -b
-    if [ $((NODE_NUMBER % 2)) -eq 0 ]; then
-      echo "Running validation with -b"
-      ./river_migrate_db validate -b
-    else
-      echo "Running validation without -b"
-      ./river_migrate_db validate
-    fi
-
+    ./river_migrate_db copy --bypass --verbose  --from-archiver --filter-stream-file=$STREAMS_FILE
 
     echo "Finished migrate-db"
   elif [ $NODE_TYPE == "archive" ]; then

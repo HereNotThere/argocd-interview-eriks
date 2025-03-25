@@ -1,0 +1,97 @@
+{{- range .Values.nodes }}
+{{- if eq .migrationStatus "hold" }}
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: river-node-migrate-job-{{ .nodeType }}-{{ .nodeNumber }}
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: river-node-migrate-job-{{ .nodeType }}-{{ .nodeNumber }}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: river-node-migrate-job
+          image: golang:1.23.3-alpine3.20 # Node.js with TypeScript installed
+          command: ["/bin/sh", "-c"]
+          resources:
+            requests:
+              ephemeral-storage: "450Gi"
+              memory: "12Gi"
+              cpu: "10"
+          args:
+            - |
+              apk add --no-cache nodejs npm git &&
+              npm install -g yarn &&
+              git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
+              cd /app/scripts/river-node-db-config &&
+              sh ./run.sh 
+          env:
+            - name: TARGET_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: target_db_host
+
+            - name: TARGET_DB_DATABASE
+              value: river
+
+            - name: TARGET_DB_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: target_db_root_user
+
+            - name: TARGET_DB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: target_db_root_password
+
+            - name: TARGET_DB_APP_USER
+              value: {{ .dbUser }}
+
+            - name: TARGET_DB_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: target_db_app_password
+
+            - name: SOURCE_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: source_db_host
+
+            - name: SOURCE_DB_DATABASE
+              value: river
+
+            - name: SOURCE_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: source_db_user
+
+            - name: SOURCE_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: source_db_password
+
+            - name: WALLET_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
+                  key: wallet_private_key
+
+            - name: NODE_TYPE
+              value: {{ .nodeType }}
+            
+            - name: NODE_NUMBER
+              value: "{{ .nodeNumber }}"
+---
+{{- end }}
+{{- end }}
