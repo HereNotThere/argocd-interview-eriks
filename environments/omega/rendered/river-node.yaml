@@ -4,6 +4,7 @@
 
 image:
   tag: "mainnet"
+  pullPolicy: "Always"
 
 apm:
   enabled: true

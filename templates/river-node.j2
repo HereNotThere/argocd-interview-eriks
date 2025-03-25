@@ -3,6 +3,7 @@
 
 image:
   tag: "{{ riverNode.image.tag }}"
+  pullPolicy: "{{ riverNode.image.pullPolicy | default('IfNotPresent') }}"
 
 apm:
   enabled: {{ riverNode.apmEnabled | default('false') | lower }}

@@ -29,6 +29,7 @@ notificationService:
 riverNode:
   image:
     tag: "mainnet"
+    pullPolicy: Always
   numStreamNodes: 2
   numArchiveNodes: 2
   apmEnabled: true
