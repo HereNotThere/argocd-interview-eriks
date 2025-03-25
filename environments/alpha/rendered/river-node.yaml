@@ -99,8 +99,6 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river10.nodes.alpha.towns.com"
     nodeUrl: https://river10.nodes.alpha.towns.com
 
-dbMigrationStatus: alpha
-
 race: true
 
 logLevel: info

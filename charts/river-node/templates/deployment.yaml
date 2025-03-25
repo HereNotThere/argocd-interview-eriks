@@ -9,7 +9,7 @@ spec:
   # TODO: use rolling update strategy
   strategy:
     type: Recreate
-  replicas: {{ ternary 1 0 (eq $.Values.dbMigrationStatus $.Values.global.environmentName) }}
+  replicas: 1
   selector:
     matchLabels:
       app: river-node-{{ .nodeType }}-{{ .nodeNumber }}

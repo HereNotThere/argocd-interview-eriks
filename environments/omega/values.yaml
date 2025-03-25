@@ -15,7 +15,6 @@ chains:
       baseRegistry: "0x7c0422b31401C936172C897802CF0373B35B7698"
 
 notificationService:
-  dbMigrationStatus: "omega"
   image:
     tag: "mainnet"
   resources:
@@ -28,7 +27,6 @@ notificationService:
   apnsTownsAppIdentifier: com.towns.ios # TODO: always change
 
 riverNode:
-  dbMigrationStatus: "omega"
   image:
     tag: "mainnet"
   numStreamNodes: 0
