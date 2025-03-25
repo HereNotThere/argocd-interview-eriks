@@ -18,7 +18,7 @@ nodes:
     dbUser: river1
     ddTags: "env:omega, service: river-node, mode: stream, node_url: https://river1.nodes.omega.towns.com"
     nodeUrl: https://river1.nodes.omega.towns.com
-    migrationStatus: hold
+    migrationStatus: run
 
   - nodeType: stream
     nodeNumber: 2
@@ -28,7 +28,7 @@ nodes:
     dbUser: river2
     ddTags: "env:omega, service: river-node, mode: stream, node_url: https://river2.nodes.omega.towns.com"
     nodeUrl: https://river2.nodes.omega.towns.com
-    migrationStatus: hold
+    migrationStatus: run
 
   - nodeType: archive
     nodeNumber: 1
