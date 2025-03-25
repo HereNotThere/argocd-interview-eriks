@@ -32,10 +32,6 @@ riverNode:
   numStreamNodes: 2
   numArchiveNodes: 2
   apmEnabled: true
-  migrationStatus:
-    stream:
-      1: "hold"
-      2: "hold"
   resources:
     limits:
       cpu: "2"
