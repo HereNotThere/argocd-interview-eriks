@@ -106,7 +106,7 @@ migrate() {
     ./river_migrate_db target init
 
     echo "Calling copy"
-    ./river_migrate_db copy --bypass --verbose  --from-archiver --filter-stream-file=$STREAMS_FILE
+    ./river_migrate_db copy --bypass --verbose  --from-archiver --filter-streams-file=$STREAMS_FILE
 
     echo "Finished migrate-db"
   elif [ $NODE_TYPE == "archive" ]; then
