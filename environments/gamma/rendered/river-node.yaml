@@ -4,6 +4,7 @@
 
 image:
   tag: "testnet"
+  pullPolicy: "IfNotPresent"
 
 apm:
   enabled: false
