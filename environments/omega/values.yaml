@@ -32,9 +32,6 @@ riverNode:
     pullPolicy: Always
   numStreamNodes: 2
   numArchiveNodes: 3
-  migrationStatus:
-    archive:
-      3: "run"
   imageTagOverride:
     archive:
       3: "589d4f8"

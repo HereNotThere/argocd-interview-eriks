@@ -65,7 +65,7 @@ nodes:
     dbUser: archive3
     ddTags: "env:omega, service: river-node, mode: archive, node_url: https://archive3.nodes.omega.towns.com"
     nodeUrl: https://archive3.nodes.omega.towns.com
-    migrationStatus: run
+    migrationStatus: done
     image:
       tag: "589d4f8"
 
