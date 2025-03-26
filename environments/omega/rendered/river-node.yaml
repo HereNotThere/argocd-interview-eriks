@@ -3,7 +3,6 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 image:
-  tag: "mainnet"
   pullPolicy: "Always"
 
 apm:
@@ -19,6 +18,8 @@ nodes:
     ddTags: "env:omega, service: river-node, mode: stream, node_url: https://river1.nodes.omega.towns.com"
     nodeUrl: https://river1.nodes.omega.towns.com
     migrationStatus: done
+    image:
+      tag: "mainnet"
 
   - nodeType: stream
     nodeNumber: 2
@@ -29,6 +30,8 @@ nodes:
     ddTags: "env:omega, service: river-node, mode: stream, node_url: https://river2.nodes.omega.towns.com"
     nodeUrl: https://river2.nodes.omega.towns.com
     migrationStatus: done
+    image:
+      tag: "mainnet"
 
   - nodeType: archive
     nodeNumber: 1
@@ -39,6 +42,8 @@ nodes:
     ddTags: "env:omega, service: river-node, mode: archive, node_url: https://archive1.nodes.omega.towns.com"
     nodeUrl: https://archive1.nodes.omega.towns.com
     migrationStatus: done
+    image:
+      tag: "mainnet"
 
   - nodeType: archive
     nodeNumber: 2
@@ -49,6 +54,20 @@ nodes:
     ddTags: "env:omega, service: river-node, mode: archive, node_url: https://archive2.nodes.omega.towns.com"
     nodeUrl: https://archive2.nodes.omega.towns.com
     migrationStatus: done
+    image:
+      tag: "mainnet"
+
+  - nodeType: archive
+    nodeNumber: 3
+    hostname: archive3.nodes.omega.towns.com
+    runMode: archive
+    standbyOnStart: false
+    dbUser: archive3
+    ddTags: "env:omega, service: river-node, mode: archive, node_url: https://archive3.nodes.omega.towns.com"
+    nodeUrl: https://archive3.nodes.omega.towns.com
+    migrationStatus: hold
+    image:
+      tag: "589d4f8"
 
 race: false
 

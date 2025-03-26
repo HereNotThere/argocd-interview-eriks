@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: river-node
-          image: public.ecr.aws/h5v6m2x1/river:{{ $.Values.image.tag }}
+          image: public.ecr.aws/h5v6m2x1/river:{{ .image.tag }}
           imagePullPolicy: {{ $.Values.image.pullPolicy }}
           resources:
             {{- toYaml $.Values.resources | nindent 12 }}

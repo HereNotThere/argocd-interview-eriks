@@ -31,7 +31,14 @@ riverNode:
     tag: "mainnet"
     pullPolicy: Always
   numStreamNodes: 2
-  numArchiveNodes: 2
+  numArchiveNodes: 3
+  migrationStatus:
+    archive:
+      3: "hold"
+  imageTagOverride:
+    archive:
+      3: "589d4f8"
+
   apmEnabled: true
   resources:
     limits:
