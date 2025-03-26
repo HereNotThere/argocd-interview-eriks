@@ -4,6 +4,7 @@
 
 image:
   tag: "1c61a3a"
+  pullPolicy: "IfNotPresent"
 
 apm:
   enabled: false
