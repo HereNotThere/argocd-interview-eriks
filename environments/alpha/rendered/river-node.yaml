@@ -3,7 +3,6 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 image:
-  tag: "1c61a3a"
   pullPolicy: "IfNotPresent"
 
 apm:
@@ -19,6 +18,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river1.nodes.alpha.towns.com"
     nodeUrl: https://river1.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 2
@@ -29,6 +30,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river2.nodes.alpha.towns.com"
     nodeUrl: https://river2.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 3
@@ -39,6 +42,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river3.nodes.alpha.towns.com"
     nodeUrl: https://river3.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 4
@@ -49,6 +54,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river4.nodes.alpha.towns.com"
     nodeUrl: https://river4.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 5
@@ -59,6 +66,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river5.nodes.alpha.towns.com"
     nodeUrl: https://river5.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 6
@@ -69,6 +78,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river6.nodes.alpha.towns.com"
     nodeUrl: https://river6.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 7
@@ -79,6 +90,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river7.nodes.alpha.towns.com"
     nodeUrl: https://river7.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 8
@@ -89,6 +102,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river8.nodes.alpha.towns.com"
     nodeUrl: https://river8.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 9
@@ -99,6 +114,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river9.nodes.alpha.towns.com"
     nodeUrl: https://river9.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
   - nodeType: stream
     nodeNumber: 10
@@ -109,6 +126,8 @@ nodes:
     ddTags: "env:alpha, service: river-node, mode: stream, node_url: https://river10.nodes.alpha.towns.com"
     nodeUrl: https://river10.nodes.alpha.towns.com
     migrationStatus: done
+    image:
+      tag: "1c61a3a"
 
 race: true
 
