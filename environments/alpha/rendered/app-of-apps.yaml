@@ -92,3 +92,11 @@ appOfApps:
         - ./values.yaml
         - ../../environments/alpha/rendered/global.yaml
         - ../../environments/alpha/rendered/river-node.yaml
+
+    - name: rpc-gateway
+      disable: false
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/alpha/rendered/global.yaml
+        - ../../environments/alpha/rendered/rpc-gateway.yaml
