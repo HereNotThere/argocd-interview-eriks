@@ -56,4 +56,4 @@ rpc-gateway:
       valueFrom:
         secretKeyRef:
           name: rpc-gateway-secrets
-          key: river_rpc_url
+          key: river_chain_rpc_url
