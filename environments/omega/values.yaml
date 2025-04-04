@@ -30,7 +30,10 @@ riverNode:
   image:
     tag: "mainnet"
     pullPolicy: Always
-  numStreamNodes: 2
+  numStreamNodes: 3
+  migrationStatus:
+    stream:
+      3: "hold"
   numArchiveNodes: 3
   imageTagOverride:
     archive:

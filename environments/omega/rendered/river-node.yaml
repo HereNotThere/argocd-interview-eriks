@@ -33,6 +33,18 @@ nodes:
     image:
       tag: "mainnet"
 
+  - nodeType: stream
+    nodeNumber: 3
+    hostname: river3.nodes.omega.towns.com
+    runMode: full
+    standbyOnStart: true
+    dbUser: river3
+    ddTags: "env:omega, service: river-node, mode: stream, node_url: https://river3.nodes.omega.towns.com"
+    nodeUrl: https://river3.nodes.omega.towns.com
+    migrationStatus: hold
+    image:
+      tag: "mainnet"
+
   - nodeType: archive
     nodeNumber: 1
     hostname: archive1.nodes.omega.towns.com
