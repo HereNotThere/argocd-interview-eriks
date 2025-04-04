@@ -41,7 +41,7 @@ nodes:
     dbUser: river3
     ddTags: "env:omega, service: river-node, mode: stream, node_url: https://river3.nodes.omega.towns.com"
     nodeUrl: https://river3.nodes.omega.towns.com
-    migrationStatus: run
+    migrationStatus: done
     image:
       tag: "mainnet"
 
