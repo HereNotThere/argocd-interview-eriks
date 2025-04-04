@@ -33,7 +33,7 @@ riverNode:
   numStreamNodes: 3
   migrationStatus:
     stream:
-      3: "hold"
+      3: "run"
   numArchiveNodes: 3
   imageTagOverride:
     archive:
