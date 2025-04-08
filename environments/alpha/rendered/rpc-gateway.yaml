@@ -9,8 +9,7 @@ rpc-gateway:
       port: 9090
 
     loadBalancing:
-      type: "weighted_round_robin"
-      weightDecay: 0.5
+      strategy: "primary_only"
 
     errorHandling:
       type: "retry"
