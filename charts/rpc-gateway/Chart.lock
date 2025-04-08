@@ -1,6 +1,6 @@
 dependencies:
 - name: rpc-gateway
   repository: https://whats-good.github.io/rpc-gateway/helm
-  version: 0.3.0
-digest: sha256:65cae02744084c9b8da5a19ce4cfde9cfd998edd9c7c4b5ce05c00f380deae15
-generated: "2025-04-08T09:52:27.982642-04:00"
+  version: 0.1.0
+digest: sha256:87c491f2b2787a2f1c92a290606bc16847d120ad1cc7707139b7976e5ab8c476
+generated: "2025-04-08T10:11:12.686699-04:00"
