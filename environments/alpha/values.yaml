@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "e67d022"
+    tag: "a801f7b"
   resources:
     requests:
       cpu: 1
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "e67d022"
+    tag: "a801f7b"
   riverRegistryPageSize: 1500
   numStreamNodes: 10
   numArchiveNodes: 0
