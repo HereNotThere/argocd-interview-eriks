@@ -5,7 +5,8 @@ rpc-gateway:
     # This sets the pull policy for images.
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: 20e4714-dirty
+    # TODO: turn this into a variable
+    tag: "latest"
 
   # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
   serviceAccount:
