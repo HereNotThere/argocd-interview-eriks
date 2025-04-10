@@ -6,11 +6,10 @@ rpc-gateway:
   config:
     server:
       host: "0.0.0.0"
-      port: 9090
+      port: 8080
 
     loadBalancing:
-      type: "weighted_round_robin"
-      weightDecay: 0.5
+      strategy: "primary_only"
 
     errorHandling:
       type: "retry"
@@ -24,6 +23,7 @@ rpc-gateway:
     logging:
       console:
         enabled: true
+        level: "debug"
 
       file:
         enabled: false
