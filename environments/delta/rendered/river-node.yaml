@@ -19,7 +19,7 @@ nodes:
     nodeUrl: https://river1.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 2
@@ -31,7 +31,7 @@ nodes:
     nodeUrl: https://river2.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 3
@@ -43,7 +43,7 @@ nodes:
     nodeUrl: https://river3.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 4
@@ -55,7 +55,7 @@ nodes:
     nodeUrl: https://river4.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 5
@@ -67,7 +67,7 @@ nodes:
     nodeUrl: https://river5.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 6
@@ -79,7 +79,7 @@ nodes:
     nodeUrl: https://river6.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 7
@@ -91,7 +91,7 @@ nodes:
     nodeUrl: https://river7.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 8
@@ -103,7 +103,7 @@ nodes:
     nodeUrl: https://river8.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 9
@@ -115,7 +115,7 @@ nodes:
     nodeUrl: https://river9.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
   - nodeType: stream
     nodeNumber: 10
@@ -127,7 +127,7 @@ nodes:
     nodeUrl: https://river10.nodes.delta.towns.com
     migrationStatus: done
     image:
-      tag: "8a813be"
+      tag: "425fa74"
 
 race: false
 
