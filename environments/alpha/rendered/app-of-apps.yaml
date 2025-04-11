@@ -22,7 +22,7 @@ appOfApps:
         - ../../environments/alpha/rendered/argocd.yaml
 
     - name: datadog
-      disable: true
+      disable: false
       namespace: datadog
       valueFiles:
         - ./values.yaml
