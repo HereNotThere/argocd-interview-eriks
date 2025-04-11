@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "469d27e"
+    tag: "testnet-hotfix-2"
   apnsTownsAppIdentifier: com.towns.internal
   resources:
     requests:
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "469d27e"
+    tag: "testnet-hotfix-2"
   numStreamNodes: 11
   numArchiveNodes: 0
   riverRegistryPageSize: 1500
