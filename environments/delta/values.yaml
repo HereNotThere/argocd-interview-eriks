@@ -29,7 +29,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "testnet-hotfix"
+    tag: "469d27e"
   numStreamNodes: 10
   numArchiveNodes: 0
 
