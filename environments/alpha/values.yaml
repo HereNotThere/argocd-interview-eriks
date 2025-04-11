@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "testnet-hotfix"
+    tag: "testnet-hotfix-2"
   resources:
     requests:
       cpu: 1
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "testnet-hotfix"
+    tag: "testnet-hotfix-2"
   riverRegistryPageSize: 1500
   numStreamNodes: 10
   numArchiveNodes: 0
