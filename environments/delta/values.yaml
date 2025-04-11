@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "testnet-hotfix"
+    tag: "469d27e"
   resources:
     requests:
       cpu: 1
