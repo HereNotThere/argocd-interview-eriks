@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "mainnet-hotfix"
+    tag: "mainnet-hotfix-2"
   resources:
     limits:
       cpu: "1.5"
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet"
+    tag: "mainnet-hotfix-2"
     pullPolicy: Always
   numStreamNodes: 3
   numArchiveNodes: 3

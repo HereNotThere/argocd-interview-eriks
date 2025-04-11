@@ -19,7 +19,7 @@ nodes:
     nodeUrl: https://river1.nodes.omega.towns.com
     migrationStatus: done
     image:
-      tag: "mainnet"
+      tag: "mainnet-hotfix-2"
 
   - nodeType: stream
     nodeNumber: 2
@@ -31,7 +31,7 @@ nodes:
     nodeUrl: https://river2.nodes.omega.towns.com
     migrationStatus: done
     image:
-      tag: "mainnet"
+      tag: "mainnet-hotfix-2"
 
   - nodeType: stream
     nodeNumber: 3
@@ -43,7 +43,7 @@ nodes:
     nodeUrl: https://river3.nodes.omega.towns.com
     migrationStatus: done
     image:
-      tag: "mainnet"
+      tag: "mainnet-hotfix-2"
 
   - nodeType: archive
     nodeNumber: 1
@@ -55,7 +55,7 @@ nodes:
     nodeUrl: https://archive1.nodes.omega.towns.com
     migrationStatus: done
     image:
-      tag: "mainnet"
+      tag: "mainnet-hotfix-2"
 
   - nodeType: archive
     nodeNumber: 2
@@ -67,7 +67,7 @@ nodes:
     nodeUrl: https://archive2.nodes.omega.towns.com
     migrationStatus: done
     image:
-      tag: "mainnet"
+      tag: "mainnet-hotfix-2"
 
   - nodeType: archive
     nodeNumber: 3
