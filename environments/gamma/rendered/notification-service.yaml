@@ -4,7 +4,7 @@
 
 apnsTownsAppIdentifier: com.towns.internal
 image:
-  tag: "testnet-hotfix-2"
+  tag: "18c278e"
 resources:
   limits:
     cpu: 1
