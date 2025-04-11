@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "testnet-hotfix-2"
+    tag: "18c278e"
   numStreamNodes: 11
   numArchiveNodes: 0
   riverRegistryPageSize: 1500
