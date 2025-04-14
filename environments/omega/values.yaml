@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "mainnet-hotfix-2"
+    tag: "mainnet"
   resources:
     limits:
       cpu: "1.5"
