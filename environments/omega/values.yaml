@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet-hotfix-2"
+    tag: "mainnet"
     pullPolicy: Always
   numStreamNodes: 3
   numArchiveNodes: 3
