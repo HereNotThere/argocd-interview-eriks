@@ -13,6 +13,7 @@ spec:
   dnsNames:
     - {{ include "notification-service.domainName" . }}
     - {{ include "argocd.domainName" . }}
+    - {{ include "subgraph.domainName" . }}
 ---
 ### MAIN ALB ###
 
@@ -32,6 +33,7 @@ spec:
     - hosts:
         - {{ include "notification-service.domainName" . }}
         - {{ include "argocd.domainName" . }}
+        - {{ include "subgraph.domainName" . }}
       secretName: main-alb-tls
   rules:
     {{- if not .Values.notificationService.disable }}
@@ -54,6 +56,16 @@ spec:
             backend:
               service:
                 name: nginx-argocd-wrapper
+                port:
+                  number: 80
+    - host: {{ include "subgraph.domainName" . }}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: subgraph
                 port:
                   number: 80
 

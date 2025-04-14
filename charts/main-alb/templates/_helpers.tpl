@@ -78,8 +78,15 @@ Notification Service domain name
 {{- end }}
 
 {{/*
+Subgraph domain name
+*/}}
+{{- define "subgraph.domainName" -}}
+{{- printf "subgraph-%s.towns.com" .Values.global.environmentName }}
+{{- end }}
+
+{{/*
 All host names to attach to the ALB. A comma separated list of all the host names that should be attached to the ALB.
 */}}
 {{- define "main-alb.hosts" -}}
-{{ include "argocd.domainName" . }},{{ include "notification-service.domainName" . }}
+{{ include "argocd.domainName" . }},{{ include "notification-service.domainName" . }},{{ include "subgraph.domainName" . }}
 {{- end }}
