@@ -4,7 +4,7 @@
 
 image:
   repository: "public.ecr.aws/h5v6m2x1/subgraph"
-  tag: "d8bc67f"
+  tag: "1352546"
   pullPolicy: "IfNotPresent"
 
 service:
