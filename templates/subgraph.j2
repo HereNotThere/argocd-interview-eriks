@@ -44,7 +44,7 @@ env:
     valueFrom:
       secretKeyRef:
         name: subgraph-secrets
-        key: rpc_url
+        key: base_chain_rpc_url
   - name: DATABASE_URL
     valueFrom:
       secretKeyRef:
