@@ -41,7 +41,7 @@ riverNode:
 
 subgraph:
   image:
-    tag: "d8bc67f"
+    tag: "1352546"
   ingress:
     enabled: true
     certificateArn: ""
