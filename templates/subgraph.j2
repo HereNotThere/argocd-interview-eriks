@@ -1,7 +1,7 @@
 {% set base_dd_tags = "env:" ~ global.environmentName ~ ", service: subgraph" %}
 
 image:
-  repository: "{{ subgraph.image.repository | default('towns-subgraph') }}"
+  repository: "{{ subgraph.image.repository | default('subgraph') }}"
   tag: "{{ subgraph.image.tag | default('latest') }}"
   pullPolicy: "{{ subgraph.image.pullPolicy | default('IfNotPresent') }}"
 

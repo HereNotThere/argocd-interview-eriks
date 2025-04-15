@@ -3,7 +3,7 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 image:
-  repository: "towns-subgraph"
+  repository: "subgraph"
   tag: "d8bc67f"
   pullPolicy: "IfNotPresent"
 
