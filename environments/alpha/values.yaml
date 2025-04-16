@@ -41,6 +41,9 @@ riverNode:
 subgraph:
   image:
     tag: "25572ed"
+  environment: gamma
+  ponderPort: 80
+  ponderStartBlock: "22890725"
   resources:
     requests:
       cpu: 0.5

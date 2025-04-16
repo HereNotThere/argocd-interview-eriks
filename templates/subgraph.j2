@@ -36,6 +36,10 @@ env:
       secretKeyRef:
         name: subgraph-secrets
         key: database_url
+  - name: PONDER_START_BLOCK
+    value: "{{ ponder_start_block | default('22890725') }}"
+  - name: PONDER_CONFIG
+    value: "ponder.config.{{ global.environmentName }}.ts"
 
 # Health checks
 livenessProbe:
@@ -57,12 +61,7 @@ podSecurityContext:
   fsGroup: 1000
 
 securityContext:
-  capabilities:
-    drop:
-    - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+  {}
 
 # Node selector, affinity, and tolerations for pod assignment
 nodeSelector: {}

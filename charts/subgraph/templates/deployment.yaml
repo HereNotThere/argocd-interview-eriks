@@ -35,10 +35,30 @@ spec:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          {{- if .Values.env }}
           env:
-            {{- toYaml .Values.env | nindent 12 }}
-          {{- end }}
+            - name: RIVER_ENV
+              value: {{ .Values.environment | default "gamma" | quote }}
+            - name: PONDER_PORT
+              value: {{ .Values.ponderPort | default "42069" | quote }}
+            - name: PONDER_ENVIRONMENT
+              value: {{ .Values.environment | default "gamma" | quote }}
+            - name: PONDER_START_BLOCK
+              value: {{ .Values.ponderStartBlock | default "22890725" | quote }}
+            - name: PONDER_CONFIG
+              value: "ponder.config.{{ .Values.environment | default "gamma" }}.ts"
+            - name: PONDER_RPC_URL_1
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name | default "subgraph-secrets" }}
+                  key: base_chain_rpc_url
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name | default "subgraph-secrets" }}
+                  key: database_url
+            {{- if .Values.additionalEnv }}
+            {{- toYaml .Values.additionalEnv | nindent 12 }}
+            {{- end }}
           volumeMounts:
             - name: cache-volume
               mountPath: /home/node/.cache
