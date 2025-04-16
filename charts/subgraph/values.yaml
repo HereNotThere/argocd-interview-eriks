@@ -64,7 +64,7 @@ resources:
     memory: 8Gi
   requests:
     cpu: 1
-    memory: 32i
+    memory: 8i
 
 # Secret values (these should be overridden in the actual deployment)
 secrets:

@@ -18,7 +18,7 @@ resources:
     memory: 8Gi
   requests:
     cpu: 1
-    memory: 32Gi
+    memory: 8Gi
 
 # Environment variables
 env:
