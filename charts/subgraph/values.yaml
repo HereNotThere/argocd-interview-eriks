@@ -27,12 +27,13 @@ podSecurityContext:
   fsGroup: 1000
 
 securityContext:
-  capabilities:
-    drop:
-    - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -64,25 +65,6 @@ resources:
   requests:
     cpu: 0.5
     memory: 1Gi
-
-# Environment variables for the container
-env:
-  - name: RIVER_ENV
-    value: "gamma"
-  - name: PONDER_PORT
-    value: "42069"
-  - name: PONDER_ENVIRONMENT
-    value: "gamma"
-  - name: PONDER_RPC_URL_1
-    valueFrom:
-      secretKeyRef:
-        name: subgraph-secrets
-        key: base_chain_rpc_url
-  - name: DATABASE_URL
-    valueFrom:
-      secretKeyRef:
-        name: subgraph-secrets
-        key: database_url
 
 # Secret values (these should be overridden in the actual deployment)
 secrets:
