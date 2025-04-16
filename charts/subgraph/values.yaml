@@ -74,14 +74,14 @@ secrets:
 livenessProbe:
   httpGet:
     path: /health
-    port: 42069
+    port: 80
   initialDelaySeconds: 30
   periodSeconds: 10
 
 readinessProbe:
   httpGet:
     path: /ready
-    port: 42069
+    port: 80
   initialDelaySeconds: 30
   periodSeconds: 10
 

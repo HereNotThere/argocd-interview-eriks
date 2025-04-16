@@ -9,8 +9,8 @@ image:
 
 service:
   type: ClusterIP
-  port: 42069
-  targetPort: 42069
+  port: 80
+  targetPort: 80
 
 resources:
   limits:
@@ -25,7 +25,7 @@ env:
   - name: RIVER_ENV
     value: "gamma"
   - name: PONDER_PORT
-    value: "42069"
+    value: "80"
   - name: PONDER_ENVIRONMENT
     value: "gamma"
   - name: PONDER_RPC_URL_1
@@ -47,14 +47,14 @@ env:
 livenessProbe:
   httpGet:
     path: /health
-    port: 42069
+    port: 80
   initialDelaySeconds: 30
   periodSeconds: 10
 
 readinessProbe:
   httpGet:
     path: /ready
-    port: 42069
+    port: 80
   initialDelaySeconds: 30
   periodSeconds: 10
 
