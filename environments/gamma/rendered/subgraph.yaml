@@ -15,10 +15,10 @@ service:
 resources:
   limits:
     cpu: 1
-    memory: 2Gi
+    memory: 4Gi
   requests:
     cpu: 0.5
-    memory: 1.5Gi
+    memory: 2Gi
 
 # Environment variables
 env:

@@ -45,10 +45,10 @@ subgraph:
   resources:
     requests:
       cpu: 0.5
-      memory: 1.5Gi
+      memory: 2Gi
     limits:
       cpu: 1
-      memory: 2Gi
+      memory: 4Gi
 
 argocd:
   externalAccess:
