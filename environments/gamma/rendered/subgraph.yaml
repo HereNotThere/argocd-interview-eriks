@@ -15,10 +15,10 @@ service:
 resources:
   limits:
     cpu: 1
-    memory: 20Gi
+    memory: 8Gi
   requests:
-    cpu: 0.5
-    memory: 2Gi
+    cpu: 1
+    memory: 32Gi
 
 # Environment variables
 env:
@@ -49,14 +49,14 @@ livenessProbe:
     path: /health
     port: 80
   initialDelaySeconds: 30
-  periodSeconds: 10
+  periodSeconds: 30
 
 readinessProbe:
   httpGet:
     path: /ready
     port: 80
   initialDelaySeconds: 30
-  periodSeconds: 10
+  periodSeconds: 30
 
 # Security settings
 podSecurityContext:
