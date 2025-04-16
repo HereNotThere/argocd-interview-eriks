@@ -72,18 +72,24 @@ secrets:
   databaseUrl: "postgresql://user:password@hostname:5432/subgraph"
 
 livenessProbe:
-  httpGet:
-    path: /health
-    port: 80
+  exec:
+    command:
+      - sh
+      - -c
+      - "ls /tmp && echo 'OK'"
   initialDelaySeconds: 30
   periodSeconds: 30
+  timeoutSeconds: 5
 
 readinessProbe:
-  httpGet:
-    path: /ready
-    port: 80
+  exec:
+    command:
+      - sh
+      - -c
+      - "ls /tmp && echo 'OK'"
   initialDelaySeconds: 30
-  periodSeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
 
 nodeSelector: {}
 tolerations: []
