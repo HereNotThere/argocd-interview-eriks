@@ -81,3 +81,6 @@ appOfApps:
     - name: river-node
       namespace: default
       disable: false
+    - name: subgraph
+      namespace: default
+      disable: true

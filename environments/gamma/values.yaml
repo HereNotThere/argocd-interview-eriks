@@ -42,9 +42,6 @@ riverNode:
 subgraph:
   image:
     tag: "25572ed"
-  ingress:
-    enabled: true
-    certificateArn: ""
   resources:
     requests:
       cpu: 0.5

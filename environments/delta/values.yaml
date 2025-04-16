@@ -33,6 +33,17 @@ riverNode:
   numStreamNodes: 10
   numArchiveNodes: 0
 
+subgraph:
+  image:
+    tag: "25572ed"
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 1.5Gi
+    limits:
+      cpu: 1
+      memory: 2Gi
+
 argocd:
   externalAccess:
     enabled: true
@@ -69,3 +80,6 @@ appOfApps:
     - name: river-node
       namespace: default
       disable: false
+    - name: subgraph
+      namespace: default
+      disable: true

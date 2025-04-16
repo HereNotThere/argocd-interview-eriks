@@ -10,20 +10,6 @@ service:
   port: 42069
   targetPort: 42069
 
-ingress:
-  enabled: {{ subgraph.ingress.enabled | default('true') | lower }}
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
-    alb.ingress.kubernetes.io/certificate-arn: {{ subgraph.ingress.certificateArn | default('') }}
-  hosts:
-    - host: "subgraph.{{ global.environmentName }}.towns.com"
-      paths:
-        - path: /*
-          pathType: ImplementationSpecific
-
 resources:
   limits:
     cpu: {{ subgraph.resources.limits.cpu | default(1) }}
