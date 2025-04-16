@@ -39,7 +39,7 @@ spec:
             - name: RIVER_ENV
               value: {{ .Values.environment | default "gamma" | quote }}
             - name: PONDER_PORT
-              value: {{ .Values.ponderPort | default "42069" | quote }}
+              value: {{ .Values.ponderPort | default "80" | quote }}
             - name: PONDER_ENVIRONMENT
               value: {{ .Values.environment | default "gamma" | quote }}
             - name: PONDER_START_BLOCK
