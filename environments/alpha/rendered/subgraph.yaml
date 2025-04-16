@@ -23,11 +23,11 @@ resources:
 # Environment variables
 env:
   - name: RIVER_ENV
-    value: "gamma"
+    value: "alpha"
   - name: PONDER_PORT
     value: "42069"
   - name: PONDER_ENVIRONMENT
-    value: "gamma"
+    value: "alpha"
   - name: PONDER_RPC_URL_1
     valueFrom:
       secretKeyRef:

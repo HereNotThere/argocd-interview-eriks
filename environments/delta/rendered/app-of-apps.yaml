@@ -92,3 +92,11 @@ appOfApps:
         - ./values.yaml
         - ../../environments/delta/rendered/global.yaml
         - ../../environments/delta/rendered/river-node.yaml
+
+    - name: subgraph
+      disable: true
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/delta/rendered/global.yaml
+        - ../../environments/delta/rendered/subgraph.yaml

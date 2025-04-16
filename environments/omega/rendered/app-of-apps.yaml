@@ -92,3 +92,11 @@ appOfApps:
         - ./values.yaml
         - ../../environments/omega/rendered/global.yaml
         - ../../environments/omega/rendered/river-node.yaml
+
+    - name: subgraph
+      disable: true
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/omega/rendered/global.yaml
+        - ../../environments/omega/rendered/subgraph.yaml
