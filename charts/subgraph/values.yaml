@@ -87,4 +87,6 @@ readinessProbe:
 
 nodeSelector: {}
 tolerations: []
-affinity: {} 
+affinity: {}
+
+additionalEnv: {}

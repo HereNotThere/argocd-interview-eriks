@@ -51,11 +51,23 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name | default "subgraph-secrets" }}
                   key: base_chain_rpc_url
-            - name: DATABASE_URL
+            - name: DB_HOST
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secrets.name | default "subgraph-secrets" }}
-                  key: database_url
+                  key: db_host 
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name | default "subgraph-secrets" }}
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.name | default "subgraph-secrets" }}
+                  key: db_password
             {{- if .Values.additionalEnv }}
             {{- toYaml .Values.additionalEnv | nindent 12 }}
             {{- end }}
