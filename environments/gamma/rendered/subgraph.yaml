@@ -10,22 +10,22 @@ image:
 service:
   type: ClusterIP
   port: 80
-  targetPort: 80
+  targetPort: 42069
 
 resources:
   limits:
     cpu: 1
-    memory: 8Gi
+    memory: 20Gi
   requests:
-    cpu: 1
-    memory: 8Gi
+    cpu: 0.5
+    memory: 2Gi
 
 # Environment variables
 env:
   - name: RIVER_ENV
     value: "gamma"
   - name: PONDER_PORT
-    value: "80"
+    value: "42069"
   - name: PONDER_ENVIRONMENT
     value: "gamma"
   - name: PONDER_RPC_URL_1
@@ -45,24 +45,18 @@ env:
 
 # Health checks
 livenessProbe:
-  exec:
-    command:
-      - sh
-      - -c
-      - "ls /tmp && echo 'OK'"
-  initialDelaySeconds: 30
-  periodSeconds: 30
-  timeoutSeconds: 5
-
-readinessProbe:
-  exec:
-    command:
-      - sh
-      - -c
-      - "ls /tmp && echo 'OK'"
+  httpGet:
+    path: /health
+    port: 42069
   initialDelaySeconds: 30
   periodSeconds: 10
-  timeoutSeconds: 5
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 42069
+  initialDelaySeconds: 30
+  periodSeconds: 10
 
 # Security settings
 podSecurityContext:

@@ -38,7 +38,7 @@ securityContext:
 service:
   type: ClusterIP
   port: 80
-  targetPort: 80
+  targetPort: 42069
 
 ingress:
   enabled: true
@@ -64,7 +64,7 @@ resources:
     memory: 8Gi
   requests:
     cpu: 1
-    memory: 8i
+    memory: 8Gi
 
 # Secret values (these should be overridden in the actual deployment)
 secrets:
@@ -72,24 +72,18 @@ secrets:
   databaseUrl: "postgresql://user:password@hostname:5432/subgraph"
 
 livenessProbe:
-  exec:
-    command:
-      - sh
-      - -c
-      - "ls /tmp && echo 'OK'"
-  initialDelaySeconds: 30
-  periodSeconds: 30
-  timeoutSeconds: 5
-
-readinessProbe:
-  exec:
-    command:
-      - sh
-      - -c
-      - "ls /tmp && echo 'OK'"
+  httpGet:
+    path: /health
+    port: 42069
   initialDelaySeconds: 30
   periodSeconds: 10
-  timeoutSeconds: 5
+
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 42069
+  initialDelaySeconds: 30
+  periodSeconds: 10
 
 nodeSelector: {}
 tolerations: []
