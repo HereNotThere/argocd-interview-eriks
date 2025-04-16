@@ -48,7 +48,7 @@ subgraph:
       memory: 2Gi
     limits:
       cpu: 1
-      memory: 4Gi
+      memory: 20Gi
 
 argocd:
   externalAccess:
