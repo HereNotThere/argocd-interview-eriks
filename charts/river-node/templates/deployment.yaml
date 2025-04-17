@@ -101,10 +101,14 @@ spec:
             - name: RIVERCHAIN__CHAINID
               value: {{ required "river chainId required" $.Values.global.chains.river.chainId | quote }}
             - name: BASECHAIN__NETWORKURL
+            {{- if eq $.Values.useRpcGateway true }}
+              value: "http://rpc-gateway:8080/{{ $.Values.global.chains.base.chainId }}"
+            {{- else }}
               valueFrom:
                 secretKeyRef:
                   name: river-node-{{ .nodeType }}-{{ .nodeNumber }}-credentials
                   key: base_chain_rpc_url
+            {{- end }}
             - name: RIVERCHAIN__NETWORKURL
               valueFrom:
                 secretKeyRef:
