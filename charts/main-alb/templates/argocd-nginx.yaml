@@ -11,6 +11,15 @@ data:
     http {
       server {
         listen 80;
+
+        location /swagger-ui/ {
+          return 403;
+        }
+
+        location /swagger.json {
+          return 403;
+        }
+
         location / {
           proxy_pass http://argocd-server.argocd.svc.cluster.local:80;
           proxy_set_header Host $host;
@@ -22,7 +31,6 @@ data:
     }
 
 ---
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -53,7 +61,6 @@ spec:
             name: nginx-argocd-wrapper-config
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
