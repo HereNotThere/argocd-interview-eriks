@@ -17,6 +17,12 @@ rpc-gateway:
       }
     }) | to_yaml | indent(4) }}
 
+  autoscaling:
+    enabled: {{ rpcGateway.autoscaling.enabled | lower | default(false) if rpcGateway.autoscaling is defined else false | lower }}
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
   config:
     server:
       host: "0.0.0.0"

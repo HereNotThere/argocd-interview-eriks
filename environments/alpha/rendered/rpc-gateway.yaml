@@ -17,6 +17,12 @@ rpc-gateway:
       cpu: 1000m
       memory: 256Mi
 
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
   config:
     server:
       host: "0.0.0.0"

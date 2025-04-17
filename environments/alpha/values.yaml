@@ -40,6 +40,8 @@ rpcGateway:
     requests:
       cpu: 1000m
       memory: 256Mi
+  autoscaling:
+    enabled: true
 
 riverNode:
   image:
