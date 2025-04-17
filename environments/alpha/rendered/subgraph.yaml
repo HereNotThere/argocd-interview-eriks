@@ -9,7 +9,7 @@ image:
 
 service:
   type: ClusterIP
-  port: 42069
+  port: 80
   targetPort: 42069
 
 resources:
@@ -38,6 +38,10 @@ env:
       secretKeyRef:
         name: subgraph-secrets
         key: database_url
+  - name: PONDER_START_BLOCK
+    value: "22890725"
+  - name: PONDER_CONFIG
+    value: "ponder.config.alpha.ts"
 
 # Health checks
 livenessProbe:
@@ -58,13 +62,7 @@ readinessProbe:
 podSecurityContext:
   fsGroup: 1000
 
-securityContext:
-  capabilities:
-    drop:
-      - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+securityContext: {}
 
 # Node selector, affinity, and tolerations for pod assignment
 nodeSelector: {}

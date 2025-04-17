@@ -38,7 +38,7 @@ securityContext:
 service:
   type: ClusterIP
   port: 80
-  targetPort: 80
+  targetPort: 42069
 
 ingress:
   enabled: true
@@ -61,10 +61,10 @@ certificate:
 resources:
   limits:
     cpu: 1
-    memory: 2Gi
+    memory: 8Gi
   requests:
-    cpu: 0.5
-    memory: 1Gi
+    cpu: 1
+    memory: 8Gi
 
 # Secret values (these should be overridden in the actual deployment)
 secrets:
@@ -74,14 +74,14 @@ secrets:
 livenessProbe:
   httpGet:
     path: /health
-    port: 80
+    port: 42069
   initialDelaySeconds: 30
   periodSeconds: 10
 
 readinessProbe:
   httpGet:
     path: /ready
-    port: 80
+    port: 42069
   initialDelaySeconds: 30
   periodSeconds: 10
 
