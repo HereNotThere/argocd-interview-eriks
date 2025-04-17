@@ -3,10 +3,17 @@
 # Instead, edit the corresponding template file in the templates directory and run the environment.py script.
 
 rpc-gateway:
+  image:
+    pullPolicy: Always
+
   config:
     server:
       host: "0.0.0.0"
       port: 8080
+
+    cache:
+      type: "redis"
+      url: "redis://minikube-example-redis-master.default.svc.cluster.local:6379"
 
     loadBalancing:
       strategy: "primary_only"
@@ -17,13 +24,10 @@ rpc-gateway:
       retryDelay: "1s"
       jitter: true
 
-    cache:
-      enabled: false
-
     logging:
       console:
         enabled: true
-        level: "debug"
+        level: "info"
 
       file:
         enabled: false
@@ -31,29 +35,35 @@ rpc-gateway:
     chains:
       8453:
         upstreams:
-          - url: "$BASE_RPC_URL"
-            timeout: "10s"
-            weight: 1
-
-      550:
-        upstreams:
-          - url: "$RIVER_RPC_URL"
+          - url: "$UPSTREAM_URL_BASE_ALCHEMY"
             timeout: "10s"
             weight: 1
 
   # Environment variables to be set in the container
   env:
-    - name: RUST_LOG
-      value: "rpc_gateway=info,actix_web=info,reqwest=info"
-
-    - name: BASE_RPC_URL
+    - name: UPSTREAM_URL_BASE_ALCHEMY
       valueFrom:
         secretKeyRef:
           name: rpc-gateway-secrets
-          key: base_chain_rpc_url
+          key: upstream_url_base_alchemy
 
-    - name: RIVER_RPC_URL
-      valueFrom:
-        secretKeyRef:
-          name: rpc-gateway-secrets
-          key: river_chain_rpc_url
+redis:
+  architecture: standalone
+
+  auth:
+    enabled: false
+
+  master:
+    persistence:
+      enabled: false
+
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "2Gi"
+        cpu: "1"
+
+  replica:
+    replicaCount: 0
