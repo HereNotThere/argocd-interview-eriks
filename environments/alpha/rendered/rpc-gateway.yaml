@@ -16,7 +16,7 @@ rpc-gateway:
 
     cache:
       type: "redis"
-      url: "redis://minikube-example-redis-master.default.svc.cluster.local:6379"
+      url: "redis://rpc-gateway-redis-master.default.svc.cluster.local:6379"
 
     loadBalancing:
       strategy: "primary_only"
