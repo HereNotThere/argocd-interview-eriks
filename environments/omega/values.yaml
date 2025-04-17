@@ -23,7 +23,7 @@ notificationService:
       memory: "100Gi"
     requests:
       cpu: "1.5"
-      memory: "100i"
+      memory: "100Gi"
   apnsTownsAppIdentifier: com.towns.ios # TODO: always change
 
 riverNode:
