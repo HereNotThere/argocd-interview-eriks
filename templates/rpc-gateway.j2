@@ -24,12 +24,15 @@ rpc-gateway:
       jitter: true
 
     logging:
-      console:
-        enabled: true
-        level: "info"
-
-      file:
-        enabled: false
+      {{ rpcGateway.logging | default({
+        "console": {
+          "enabled": true,
+          "level": "info"
+        },
+        "file": {
+          "enabled": false
+        }
+      }) | to_yaml | indent(6) }}
 
     chains:
       {{ chains.base.chainId }}:

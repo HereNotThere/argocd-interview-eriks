@@ -26,6 +26,14 @@ notificationService:
       memory: 7.5Gi
   apnsTownsAppIdentifier: com.towns.ios.alpha
 
+rpcGateway:
+  logging:
+    console:
+      enabled: true
+      level: "debug"
+    file:
+      enabled: false
+
 riverNode:
   image:
     tag: "357cb2d"
