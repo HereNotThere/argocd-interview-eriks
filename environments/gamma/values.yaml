@@ -41,7 +41,7 @@ riverNode:
 
 subgraph:
   image:
-    tag: "0afd32d"
+    tag: "subgraph-41725-dev-1"
   resources:
     requests:
       cpu: 0.5
