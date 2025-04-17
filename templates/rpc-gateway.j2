@@ -5,22 +5,18 @@ rpc-gateway:
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
 
-  resources:
-    {{ rpcGateway.resources | default({
-      "limits": {
-        "cpu": "500m",
-        "memory": "512Mi"
-      },
-      "requests": {
-        "cpu": "500m",
-        "memory": "256Mi"
-      }
-    }) | to_yaml | indent(4) }}
-
+  resources: 
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
+  
   autoscaling:
-    enabled: {{ rpcGateway.autoscaling.enabled | lower | default(false) if rpcGateway.autoscaling is defined else false | lower }}
+    enabled: true
     minReplicas: 1
-    maxReplicas: 10
+    maxReplicas: 100
     targetCPUUtilizationPercentage: 80
 
   config:
@@ -40,17 +36,6 @@ rpc-gateway:
       maxRetries: 3
       retryDelay: "1s"
       jitter: true
-
-    logging:
-      {{ rpcGateway.logging | default({
-        "console": {
-          "enabled": true,
-          "level": "info"
-        },
-        "file": {
-          "enabled": false
-        }
-      }) | to_yaml | indent(6) }}
 
     chains:
       {{ chains.base.chainId }}:

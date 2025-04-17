@@ -33,7 +33,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           # TODO: remove hardcoded image
-          image: "{{ .Values.image.repository }}:78d5c910f736345b02388284f46a0a5391a5d416"
+          image: "{{ .Values.image.repository }}:latest"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http

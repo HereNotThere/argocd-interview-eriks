@@ -10,17 +10,17 @@ rpc-gateway:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
 
   resources:
-    limits:
-      cpu: 1000m
-      memory: 512Mi
     requests:
-      cpu: 1000m
-      memory: 256Mi
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1"
 
   autoscaling:
     enabled: true
     minReplicas: 1
-    maxReplicas: 10
+    maxReplicas: 100
     targetCPUUtilizationPercentage: 80
 
   config:
@@ -40,13 +40,6 @@ rpc-gateway:
       maxRetries: 3
       retryDelay: "1s"
       jitter: true
-
-    logging:
-      console:
-        enabled: true
-        level: info
-      file:
-        enabled: false
 
     chains:
       84532:
