@@ -9,6 +9,14 @@ rpc-gateway:
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
 
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+    requests:
+      cpu: 1000m
+      memory: 256Mi
+
   config:
     server:
       host: "0.0.0.0"

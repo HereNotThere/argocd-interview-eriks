@@ -5,6 +5,18 @@ rpc-gateway:
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
 
+  resources:
+    {{ rpcGateway.resources | default({
+      "limits": {
+        "cpu": "500m",
+        "memory": "512Mi"
+      },
+      "requests": {
+        "cpu": "500m",
+        "memory": "256Mi"
+      }
+    }) | to_yaml | indent(4) }}
+
   config:
     server:
       host: "0.0.0.0"

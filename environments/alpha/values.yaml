@@ -33,6 +33,13 @@ rpcGateway:
       level: "debug"
     file:
       enabled: false
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+    requests:
+      cpu: 1000m
+      memory: 256Mi
 
 riverNode:
   image:
