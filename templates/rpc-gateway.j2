@@ -2,6 +2,9 @@ rpc-gateway:
   image:
     pullPolicy: Always
 
+  podAnnotations:
+    ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
+
   config:
     server:
       host: "0.0.0.0"
