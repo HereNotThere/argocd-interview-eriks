@@ -30,7 +30,7 @@ rpcGateway:
   logging:
     console:
       enabled: true
-      level: "debug"
+      level: "info"
     file:
       enabled: false
   resources:

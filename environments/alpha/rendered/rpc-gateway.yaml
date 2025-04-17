@@ -44,7 +44,7 @@ rpc-gateway:
     logging:
       console:
         enabled: true
-        level: debug
+        level: info
       file:
         enabled: false
 
