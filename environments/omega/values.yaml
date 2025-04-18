@@ -20,10 +20,10 @@ notificationService:
   resources:
     limits:
       cpu: "1.5"
-      memory: "100Gi"
+      memory: "90Gi"
     requests:
       cpu: "1.5"
-      memory: "100Gi"
+      memory: "90Gi"
   apnsTownsAppIdentifier: com.towns.ios # TODO: always change
 
 riverNode:
