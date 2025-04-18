@@ -38,8 +38,10 @@ env:
       secretKeyRef:
         name: subgraph-secrets
         key: database_url
+  - name: DATABASE_SCHEMA
+    value: "delta-1"
   - name: PONDER_START_BLOCK
-    value: "22890725"
+    value: "100"
   - name: PONDER_CONFIG
     value: "ponder.config.delta.ts"
 
