@@ -39,7 +39,7 @@ env:
         name: subgraph-secrets
         key: database_url
   - name: PONDER_START_BLOCK
-    value: "22890725"
+    value: "7378183"
   - name: PONDER_CONFIG
     value: "ponder.config.gamma.ts"
 

@@ -43,7 +43,7 @@ spec:
             - name: PONDER_ENVIRONMENT
               value: {{ .Values.environment | default "gamma" | quote }}
             - name: PONDER_START_BLOCK
-              value: {{ .Values.ponderStartBlock | default "22890725" | quote }}
+              value: {{ required "ponderStartBlock is required" $.Values.ponderStartBlock | quote }}
             - name: PONDER_CONFIG
               value: "ponder.config.{{ .Values.environment | default "gamma" }}.ts"
             - name: PONDER_RPC_URL_1
