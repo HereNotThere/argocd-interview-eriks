@@ -37,11 +37,11 @@ spec:
               protocol: TCP
           env:
             - name: RIVER_ENV
-              value: {{ .Values.environment | default "gamma" | quote }}
+              value: {{ $.Values.global.environmentName | quote }}
             - name: PONDER_PORT
               value: {{ .Values.ponderPort | default "42069" | quote }}
             - name: PONDER_ENVIRONMENT
-              value: {{ .Values.environment | default "gamma" | quote }}
+              value: {{ $.Values.global.environmentName | quote }}
             - name: PONDER_START_BLOCK
               value: {{ required "ponderStartBlock is required" $.Values.ponderStartBlock | quote }}
             - name: PONDER_CONFIG
@@ -51,6 +51,8 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.secrets.name | default "subgraph-secrets" }}
                   key: base_chain_rpc_url
+            - name: DATABASE_SCHEMA
+              value: {{ $.Values.global.environmentName | quote }}
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:

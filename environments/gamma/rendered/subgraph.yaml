@@ -38,6 +38,8 @@ env:
       secretKeyRef:
         name: subgraph-secrets
         key: database_url
+  - name: DATABASE_SCHEMA
+    value: "gamma"
   - name: PONDER_START_BLOCK
     value: "7378183"
   - name: PONDER_CONFIG
