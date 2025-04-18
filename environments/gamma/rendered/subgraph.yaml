@@ -41,7 +41,7 @@ env:
   - name: DATABASE_SCHEMA
     value: "gamma"
   - name: PONDER_START_BLOCK
-    value: "7378183"
+    value: "9378183"
   - name: PONDER_CONFIG
     value: "ponder.config.gamma.ts"
 

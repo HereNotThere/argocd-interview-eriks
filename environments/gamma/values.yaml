@@ -42,7 +42,7 @@ riverNode:
 subgraph:
   image:
     tag: "subgraph-41725-dev-1"
-  ponderStartBlock: "7378183"
+  ponderStartBlock: "9378183"
   resources:
     requests:
       cpu: 0.5
