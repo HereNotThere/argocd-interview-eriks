@@ -7,7 +7,7 @@ metricsDiscovery:
   image:
     repository: public.ecr.aws/h5v6m2x1/river-metrics-discovery
     # This sets the pull policy for images.
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: "latest"
   livenessProbe:
