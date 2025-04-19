@@ -60,6 +60,10 @@ spec:
                 secretKeyRef:
                   name: metrics-aggregator-secrets
                   key: river-rpc-url
+            - name: LOG_PRETTY
+              value: false
+        #   livenessProbe: # TODO: implement this
+        #   readinessProbe: # TODO: implement this
           volumeMounts:
             - name: prometheus-etc
               mountPath: /river/packages/metrics-discovery/prometheus/etc
@@ -68,6 +72,8 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: prom/prometheus:v2.53.1
           imagePullPolicy: IfNotPresent
+        #   livenessProbe: # TODO: implement this
+        #   readinessProbe: # TODO: implement this
           ports:
             - name: http
               containerPort: 9090
