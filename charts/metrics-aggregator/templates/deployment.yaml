@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "metrics-aggregator.fullname" . }}
+  labels:
+    {{- include "metrics-aggregator.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "metrics-aggregator.selectorLabels" . | nindent 6 }}
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/metrics-discovery.logs: '[{"service": "metrics-aggregator"}]'
+        ad.datadoghq.com/prometheus.logs: '[{"service": "metrics-aggregator"}]'
+        ad.datadoghq.com/prometheus.check_names: '["prometheus"]'
+        ad.datadoghq.com/prometheus.init_configs: '[{}]'
+        ad.datadoghq.com/prometheus.instances: >
+          [
+            {
+              "prometheus_url": "http://%%host%%:%%port%%/federate?match%5B%5D=%7Bjob%3D%22river-node%22%7D",
+              "namespace": "river-node",
+              "metrics": ["river*"],
+              "type_overrides": {
+                "*": "gauge"
+              },
+              "max_returned_metrics": 999999999999
+            }
+          ]
+      {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "metrics-aggregator.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: prometheus-etc
+          emptyDir: {}
+      containers:
+        - name: metrics-discovery
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.metricsDiscovery.image.repository }}:{{ .Values.metricsDiscovery.image.tag }}"
+          imagePullPolicy: {{ .Values.metricsDiscovery.image.pullPolicy }}
+          env:
+            - name: ENV
+              value: {{ .Values.global.environmentName }}
+            - name: RIVER_RPC_URL
+              valueFrom:
+                secretKeyRef:
+                  name: metrics-aggregator-secrets
+                  key: river-rpc-url
+            - name: LOG_PRETTY
+              value: "false"
+          volumeMounts:
+            - name: prometheus-etc
+              mountPath: /river/packages/metrics-discovery/prometheus/etc
+        - name: prometheus
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: prom/prometheus:v2.53.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+          volumeMounts:
+            - name: prometheus-etc
+              mountPath: /prometheus/etc
+          command:
+            - /bin/prometheus
+          args:
+            - "--config.file=/prometheus/etc/prometheus.yml"
+            
