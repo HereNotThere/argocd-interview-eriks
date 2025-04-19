@@ -61,7 +61,7 @@ spec:
                   name: metrics-aggregator-secrets
                   key: river-rpc-url
             - name: LOG_PRETTY
-              value: false
+              value: "false"
         #   livenessProbe: # TODO: implement this
         #   readinessProbe: # TODO: implement this
           volumeMounts:
