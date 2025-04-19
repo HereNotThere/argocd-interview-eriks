@@ -12,8 +12,8 @@ spec:
   template:
     metadata:
       annotations:
-        ad.datadoghq.com/metrics-discovery.logs: '[{"service": "metrics-aggregator"}]' 
-        ad.datadoghq.com/prometheus.logs: '[{"service": "metrics-aggregator"}]' # TODO: make sure prometheus logs don't go to stderr by default
+        ad.datadoghq.com/metrics-discovery.logs: '[{"service": "metrics-aggregator"}]'
+        ad.datadoghq.com/prometheus.logs: '[{"service": "metrics-aggregator"}]'
         ad.datadoghq.com/prometheus.check_names: '["prometheus"]'
         ad.datadoghq.com/prometheus.init_configs: '[{}]'
         ad.datadoghq.com/prometheus.instances: >
@@ -61,9 +61,7 @@ spec:
                   name: metrics-aggregator-secrets
                   key: river-rpc-url
             - name: LOG_PRETTY
-              value: false
-        #   livenessProbe: # TODO: implement this
-        #   readinessProbe: # TODO: implement this
+              value: "false"
           volumeMounts:
             - name: prometheus-etc
               mountPath: /river/packages/metrics-discovery/prometheus/etc
@@ -72,8 +70,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: prom/prometheus:v2.53.1
           imagePullPolicy: IfNotPresent
-        #   livenessProbe: # TODO: implement this
-        #   readinessProbe: # TODO: implement this
           ports:
             - name: http
               containerPort: 9090
