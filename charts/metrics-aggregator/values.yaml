@@ -9,7 +9,7 @@ metricsDiscovery:
     # This sets the pull policy for images.
     pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "latest"
+    tag: "4f5cb5e"
   livenessProbe:
     httpGet:
       path: /
