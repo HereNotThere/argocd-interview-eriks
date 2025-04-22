@@ -35,6 +35,7 @@ spec:
         - {{ include "notification-service.domainName" . }}
         - {{ include "argocd.domainName" . }}
         - {{ include "subgraph.domainName" . }}
+        - {{ include "rpc-gateway.domainName" . }}
       secretName: main-alb-tls
   rules:
     {{- if not .Values.notificationService.disable }}
