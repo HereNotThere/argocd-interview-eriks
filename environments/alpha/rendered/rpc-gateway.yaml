@@ -41,6 +41,9 @@ rpc-gateway:
       host: "0.0.0.0"
       port: 8080
 
+    request_coalescing:
+      enabled: false
+
     # TODO: Remove this once we have a proper CORS policy
     cors:
       allow_any_origin: true
