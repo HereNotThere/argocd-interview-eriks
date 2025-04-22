@@ -69,6 +69,17 @@ spec:
                 port:
                   number: 80
 
+    - host: {{ include "rpc-gateway.domainName" . }}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: rpc-gateway
+                port:
+                  number: 8080
+
 ---
 ### MAIN SERVICE ACCOUNT ###
 apiVersion: v1

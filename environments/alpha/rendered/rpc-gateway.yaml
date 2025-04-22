@@ -17,11 +17,26 @@ rpc-gateway:
       memory: "2Gi"
       cpu: "1"
 
+  service:
+    type: LoadBalancer
+    port: 8080
+
   autoscaling:
     enabled: true
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
+
+  metrics:
+    enabled: true
+    host: "127.0.0.1"
+    port: 8082
+
+  projects:
+    - name: "nodes"
+
+    - name: "web-app"
+      key: "$WEB_APP_KEY"
 
   config:
     server:
@@ -55,6 +70,12 @@ rpc-gateway:
         secretKeyRef:
           name: rpc-gateway-secrets
           key: upstream_url_base_alchemy
+
+    - name: WEB_APP_PROJECT_KEY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: web_app_project_key
 
 redis:
   architecture: standalone
