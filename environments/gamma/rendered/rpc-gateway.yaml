@@ -5,9 +5,22 @@
 rpc-gateway:
   image:
     pullPolicy: Always
+    tag: "22ff9db"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
+    ad.datadoghq.com/rpc-gateway.checks: |
+      {
+         "openmetrics": {
+           "instances": [
+             {
+               "prometheus_url": "http://%%host%%:8082/metrics",
+               "namespace": "rpc-gateway",
+               "metrics": ["*"]
+             }
+           ]
+         }
+      }
 
   resources:
     requests:
@@ -17,11 +30,26 @@ rpc-gateway:
       memory: "2Gi"
       cpu: "1"
 
+  service:
+    type: LoadBalancer
+    port: 8080
+
   autoscaling:
     enabled: true
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
+
+  metrics:
+    enabled: true
+    host: "127.0.0.1"
+    port: 8082
+
+  projects:
+    - name: "nodes"
+
+    - name: "web-app"
+      key: "$WEB_APP_KEY"
 
   config:
     server:
@@ -48,6 +76,9 @@ rpc-gateway:
             timeout: "10s"
             weight: 1
 
+    logging:
+      rust_log: "debug"
+
   # Environment variables to be set in the container
   env:
     - name: UPSTREAM_URL_BASE_ALCHEMY
@@ -55,6 +86,12 @@ rpc-gateway:
         secretKeyRef:
           name: rpc-gateway-secrets
           key: upstream_url_base_alchemy
+
+    - name: WEB_APP_PROJECT_KEY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: web_app_project_key
 
 redis:
   architecture: standalone
