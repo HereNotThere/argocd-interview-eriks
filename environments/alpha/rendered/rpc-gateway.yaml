@@ -9,6 +9,18 @@ rpc-gateway:
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
+    ad.datadoghq.com/rpc-gateway.checks: |
+      {
+         "openmetrics": {
+           "instances": [
+             {
+               "prometheus_url": "http://%%host%%:8082/metrics",
+               "namespace": "rpc-gateway",
+               "metrics": ["*"]
+             }
+           ]
+         }
+      }
 
   resources:
     requests:
