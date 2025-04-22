@@ -72,11 +72,6 @@ rpc-gateway:
             timeout: "10s"
             weight: 1
 
-    logging:
-      console:
-        enabled: true
-        rust_log: debug
-
   # Environment variables to be set in the container
   env:
     - name: UPSTREAM_URL_BASE_ALCHEMY
