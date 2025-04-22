@@ -42,11 +42,6 @@ rpc-gateway:
       host: "0.0.0.0"
       port: 8082
 
-    logging:
-      console:
-        enabled: true
-        rust_log: info,rpc_gateway_core::chain_handler=debug
-
     projects:
       - name: "nodes"
 
