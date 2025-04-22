@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet"
+    tag: "2950bbb"
     pullPolicy: Always
   numStreamNodes: 3
   numArchiveNodes: 3
