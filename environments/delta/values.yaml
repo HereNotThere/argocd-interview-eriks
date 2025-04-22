@@ -83,3 +83,6 @@ appOfApps:
     - name: subgraph
       namespace: default
       disable: true
+    - name: rpc-gateway
+      namespace: default
+      disable: true

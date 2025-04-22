@@ -60,6 +60,7 @@ spec:
                 name: nginx-argocd-wrapper
                 port:
                   number: 80
+    {{- if not .Values.subgraph.disable }}
     - host: {{ include "subgraph.domainName" . }}
       http:
         paths:
@@ -70,7 +71,8 @@ spec:
                 name: subgraph
                 port:
                   number: 80
-
+    {{- end }}
+    {{- if not .Values.rpcGateway.disable }}
     - host: {{ include "rpc-gateway.domainName" . }}
       http:
         paths:
@@ -81,6 +83,7 @@ spec:
                 name: rpc-gateway
                 port:
                   number: 8080
+    {{- end }}
 
 ---
 ### MAIN SERVICE ACCOUNT ###

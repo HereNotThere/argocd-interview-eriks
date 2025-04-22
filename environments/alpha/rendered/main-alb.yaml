@@ -4,3 +4,9 @@
 
 notificationService:
   disable: false
+
+rpcGateway:
+  disable: false
+
+subgraph:
+  disable: true

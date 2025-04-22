@@ -3,4 +3,12 @@
   notificationService:
     disable: {{ app.disable | lower}}
 {% endif %}
+{% if app.name == "rpc-gateway" %}
+  rpcGateway:
+    disable: {{ app.disable | lower}}
+{% endif %}
+{% if app.name == "subgraph" %}
+  subgraph:
+    disable: {{ app.disable | lower}}
+{% endif %}
 {% endfor %}
