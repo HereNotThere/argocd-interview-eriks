@@ -65,7 +65,9 @@ rpc-gateway:
         key: "$WEB_APP_PROJECT_KEY"
 
     cache:
-      type: "disabled"
+      enabled: false
+      type: "redis"
+      url: "redis://rpc-gateway-redis-master.default.svc.cluster.local:6379"
 
     loadBalancing:
       strategy: "primary_only"
