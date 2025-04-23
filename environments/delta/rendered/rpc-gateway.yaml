@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "22ff9db"
+    tag: "979e169"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -40,6 +40,13 @@ rpc-gateway:
     server:
       host: "0.0.0.0"
       port: 8080
+
+    request_coalescing:
+      enabled: false
+
+    # TODO: Remove this once we have a proper CORS policy
+    cors:
+      allow_any_origin: true
 
     metrics:
       enabled: true
