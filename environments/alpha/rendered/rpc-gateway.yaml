@@ -48,11 +48,6 @@ rpc-gateway:
     cors:
       allow_any_origin: true
 
-    logging:
-      console:
-        enabled: true
-        rust_log: info,rpc_gateway_core::chain_handler=debug
-
     metrics:
       enabled: true
       host: "0.0.0.0"
