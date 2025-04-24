@@ -45,6 +45,9 @@ rpc-gateway:
       enabled: true
       host: "0.0.0.0"
       port: 8082
+      
+    request_coalescing:
+      enabled: false
 
     projects:
       - name: "nodes"
@@ -52,18 +55,8 @@ rpc-gateway:
       - name: "web-app"
         key: "$WEB_APP_PROJECT_KEY"
 
-    cache:
-      type: "redis"
-      url: "redis://rpc-gateway-redis-master.default.svc.cluster.local:6379"
-
-    loadBalancing:
+    load_balancing:
       strategy: "primary_only"
-
-    errorHandling:
-      type: "retry"
-      maxRetries: 3
-      retryDelay: "1s"
-      jitter: true
 
     chains:
       {{ chains.base.chainId }}:
