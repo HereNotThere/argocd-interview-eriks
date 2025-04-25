@@ -5,9 +5,22 @@
 rpc-gateway:
   image:
     pullPolicy: Always
+    tag: "c6378f0"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
+    ad.datadoghq.com/rpc-gateway.checks: |
+      {
+         "openmetrics": {
+           "instances": [
+             {
+               "prometheus_url": "http://%%host%%:8082/metrics",
+               "namespace": "rpc-gateway",
+               "metrics": ["*"]
+             }
+           ]
+         }
+      }
 
   resources:
     requests:
@@ -28,18 +41,26 @@ rpc-gateway:
       host: "0.0.0.0"
       port: 8080
 
-    cache:
-      type: "redis"
-      url: "redis://rpc-gateway-redis-master.default.svc.cluster.local:6379"
+    # TODO: Remove this once we have a proper CORS policy
+    cors:
+      allow_any_origin: true
 
-    loadBalancing:
+    metrics:
+      enabled: true
+      host: "0.0.0.0"
+      port: 8082
+
+    request_coalescing:
+      enabled: false
+
+    projects:
+      - name: "nodes"
+
+      - name: "web-app"
+        key: "$WEB_APP_PROJECT_KEY"
+
+    load_balancing:
       strategy: "primary_only"
-
-    errorHandling:
-      type: "retry"
-      maxRetries: 3
-      retryDelay: "1s"
-      jitter: true
 
     chains:
       8453:
@@ -55,6 +76,12 @@ rpc-gateway:
         secretKeyRef:
           name: rpc-gateway-secrets
           key: upstream_url_base_alchemy
+
+    - name: WEB_APP_PROJECT_KEY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: web_app_project_key
 
 redis:
   architecture: standalone
