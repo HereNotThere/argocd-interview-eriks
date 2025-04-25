@@ -1,7 +1,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "c6378f0"
+    tag: "122bdfe"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
@@ -47,13 +47,17 @@ rpc-gateway:
       port: 8082
       
     request_coalescing:
-      enabled: false
+      enabled: true
 
     projects:
+      # TODO: this should also have a key
+      # TODO: by default, projects should be invalid without a key.
       - name: "nodes"
 
       - name: "web-app"
         key: "$WEB_APP_PROJECT_KEY"
+
+      - name: "loadtest"
 
     load_balancing:
       strategy: "primary_only"
