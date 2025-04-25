@@ -100,3 +100,11 @@ appOfApps:
         - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/subgraph.yaml
+
+    - name: rpc-gateway
+      disable: true
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/rpc-gateway.yaml

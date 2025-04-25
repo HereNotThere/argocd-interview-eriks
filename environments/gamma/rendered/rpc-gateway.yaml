@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "22ff9db"
+    tag: "c6378f0"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -30,44 +30,37 @@ rpc-gateway:
       memory: "2Gi"
       cpu: "1"
 
-  service:
-    type: LoadBalancer
-    port: 8080
-
   autoscaling:
     enabled: true
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
 
-  metrics:
-    enabled: true
-    host: "127.0.0.1"
-    port: 8082
-
-  projects:
-    - name: "nodes"
-
-    - name: "web-app"
-      key: "$WEB_APP_KEY"
-
   config:
     server:
       host: "0.0.0.0"
       port: 8080
 
-    cache:
-      type: "redis"
-      url: "redis://rpc-gateway-redis-master.default.svc.cluster.local:6379"
+    # TODO: Remove this once we have a proper CORS policy
+    cors:
+      allow_any_origin: true
 
-    loadBalancing:
+    metrics:
+      enabled: true
+      host: "0.0.0.0"
+      port: 8082
+
+    request_coalescing:
+      enabled: false
+
+    projects:
+      - name: "nodes"
+
+      - name: "web-app"
+        key: "$WEB_APP_PROJECT_KEY"
+
+    load_balancing:
       strategy: "primary_only"
-
-    errorHandling:
-      type: "retry"
-      maxRetries: 3
-      retryDelay: "1s"
-      jitter: true
 
     chains:
       84532:
@@ -75,9 +68,6 @@ rpc-gateway:
           - url: "$UPSTREAM_URL_BASE_ALCHEMY"
             timeout: "10s"
             weight: 1
-
-    logging:
-      rust_log: "debug"
 
   # Environment variables to be set in the container
   env:
