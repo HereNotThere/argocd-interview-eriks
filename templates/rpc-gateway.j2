@@ -49,6 +49,10 @@ rpc-gateway:
     request_coalescing:
       enabled: true
 
+    cache:
+      type: "redis"
+      url: "redis://rpc-gateway-redis-master.default.svc.cluster.local:6379"
+
     projects:
       # TODO: this should also have a key
       # TODO: by default, projects should be invalid without a key.
