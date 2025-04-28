@@ -9,4 +9,4 @@ subgraph:
   disable: true
 
 rpcGateway:
-  disable: true
+  disable: false

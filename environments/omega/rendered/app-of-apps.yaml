@@ -102,7 +102,7 @@ appOfApps:
         - ../../environments/omega/rendered/subgraph.yaml
 
     - name: rpc-gateway
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml

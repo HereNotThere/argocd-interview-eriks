@@ -94,4 +94,4 @@ appOfApps:
       disable: true
     - name: rpc-gateway
       namespace: default
-      disable: true
+      disable: false
