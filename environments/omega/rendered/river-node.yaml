@@ -88,11 +88,8 @@ race: false
 logLevel: info
 
 resources:
-  limits:
-    cpu: "2"
-    memory: 8Gi
   requests:
     cpu: "2"
-    memory: 8Gi
+    memory: 10Gi
 
 riverRegistryPageSize: 5000
