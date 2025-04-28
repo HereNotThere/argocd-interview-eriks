@@ -136,9 +136,6 @@ race: false
 logLevel: info
 
 resources:
-  limits:
-    cpu: 0.5
-    memory: 1G
   requests:
     cpu: 0.5
     memory: 1G
