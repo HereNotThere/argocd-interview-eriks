@@ -6,5 +6,6 @@ external-dns:
     proxied: false
   policy: sync
   interval: 5m
+  logFormat: json
   podAnnotations:
     ad.datadoghq.com/external-dns.logs: '[{"service": "external-dns"}]'
