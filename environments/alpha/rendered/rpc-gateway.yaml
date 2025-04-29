@@ -16,7 +16,7 @@ rpc-gateway:
              {
                "prometheus_url": "http://%%host%%:8082/metrics",
                "namespace": "rpc-gateway",
-               "metrics": ["*"],
+               "metrics": ["*"]
              }
            ]
          }
