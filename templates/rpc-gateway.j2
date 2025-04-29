@@ -1,7 +1,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "122bdfe"
+    tag: "c436ef8"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
@@ -12,7 +12,8 @@ rpc-gateway:
                 {
                   "prometheus_url": "http://%%host%%:8082/metrics",
                   "namespace": "rpc-gateway",
-                  "metrics": ["*"]
+                  "send_distribution_buckets": true,
+                  "metrics": ["*"],
                 }
               ]
             }
