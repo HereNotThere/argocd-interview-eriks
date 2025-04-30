@@ -60,6 +60,10 @@ argocd:
   externalAccess:
     enabled: true
 
+rpcGateway:
+  image:
+    tag: "8a324ab"
+
 appOfApps:
   applications:
     - name: argocd
