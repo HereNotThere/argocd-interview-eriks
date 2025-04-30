@@ -63,10 +63,10 @@ rpcGateway:
   resources:
     requests:
       memory: "0.5Gi"
-      cpu: "2.5"
+      cpu: "2"
     limits:
       memory: "1Gi"
-      cpu: "3"
+      cpu: "2"
 
 appOfApps:
   applications:
