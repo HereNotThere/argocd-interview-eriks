@@ -57,6 +57,15 @@ argocd:
   externalAccess:
     enabled: true
 
+rpcGateway:
+  resources:
+    requests:
+      memory: "0.5Gi"
+      cpu: "2"
+    limits:
+      memory: "1Gi"
+      cpu: "2"
+
 appOfApps:
   applications:
     - name: argocd
