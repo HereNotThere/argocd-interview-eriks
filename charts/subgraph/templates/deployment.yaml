@@ -38,6 +38,8 @@ spec:
           env:
             - name: RIVER_ENV
               value: {{ $.Values.global.environmentName | quote }}
+            - name: NODE_ENV
+              value: {{ .Values.nodeEnv | quote }}
             - name: PONDER_PORT
               value: {{ .Values.ponderPort | default "42069" | quote }}
             - name: PONDER_ENVIRONMENT
@@ -52,7 +54,7 @@ spec:
                   name: {{ .Values.secrets.name | default "subgraph-secrets" }}
                   key: base_chain_rpc_url
             - name: DATABASE_SCHEMA
-              value: "{{ $.Values.global.environmentName }}-1"
+              value: "{{ $.Values.global.environmentName }}-{{ .Values.image.tag | default .Chart.AppVersion }}"
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:

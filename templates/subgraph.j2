@@ -37,11 +37,13 @@ env:
         name: subgraph-secrets
         key: database_url
   - name: DATABASE_SCHEMA
-    value: "{{ global.environmentName }}-1"
+    value: "{{ global.environmentName }}-{{ subgraph.image.tag }}"
   - name: PONDER_START_BLOCK
     value: "{{ subgraph.ponderStartBlock | default('100') }}"
   - name: PONDER_CONFIG
     value: "ponder.config.{{ global.environmentName }}.ts"
+  - name: NODE_ENV
+    value: "{{ subgraph.nodeEnv | default('development') }}"
 
 # Health checks
 livenessProbe:
