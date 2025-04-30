@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "122bdfe"
+    tag: "f284fb8"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -16,7 +16,8 @@ rpc-gateway:
              {
                "prometheus_url": "http://%%host%%:8082/metrics",
                "namespace": "rpc-gateway",
-               "metrics": ["*"]
+               "metrics": ["*"],
+               "send_distribution_buckets": true
              }
            ]
          }
@@ -24,11 +25,11 @@ rpc-gateway:
 
   resources:
     requests:
-      memory: "1Gi"
-      cpu: "500m"
+      cpu: 500m
+      memory: 0.5Gi
     limits:
-      memory: "2Gi"
-      cpu: "1"
+      cpu: 1
+      memory: 1Gi
 
   autoscaling:
     enabled: true
