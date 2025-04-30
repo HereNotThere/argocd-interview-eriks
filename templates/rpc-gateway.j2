@@ -1,7 +1,27 @@
+{% if rpcGateway is not defined %}
+{% set rpcGateway = {} %}
+{% endif %}
+
+{% if 'image' not in rpcGateway %}
+{% set _ = rpcGateway.update({'image': {}}) %}
+{% endif %}
+
+{% if 'resources' not in rpcGateway %}
+{% set _ = rpcGateway.update({'resources': {}}) %}
+{% endif %}
+
+{% if 'requests' not in rpcGateway.resources %}
+{% set _ = rpcGateway.resources.update({'requests': {}}) %}
+{% endif %}
+
+{% if 'limits' not in rpcGateway.resources %}
+{% set _ = rpcGateway.resources.update({'limits': {}}) %}
+{% endif %}
+
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "f284fb8"
+    tag: "{{ rpcGateway.image.tag | default("f284fb8") }}"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
@@ -21,11 +41,11 @@ rpc-gateway:
 
   resources:
     requests:
-      cpu: {{ rpcGateway.resources.requests.cpu | default("500m") if rpcGateway and rpcGateway.resources and rpcGateway.resources.requests else "500m" }}
-      memory: {{ rpcGateway.resources.requests.memory | default("0.5Gi") if rpcGateway and rpcGateway.resources and rpcGateway.resources.requests else "0.5Gi" }}
+      cpu: {{ rpcGateway.resources.requests.cpu | default("500m") }}
+      memory: {{ rpcGateway.resources.requests.memory | default("0.5Gi") }}
     limits:
-      cpu: {{ rpcGateway.resources.limits.cpu | default("1") if rpcGateway and rpcGateway.resources and rpcGateway.resources.limits else "1" }}
-      memory: {{ rpcGateway.resources.limits.memory | default("1Gi") if rpcGateway and rpcGateway.resources and rpcGateway.resources.limits else "1Gi" }}
+      cpu: {{ rpcGateway.resources.limits.cpu | default("1") }}
+      memory: {{ rpcGateway.resources.limits.memory | default("1Gi") }}
 
   autoscaling:
     enabled: true
