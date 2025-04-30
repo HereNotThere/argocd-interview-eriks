@@ -39,11 +39,13 @@ env:
         name: subgraph-secrets
         key: database_url
   - name: DATABASE_SCHEMA
-    value: "alpha-1"
+    value: "alpha-25572ed"
   - name: PONDER_START_BLOCK
     value: "22890725"
   - name: PONDER_CONFIG
     value: "ponder.config.alpha.ts"
+  - name: NODE_ENV
+    value: "development"
 
 # Health checks
 livenessProbe:

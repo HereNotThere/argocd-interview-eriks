@@ -39,11 +39,13 @@ env:
         name: subgraph-secrets
         key: database_url
   - name: DATABASE_SCHEMA
-    value: "omega-1"
+    value: "omega-25572ed"
   - name: PONDER_START_BLOCK
     value: "100"
   - name: PONDER_CONFIG
     value: "ponder.config.omega.ts"
+  - name: NODE_ENV
+    value: "production"
 
 # Health checks
 livenessProbe:
