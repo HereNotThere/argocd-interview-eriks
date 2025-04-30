@@ -58,6 +58,8 @@ argocd:
     enabled: true
 
 rpcGateway:
+  image:
+    tag: "25572ed"
   resources:
     requests:
       memory: "0.5Gi"
