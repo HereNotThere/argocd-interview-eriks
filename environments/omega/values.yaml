@@ -65,7 +65,7 @@ rpcGateway:
       memory: "0.5Gi"
       cpu: "2.5"
     limits:
-      memory: "4Gi"
+      memory: "10Gi"
       cpu: "3"
 
 appOfApps:
