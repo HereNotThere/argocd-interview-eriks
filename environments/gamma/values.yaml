@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "304ac3b"
+    tag: "testnet-hotfix"
   numStreamNodes: 11
   numArchiveNodes: 0
   riverRegistryPageSize: 1500
@@ -41,7 +41,7 @@ riverNode:
 
 subgraph:
   image:
-    tag: "8eb0ee6"
+    tag: "dev-43025-3"
   ponderStartBlock: "9378183"
   nodeEnv: "development"
   resources:
