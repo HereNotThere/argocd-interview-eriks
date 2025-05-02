@@ -25,10 +25,10 @@ rpc-gateway:
 
   resources:
     requests:
-      cpu: 4
+      cpu: 2.5
       memory: 0.5Gi
     limits:
-      cpu: 4
+      cpu: 3
       memory: 5Gi
 
   autoscaling:
