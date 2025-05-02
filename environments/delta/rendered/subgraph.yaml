@@ -45,7 +45,7 @@ env:
   - name: PONDER_CONFIG
     value: "ponder.config.delta.ts"
   - name: NODE_ENV
-    value: "development"
+    value: "production"
 
 # Health checks
 livenessProbe:
