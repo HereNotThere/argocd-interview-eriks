@@ -26,12 +26,12 @@ resources:
     memory: {{ subgraph.resources.requests.memory | default('4Gi') }}
 
 # Health checks
-livenessProbe:
-  httpGet:
-    path: /health
-    port: 42069
-  initialDelaySeconds: 30
-  periodSeconds: 10
+# livenessProbe:
+#   httpGet:
+#     path: /health
+#     port: 42069
+#   initialDelaySeconds: 30
+#   periodSeconds: 10
 
 readinessProbe:
   httpGet:

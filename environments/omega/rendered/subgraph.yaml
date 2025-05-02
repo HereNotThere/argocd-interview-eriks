@@ -11,7 +11,7 @@ podAnnotations:
 
 image:
   repository: "public.ecr.aws/h5v6m2x1/subgraph"
-  tag: "8594494"
+  tag: "0709187"
   pullPolicy: "IfNotPresent"
 
 service:
@@ -28,12 +28,12 @@ resources:
     memory: 2Gi
 
 # Health checks
-livenessProbe:
-  httpGet:
-    path: /health
-    port: 42069
-  initialDelaySeconds: 30
-  periodSeconds: 10
+# livenessProbe:
+#   httpGet:
+#     path: /health
+#     port: 42069
+#   initialDelaySeconds: 30
+#   periodSeconds: 10
 
 readinessProbe:
   httpGet:

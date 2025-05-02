@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "c7bd659"
+    tag: "a5c4ad0"
   resources:
     requests:
       cpu: 1
@@ -29,7 +29,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "c7bd659"
+    tag: "a5c4ad0"
   numStreamNodes: 10
   numArchiveNodes: 0
 
