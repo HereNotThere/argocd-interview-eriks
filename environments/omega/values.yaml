@@ -61,7 +61,7 @@ argocd:
 
 rpcGateway:
   image:
-    tag: "535a2cb"
+    tag: "80414f7"
   resources:
     requests:
       memory: "0.5Gi"
