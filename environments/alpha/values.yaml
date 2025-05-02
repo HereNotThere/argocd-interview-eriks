@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "304ac3b"
+    tag: "6f11305"
   useRpcGateway: true
   riverRegistryPageSize: 1500
   numStreamNodes: 10
