@@ -43,7 +43,7 @@ env:
   - name: PONDER_CONFIG
     value: "ponder.config.{{ global.environmentName }}.ts"
   - name: NODE_ENV
-    value: "{{ subgraph.nodeEnv | default('development') }}"
+    value: "{{ subgraph.nodeEnv | default('production') }}"
 
 # Health checks
 livenessProbe:
