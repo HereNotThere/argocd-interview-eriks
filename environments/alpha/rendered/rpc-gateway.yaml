@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "1a0bfb6"
+    tag: "3b26c93"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
