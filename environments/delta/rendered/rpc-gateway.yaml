@@ -68,6 +68,8 @@ rpc-gateway:
 
       - name: "loadtest"
 
+      - name: "subgraph"
+
     load_balancing:
       strategy: "primary_only"
 
