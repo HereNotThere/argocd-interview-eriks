@@ -29,7 +29,7 @@ rpc-gateway:
       memory: 0.5Gi
     limits:
       cpu: 3
-      memory: 10Gi
+      memory: 5Gi
 
   autoscaling:
     enabled: true
