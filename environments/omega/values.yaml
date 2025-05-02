@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet"
+    tag: "mainnet-fix"
     pullPolicy: Always
   numStreamNodes: 3
   numArchiveNodes: 3
@@ -44,14 +44,16 @@ riverNode:
 
 subgraph:
   image:
-    tag: "25572ed"
+    tag: "8594494"
+  ponderStartBlock: "13777756"
+  nodeEnv: "production"
   resources:
     requests:
-      cpu: 0.5
-      memory: 1.5Gi
-    limits:
       cpu: 1
       memory: 2Gi
+    limits:
+      cpu: 1.5
+      memory: 20Gi
 
 argocd:
   externalAccess:
@@ -59,14 +61,14 @@ argocd:
 
 rpcGateway:
   image:
-    tag: "8a324ab"
+    tag: "535a2cb"
   resources:
     requests:
       memory: "0.5Gi"
-      cpu: "2"
+      cpu: "2.5"
     limits:
-      memory: "1Gi"
-      cpu: "2"
+      memory: "10Gi"
+      cpu: "3"
 
 appOfApps:
   applications:
@@ -102,7 +104,7 @@ appOfApps:
       disable: false
     - name: subgraph
       namespace: default
-      disable: true
+      disable: false
     - name: rpc-gateway
       namespace: default
       disable: false

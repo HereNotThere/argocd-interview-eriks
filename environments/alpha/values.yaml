@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "7222b8e"
+    tag: "304ac3b"
   resources:
     requests:
       cpu: 1000m
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "7222b8e"
+    tag: "304ac3b"
   useRpcGateway: true
   riverRegistryPageSize: 1500
   numStreamNodes: 10
@@ -63,7 +63,7 @@ argocd:
 
 rpcGateway:
   image:
-    tag: "8a324ab"
+    tag: "535a2cb"
 
 appOfApps:
   applications:
