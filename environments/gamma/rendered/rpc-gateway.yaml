@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "f284fb8"
+    tag: "0438790"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -67,6 +67,8 @@ rpc-gateway:
         key: "$WEB_APP_PROJECT_KEY"
 
       - name: "loadtest"
+
+      - name: "subgraph"
 
     load_balancing:
       strategy: "primary_only"
