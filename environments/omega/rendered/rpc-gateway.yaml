@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "80414f7"
+    tag: "f198534"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -25,10 +25,10 @@ rpc-gateway:
 
   resources:
     requests:
-      cpu: 2.5
+      cpu: 4
       memory: 0.5Gi
     limits:
-      cpu: 3
+      cpu: 4
       memory: 5Gi
 
   autoscaling:
