@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "6f11305"
+    tag: "304ac3b"
   useRpcGateway: true
   riverRegistryPageSize: 1500
   numStreamNodes: 10
@@ -63,7 +63,7 @@ argocd:
 
 rpcGateway:
   image:
-    tag: "535a2cb"
+    tag: "6f11305"
 
 appOfApps:
   applications:
