@@ -8,7 +8,7 @@ image:
 apm:
   enabled: true
 
-useRpcGateway: false
+useRpcGateway: true
 
 nodes:
   - nodeType: stream

@@ -30,6 +30,7 @@ riverNode:
   image:
     tag: "mainnet"
     pullPolicy: Always
+  useRpcGateway: true
   numStreamNodes: 3
   numArchiveNodes: 3
   imageTagOverride:
