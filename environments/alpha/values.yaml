@@ -63,7 +63,7 @@ argocd:
 
 rpcGateway:
   image:
-    tag: "6f11305"
+    tag: "b33ef8b"
 
 appOfApps:
   applications:
