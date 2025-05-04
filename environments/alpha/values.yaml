@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "a5c4ad0"
+    tag: "bd5a507"
   resources:
     requests:
       cpu: 1000m
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "a5c4ad0"
+    tag: "bd5a507"
   useRpcGateway: true
   riverRegistryPageSize: 1500
   numStreamNodes: 10
