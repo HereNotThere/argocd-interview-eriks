@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet"
+    tag: "8a96e53"
     pullPolicy: Always
   useRpcGateway: true
   numStreamNodes: 3
