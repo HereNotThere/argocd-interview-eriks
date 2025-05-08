@@ -162,6 +162,8 @@ spec:
             {{- end }}
             - name: RIVER_RIVERREGISTRY_PAGESIZE
               value: {{ required "riverRegistryPageSize is required" $.Values.riverRegistryPageSize | quote }}
+            - name: RIVER_RIVERREGISTRY_PARALLELREADERS
+              value: "10"
       volumes:
         - name: tls-secret
           secret:
