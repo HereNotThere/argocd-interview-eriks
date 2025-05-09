@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "bd5a507"
+    tag: "b1e3720"
   apnsTownsAppIdentifier: com.towns.internal
   resources:
     requests:
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "bd5a507"
+    tag: "b1e3720"
   numStreamNodes: 11
   numArchiveNodes: 0
   riverRegistryPageSize: 1500

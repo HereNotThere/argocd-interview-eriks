@@ -28,8 +28,9 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet"
+    tag: "fb3b24c"
     pullPolicy: Always
+  riverRegistryPageSize: 3000
   useRpcGateway: true
   numStreamNodes: 3
   numArchiveNodes: 3
