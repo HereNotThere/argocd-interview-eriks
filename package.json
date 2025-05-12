@@ -6,9 +6,9 @@
   "author": "Kerem Kazan <kerem.kazan@gmail.com>",
   "private": true,
   "devDependencies": {
-    "prettier": "^3.4.2"
+    "prettier": "3.4.2"
   },
   "scripts": {
-    "prettier:fix": "prettier --config ./.prettierrc --write ./environments/*"
+    "prettier:fix": "prettier --config ./.prettierrc --write ./environments/**/rendered/*.yaml"
   }
 }
