@@ -9,6 +9,6 @@
     "prettier": "^3.4.2"
   },
   "scripts": {
-    "prettier:fix": "prettier --write ./environments/*"
+    "prettier:fix": "prettier --config ./.prettierrc --write ./environments/*"
   }
 }
