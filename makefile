@@ -2,6 +2,10 @@ export ENV
 export CHART
 export NAMESPACE
 
+setup: # First time setup
+	pip install -r requirements.txt
+	yarn
+
 # Renders values.yaml files for the specified environment
 render_values: _check_env
 	@echo "Rendering values for $(ENV)"
