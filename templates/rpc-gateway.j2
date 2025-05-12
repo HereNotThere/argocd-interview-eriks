@@ -93,7 +93,16 @@ rpc-gateway:
       {{ chains.base.chainId }}:
         upstreams:
           - url: "$UPSTREAM_URL_BASE_ALCHEMY"
-            timeout: "10s"
+            weight: 1
+
+      1:
+        upstreams:
+          - url: "$UPSTREAM_URL_ETHEREUM_MAINNET_ALCHEMY"
+            weight: 1
+
+      11155111:
+        upstreams:
+          - url: "$UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY"
             weight: 1
 
   # Environment variables to be set in the container
@@ -103,6 +112,18 @@ rpc-gateway:
         secretKeyRef:
           name: rpc-gateway-secrets
           key: upstream_url_base_alchemy
+
+    - name: UPSTREAM_URL_ETHEREUM_MAINNET_ALCHEMY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: ethereum_mainnet_alchemy_rpc_url
+
+    - name: UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: ethereum_sepolia_alchemy_rpc_url
 
     - name: WEB_APP_PROJECT_KEY
       valueFrom:
