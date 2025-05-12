@@ -127,7 +127,7 @@ redis:
 
     resources:
       requests:
-        memorys: "1Gi"
+        memory: "1Gi"
         cpu: "500m"
       limits:
         memory: "2Gi"
