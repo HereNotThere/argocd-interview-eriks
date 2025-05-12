@@ -101,13 +101,13 @@ rpc-gateway:
       valueFrom:
         secretKeyRef:
           name: rpc-gateway-secrets
-          key: ethereum_mainnet_alchemy_rpc_url
+          key: upstream_url_ethereum_mainnet_alchemy
 
     - name: UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY
       valueFrom:
         secretKeyRef:
           name: rpc-gateway-secrets
-          key: ethereum_sepolia_alchemy_rpc_url
+          key: upstream_url_ethereum_sepolia_alchemy
 
     - name: WEB_APP_PROJECT_KEY
       valueFrom:
