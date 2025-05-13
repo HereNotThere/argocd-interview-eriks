@@ -21,7 +21,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "{{ rpcGateway.image.tag | default("55a2b9f") }}"
+    tag: "{{ rpcGateway.image.tag | default("cc6ef6c") }}"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]' 
