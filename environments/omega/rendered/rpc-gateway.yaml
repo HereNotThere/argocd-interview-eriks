@@ -88,6 +88,7 @@ rpc-gateway:
         upstreams:
           - url: "$UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY"
             weight: 1
+            block_time: 10s
 
   # Environment variables to be set in the container
   env:
