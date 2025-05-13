@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "6f11305"
+    tag: "cc6ef6c"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -77,7 +77,17 @@ rpc-gateway:
       84532:
         upstreams:
           - url: "$UPSTREAM_URL_BASE_ALCHEMY"
-            timeout: "10s"
+            weight: 1
+
+      1:
+        upstreams:
+          - url: "$UPSTREAM_URL_ETHEREUM_MAINNET_ALCHEMY"
+            weight: 1
+
+      11155111:
+        block_time: 10s
+        upstreams:
+          - url: "$UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY"
             weight: 1
 
   # Environment variables to be set in the container
@@ -87,6 +97,18 @@ rpc-gateway:
         secretKeyRef:
           name: rpc-gateway-secrets
           key: upstream_url_base_alchemy
+
+    - name: UPSTREAM_URL_ETHEREUM_MAINNET_ALCHEMY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: upstream_url_ethereum_mainnet_alchemy
+
+    - name: UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY
+      valueFrom:
+        secretKeyRef:
+          name: rpc-gateway-secrets
+          key: upstream_url_ethereum_sepolia_alchemy
 
     - name: WEB_APP_PROJECT_KEY
       valueFrom:
@@ -106,10 +128,10 @@ redis:
 
     resources:
       requests:
-        memory: "1Gi"
+        memory: "50Mi"
         cpu: "500m"
       limits:
-        memory: "2Gi"
+        memory: "200Mi"
         cpu: "1"
 
   replica:
