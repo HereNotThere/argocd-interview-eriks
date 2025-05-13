@@ -127,10 +127,10 @@ redis:
 
     resources:
       requests:
-        memory: "1Gi"
+        memory: "50Mi"
         cpu: "500m"
       limits:
-        memory: "2Gi"
+        memory: "200Mi"
         cpu: "1"
 
   replica:
