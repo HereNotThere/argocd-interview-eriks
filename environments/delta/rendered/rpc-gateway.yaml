@@ -5,7 +5,7 @@
 rpc-gateway:
   image:
     pullPolicy: Always
-    tag: "60d3222"
+    tag: "cc6ef6c"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
@@ -85,6 +85,7 @@ rpc-gateway:
             weight: 1
 
       11155111:
+        block_time: 10s
         upstreams:
           - url: "$UPSTREAM_URL_ETHEREUM_SEPOLIA_ALCHEMY"
             weight: 1
