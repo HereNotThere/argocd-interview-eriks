@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "a35dda2"
+    tag: "mainnet-fix"
     pullPolicy: Always
   riverRegistryPageSize: 3000
   useRpcGateway: true
