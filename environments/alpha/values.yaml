@@ -42,6 +42,17 @@ riverNode:
       cpu: 1
       memory: 2.5Gi
 
+appRegistryService:
+  image:
+    tag: "7f0b3a1"
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 1.5Gi
+    limits:
+      cpu: 1
+      memory: 2Gi
+
 subgraph:
   image:
     tag: "25572ed"
@@ -63,39 +74,42 @@ argocd:
 
 appOfApps:
   applications:
-  - name: argocd
-    namespace: argocd
-    disable: false
-  - name: datadog
-    namespace: datadog
-    disable: false
-  - name: external-secrets
-    namespace: external-secrets
-    disable: false
-  - name: cert-manager
-    namespace: cert-manager
-    disable: false
-  - name: external-dns
-    namespace: external-dns
-    disable: false
-  - name: main-alb
-    namespace: default
-    disable: false
-  - name: xchain-monitor
-    namespace: default
-    disable: true
-  - name: metrics-aggregator
-    namespace: default
-    disable: false
-  - name: notification-service
-    namespace: default
-    disable: false
-  - name: river-node
-    namespace: default
-    disable: false
-  - name: rpc-gateway
-    namespace: default
-    disable: false
-  - name: subgraph
-    namespace: default
-    disable: true
+    - name: argocd
+      namespace: argocd
+      disable: false
+    - name: datadog
+      namespace: datadog
+      disable: false
+    - name: external-secrets
+      namespace: external-secrets
+      disable: false
+    - name: cert-manager
+      namespace: cert-manager
+      disable: false
+    - name: external-dns
+      namespace: external-dns
+      disable: false
+    - name: main-alb
+      namespace: default
+      disable: false
+    - name: xchain-monitor
+      namespace: default
+      disable: true
+    - name: metrics-aggregator
+      namespace: default
+      disable: false
+    - name: notification-service
+      namespace: default
+      disable: false
+    - name: river-node
+      namespace: default
+      disable: false
+    - name: rpc-gateway
+      namespace: default
+      disable: false
+    - name: subgraph
+      namespace: default
+      disable: true
+    - name: app-registry-service
+      namespace: default
+      disable: false

@@ -11,4 +11,8 @@
   subgraph:
     disable: {{ app.disable | lower}}
 {% endif %}
+{% if app.name == "app-registry-service" %}
+  appRegistryService:
+    disable: {{ app.disable | lower}}
+{% endif %}
 {% endfor %}
