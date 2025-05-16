@@ -31,4 +31,4 @@ pip install -r requirements.txt
 make render_values ENV=gamma
 ```
 
-See `notes` for more information.
+See `notes` and [GCP Migration ArgoCD](https://www.notion.so/herenottherelabs/GCP-Migration-ArgoCD-1ac3562b1f4e80bba28df6bf2a95e3d4) for more information.
