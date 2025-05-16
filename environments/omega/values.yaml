@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "mainnet-fix"
+    tag: "mainnet"
     pullPolicy: Always
   riverRegistryPageSize: 3000
   useRpcGateway: true
