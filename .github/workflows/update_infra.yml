@@ -21,6 +21,11 @@ on:
         description: "riverNode.image.tag"
         type: string
         required: false
+
+      appRegistryServiceImageTag:
+        description: "appRegistryService.image.tag"
+        type: string
+        required: false
   repository_dispatch:
     types: [update-infra]
 
@@ -61,12 +66,14 @@ jobs:
             ENV="${{ github.event.inputs.environment }}"
             NOTIFICATION_SERVICE_IMAGE_TAG="${{ github.event.inputs.notificationServiceImageTag }}"
             RIVER_NODE_IMAGE_TAG="${{ github.event.inputs.riverNodeImageTag }}"
+            APP_REGISTRY_SERVICE_IMAGE_TAG="${{ github.event.inputs.appRegistryServiceImageTag }}"
 
           elif [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
             echo "Repository dispatch event detected"
             ENV="${{ github.event.client_payload.environment }}"
             NOTIFICATION_SERVICE_IMAGE_TAG="${{ github.event.client_payload.notificationServiceImageTag }}"
             RIVER_NODE_IMAGE_TAG="${{ github.event.client_payload.riverNodeImageTag }}"
+            APP_REGISTRY_SERVICE_IMAGE_TAG="${{ github.event.client_payload.appRegistryServiceImageTag }}"
 
           else
             echo "Unknown event type: ${{ github.event_name }}, exiting"
@@ -90,6 +97,10 @@ jobs:
           # if the river node tag is set
           if [[ -n "$RIVER_NODE_IMAGE_TAG" ]]; then
             VALUES="$VALUES riverNode.image.tag=$RIVER_NODE_IMAGE_TAG"
+          fi
+
+          if [[ -n "$APP_REGISTRY_SERVICE_IMAGE_TAG" ]]; then
+            VALUES="$VALUES appRegistryService.image.tag=$APP_REGISTRY_SERVICE_IMAGE_TAG"
           fi
 
           echo "VALUES=${VALUES}" >> $GITHUB_ENV

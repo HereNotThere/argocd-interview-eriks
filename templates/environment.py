@@ -15,6 +15,7 @@ TEMPLATE_NAMES = (
   'argocd',
   'main-alb',
   'notification-service', 
+  'app-registry-service',
   'metrics-aggregator',
   'xchain-monitor',
   'river-node',

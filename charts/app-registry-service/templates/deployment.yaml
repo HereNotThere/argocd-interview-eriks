@@ -1,0 +1,169 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "app-registry-service.fullname" . }}
+  labels:
+    {{- include "app-registry-service.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate #Tell k8s to recreate the pod when the deployment is updated
+  selector:
+    matchLabels:
+      {{- include "app-registry-service.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/app-registry-service.logs: '[{"service": "app-registry-service"}]' 
+        ad.datadoghq.com/app-registry-service.checks: |
+         {
+            "openmetrics": {
+              "instances": [
+                {
+                  "prometheus_url": "http://%%host%%:8081/metrics",
+                  "namespace": "app-registry-service",
+                  "metrics": ["*"]
+                }
+              ]
+            }
+         }
+      labels:
+        {{- include "app-registry-service.labels" . | nindent 8 }}
+        {{- with .Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccountName: main-service-account
+      containers:
+        - name: app-registry-service
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
+              name: http
+            - containerPort: 8081
+              name: metrics
+            - containerPort: 8082
+              name: pprof
+          readinessProbe:
+            httpGet:
+              path: /status?blockchain=0
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /status?blockchain=0
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: PORT
+              value: "80"
+
+            - name: DISABLEHTTPS
+              value: "true"
+
+            - name: DATABASE__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_app_password
+            - name: DATABASE__HOST
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_host
+            - name: DATABASE__PORT
+              value: "5432"
+            - name: DATABASE__USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_app_user
+            - name: DATABASE__DATABASE
+              value: river
+            - name: DATABASE__EXTRA
+              value: "?sslmode=disable&pool_max_conns=1000"
+
+            - name: BASECHAIN__CHAINID
+              value: {{ $.Values.global.chains.base.chainId | quote }}
+            - name: BASECHAIN__NETWORKURL
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: base-rpc-url
+            - name: RIVERCHAIN__CHAINID
+              value: {{ $.Values.global.chains.river.chainId | quote }}
+            - name: RIVERCHAIN__NETWORKURL
+              valueFrom:
+                secretKeyRef:
+                  name: notification-service-secrets
+                  key: river-rpc-url
+
+            - name: ARCHITECTCONTRACT__ADDRESS
+              value: {{ required "spaceArchitect contract address required" $.Values.global.chains.base.contractAddresses.spaceArchitect }}
+            - name: REGISTRYCONTRACT__ADDRESS
+              value: {{ required "riverRegistry contract address required" $.Values.global.chains.river.contractAddresses.riverRegistry }}
+            - name: ENTITLEMENT_CONTRACT__ADDRESS
+              value: {{ required "baseRegistry contract address required" $.Values.global.chains.base.contractAddresses.baseRegistry }}
+
+            - name: LOG__FORMAT
+              value: json
+            - name: LOG__LEVEL
+              value: info
+            - name: LOG__NOCOLOR
+              value: "true"
+
+            - name: METRICS__ENABLED
+              value: "true"
+            - name: METRICS__PORT
+              value: "8081"
+
+            - name: APPREGISTRY__APPREGISTRYID
+              value: "app_registry"
+            - name: APPREGISTRY__AUTHENTICATION__SESSIONTOKEN__KEY__KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: session_token_key
+            - name: APPREGISTRY__AUTHENTICATION__SESSIONTOKEN__KEY__LIFETIME
+              value: 15m
+            - name: APPREGISTRY__AUTHENTICATION__SESSIONTOKEN__KEY__ALGORITHM
+              value: HS256
+            - name: APPREGISTRY__SHAREDSERCRETDATAENCRYPTIONKEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: shared_secret_encryption_key
+            - name: APPREGISTRY__ALLOWINSECUREWEBHOOKS
+              value: "false"
+            - name: APPREGISTRY__NUMMESSAGESENDWORKERS
+              value: "50"
+
+            - name: ENABLEDEBUGENDPOINTS
+              value: "true"
+            - name: DEBUGENDPOINTS__PPROF
+              value: "true"
+
+            - name: RUN_MODE
+              value: app-registry
+
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

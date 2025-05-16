@@ -1,0 +1,4 @@
+image:
+  tag: "{{ appRegistryService.image.tag }}"
+resources:
+  {{ appRegistryService.resources | to_yaml | indent(2) }}

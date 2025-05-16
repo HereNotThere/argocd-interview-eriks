@@ -42,6 +42,17 @@ riverNode:
       cpu: 1
       memory: 2.5Gi
 
+appRegistryService:
+  image:
+    tag: "mainnet"
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 1.5Gi
+    limits:
+      cpu: 1
+      memory: 2Gi
+
 subgraph:
   image:
     tag: "25572ed"
@@ -99,3 +110,6 @@ appOfApps:
   - name: subgraph
     namespace: default
     disable: true
+  - name: app-registry-service
+    namespace: default
+    disable: false
