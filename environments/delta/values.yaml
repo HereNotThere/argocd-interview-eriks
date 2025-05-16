@@ -44,6 +44,17 @@ subgraph:
       cpu: 1
       memory: 2Gi
 
+appRegistryService:
+  image:
+    tag: "83e87ca"
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 1.5Gi
+    limits:
+      cpu: 1
+      memory: 2Gi
+
 argocd:
   externalAccess:
     enabled: true
@@ -84,5 +95,8 @@ appOfApps:
     namespace: default
     disable: true
   - name: rpc-gateway
+    namespace: default
+    disable: true
+  - name: app-registry-service
     namespace: default
     disable: true
