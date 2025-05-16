@@ -108,3 +108,11 @@ appOfApps:
         - ./values.yaml
         - ../../environments/gamma/rendered/global.yaml
         - ../../environments/gamma/rendered/rpc-gateway.yaml
+
+    - name: app-registry-service
+      disable: false
+      namespace: default
+      valueFiles:
+        - ./values.yaml
+        - ../../environments/gamma/rendered/global.yaml
+        - ../../environments/gamma/rendered/app-registry-service.yaml

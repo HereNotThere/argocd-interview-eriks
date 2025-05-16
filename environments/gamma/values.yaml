@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "testnet-fix"
+    tag: "83e87ca"
   numStreamNodes: 11
   numArchiveNodes: 0
   riverRegistryPageSize: 1500
