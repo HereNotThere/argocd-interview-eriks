@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "mainnet"
+    tag: "7f0b3a1"
   resources:
     limits:
       cpu: "1.5"
