@@ -1,4 +1,5 @@
 {
+  "editor.formatOnSave": false,
   "editor.defaultFormatter": null,
   "[yaml]": {
     "editor.formatOnSave": false

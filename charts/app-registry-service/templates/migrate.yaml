@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: app-registry-service-db-migrate-job
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: app-registry-service-db-migrate-job
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: app-registry-service-db-migrate-job
+          image: golang:1.23.3-alpine3.20 # Node.js with TypeScript installed
+          command: ["/bin/sh", "-c"]
+          resources:
+            requests:
+              memory: "4Gi"
+              cpu: "1"
+          args:
+            - |
+              echo "Testing"
+              exit 1
+          env:
+            - name: DB_APP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_app_user
+
+            - name: DB_APP_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_app_password
+
+            - name: DB_ROOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_root_user
+
+            - name: DB_ROOT_USER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_root_password
+
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: app-registry-service-secrets
+                  key: db_host
