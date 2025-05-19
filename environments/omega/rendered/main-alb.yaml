@@ -10,3 +10,6 @@ subgraph:
 
 rpcGateway:
   disable: false
+
+appRegistryService:
+  disable: true
