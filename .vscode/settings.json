@@ -1,0 +1,6 @@
+{
+  "editor.defaultFormatter": null,
+  "[yaml]": {
+    "editor.formatOnSave": false
+  }
+}
