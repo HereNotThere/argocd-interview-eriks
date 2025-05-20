@@ -4,9 +4,9 @@ import { z } from 'zod'
 const envSchema = z.object({
     DB_HOST: z.string().min(1),
     DB_APP_USER: z.string().min(1),
-    DB_APP_PASSWORD: z.string().min(1),
+    DB_APP_USER_PASSWORD: z.string().min(1),
     DB_ROOT_USER: z.string().min(1),
-    DB_ROOT_PASSWORD: z.string().min(1),
+    DB_ROOT_USER_PASSWORD: z.string().min(1),
 })
 
 const DB_NAME = 'river'
@@ -23,7 +23,7 @@ const createAppRegistryServiceDbUser = async () => {
     const pgClient = new Client({
         host: env.DB_HOST,
         database: 'postgres',
-        password: env.DB_ROOT_PASSWORD,
+        password: env.DB_ROOT_USER_PASSWORD,
         user: env.DB_ROOT_USER,
         port: 5432,
         ssl: {
@@ -48,7 +48,7 @@ const createAppRegistryServiceDbUser = async () => {
         IF NOT EXISTS (
           SELECT FROM pg_catalog.pg_user WHERE usename = '${env.DB_APP_USER}'
         ) THEN
-          CREATE USER ${env.DB_APP_USER} WITH PASSWORD '${env.DB_APP_PASSWORD}';
+          CREATE USER ${env.DB_APP_USER} WITH PASSWORD '${env.DB_APP_USER_PASSWORD}';
         END IF;
       END
       $do$
