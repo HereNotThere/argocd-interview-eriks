@@ -50,6 +50,7 @@ spec:
                 name: notification-service
                 port:
                   number: 80
+    {{- end }}
     {{- if not .Values.appRegistryService.disable }}
     - host: {{ include "app-registry-service.domainName" . }}
       http:
