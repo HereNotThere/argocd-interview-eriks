@@ -1,3 +1,51 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: app-registry-service-db-migrate-job-secrets
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+  namespace: {{ .Release.Namespace }}
+spec:
+  refreshInterval: "1h"
+  secretStoreRef:
+    name: gcp-secret-store
+    kind: ClusterSecretStore
+  target:
+    creationPolicy: Owner
+    deletionPolicy: Retain
+  data:
+    - secretKey: db_host
+      remoteRef:
+        key: app-registry-service-db-credentials
+        property: host
+        version: latest
+
+    - secretKey: db_app_password
+      remoteRef:
+        key: app-registry-service-db-credentials
+        property: app_password
+        version: latest
+
+    - secretKey: db_app_user
+      remoteRef:
+        key: app-registry-service-db-credentials
+        property: app_user
+        version: latest
+
+    - secretKey: db_root_user
+      remoteRef:
+        key: app-registry-service-db-credentials
+        property: root_user
+        version: latest
+
+    - secretKey: db_root_password
+      remoteRef:
+        key: app-registry-service-db-credentials
+        property: root_password
+        version: latest
+---
+
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -13,6 +61,25 @@ spec:
         app: app-registry-service-db-migrate-job
     spec:
       restartPolicy: Never
+      volumes:
+        - name: app-registry-service-db-migrate-job-secrets
+          secret:
+            secretName: app-registry-service-db-migrate-job-secrets
+      initContainers:
+        - name: wait-for-secrets
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              until [ -f /app-registry-service-db-migrate-job-secrets/db_host ]; do
+                echo "Waiting for secrets to be created..."
+                sleep 1
+              done
+          volumeMounts:
+            - name: app-registry-service-db-migrate-job-secrets
+              mountPath: /app-registry-service-db-migrate-job-secrets
+
       containers:
         - name: app-registry-service-db-migrate-job
           image: golang:1.23.3-alpine3.20 # Node.js with TypeScript installed
@@ -29,29 +96,29 @@ spec:
             - name: DB_APP_USER
               valueFrom:
                 secretKeyRef:
-                  name: app-registry-service-secrets
+                  name: app-registry-service-db-migrate-job-secrets
                   key: db_app_user
 
             - name: DB_APP_USER_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: app-registry-service-secrets
+                  name: app-registry-service-db-migrate-job-secrets
                   key: db_app_password
 
             - name: DB_ROOT_USER
               valueFrom:
                 secretKeyRef:
-                  name: app-registry-service-secrets
+                  name: app-registry-service-db-migrate-job-secrets
                   key: db_root_user
 
             - name: DB_ROOT_USER_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: app-registry-service-secrets
+                  name: app-registry-service-db-migrate-job-secrets
                   key: db_root_password
 
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: app-registry-service-secrets
+                  name: app-registry-service-db-migrate-job-secrets
                   key: db_host
