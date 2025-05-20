@@ -110,7 +110,7 @@ appOfApps:
         - ../../environments/alpha/rendered/subgraph.yaml
 
     - name: app-registry-service
-      disable: true
+      disable: false
       namespace: default
       valueFiles:
         - ./values.yaml
