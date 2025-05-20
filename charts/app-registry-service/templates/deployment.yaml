@@ -137,7 +137,7 @@ spec:
               value: 15m
             - name: APPREGISTRY__AUTHENTICATION__SESSIONTOKEN__KEY__ALGORITHM
               value: HS256
-            - name: APPREGISTRY__SHAREDSERCRETDATAENCRYPTIONKEY
+            - name: APPREGISTRY__SHAREDSECRETDATAENCRYPTIONKEY
               valueFrom:
                 secretKeyRef:
                   name: app-registry-service-secrets
