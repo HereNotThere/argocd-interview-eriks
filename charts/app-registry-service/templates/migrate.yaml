@@ -90,8 +90,11 @@ spec:
               cpu: "1"
           args:
             - |
-              echo "Testing"
-              exit 1
+              apk add --no-cache nodejs npm git &&
+              npm install -g yarn &&
+              git clone --depth=1 https://github.com/HereNotThere/argocd /app &&
+              cd /app/scripts/app-registry-service-db-config &&
+              sh ./run.sh 
           env:
             - name: DB_APP_USER
               valueFrom:
