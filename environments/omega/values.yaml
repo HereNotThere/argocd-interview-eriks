@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "83e87ca"
+    tag: "e0494c2"
     pullPolicy: Always
   riverRegistryPageSize: 3000
   useRpcGateway: true
@@ -49,7 +49,7 @@ riverNode:
 
 subgraph:
   image:
-    tag: "0709187"
+    tag: "omega-52025-1"
   ponderStartBlock: "13777756"
   nodeEnv: "production"
   resources:
