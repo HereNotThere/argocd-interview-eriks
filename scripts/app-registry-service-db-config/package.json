@@ -1,0 +1,21 @@
+{
+    "name": "app-registry-service-db-config",
+    "version": "1.0.0",
+    "description": "",
+    "dependencies": {
+        "pg": "8.11.3",
+        "zod": "^3.21.4"
+    },
+    "devDependencies": {
+        "@types/pg": "8.11.6",
+        "esbuild": "0.25.0",
+        "prettier": "3.5.0",
+        "typescript": "5.7.3",
+        "ts-node": "10.9.2"
+    },
+    "scripts": {
+        "db:init": "ts-node --transpile-only src/index.ts"
+    },
+    "author": "",
+    "license": "ISC"
+}

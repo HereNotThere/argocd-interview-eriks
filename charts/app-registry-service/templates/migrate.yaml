@@ -3,7 +3,7 @@ kind: ExternalSecret
 metadata:
   name: app-registry-service-db-migrate-job-secrets
   annotations:
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
   namespace: {{ .Release.Namespace }}
 spec:
@@ -51,7 +51,7 @@ kind: Job
 metadata:
   name: app-registry-service-db-migrate-job
   annotations:
-    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook": pre-install
     "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   backoffLimit: 0
