@@ -29,7 +29,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "931cac7"
+    tag: "b9f3d9e"
   numStreamNodes: 10
   numArchiveNodes: 0
 
