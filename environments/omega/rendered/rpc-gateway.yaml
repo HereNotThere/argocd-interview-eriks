@@ -4,8 +4,9 @@
 
 rpc-gateway:
   image:
+    repository: public.ecr.aws/h5v6m2x1/rpc-gateway
     pullPolicy: Always
-    tag: "cc6ef6c"
+    tag: "5b23033"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'
