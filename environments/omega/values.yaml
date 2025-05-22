@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "7f0b3a1"
+    tag: "83c431c"
   resources:
     limits:
       cpu: "1.5"
@@ -49,7 +49,7 @@ riverNode:
 
 subgraph:
   image:
-    tag: "omega-52025-1"
+    tag: "cd099a5"
   ponderStartBlock: "13777756"
   nodeEnv: "production"
   resources:
@@ -75,7 +75,7 @@ rpcGateway:
 
 appRegistryService:
   image:
-    tag: "83e87ca"
+    tag: "83c431c"
   resources:
     requests:
       cpu: 0.5

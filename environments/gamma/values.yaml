@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "7f0b3a1"
+    tag: "83c431c"
   apnsTownsAppIdentifier: com.towns.internal
   resources:
     requests:
@@ -28,7 +28,7 @@ notificationService:
 
 riverNode:
   image:
-    tag: "e0494c2"
+    tag: "45f8235"
   numStreamNodes: 11
   numArchiveNodes: 0
   riverRegistryPageSize: 1500
@@ -41,7 +41,7 @@ riverNode:
 
 subgraph:
   image:
-    tag: "1410bb4"
+    tag: "subgraph-52125-1"
   ponderStartBlock: "9378183"
   nodeEnv: "development"
   resources:
@@ -54,7 +54,7 @@ subgraph:
 
 appRegistryService:
   image:
-    tag: "83e87ca"
+    tag: "45f8235"
   resources:
     requests:
       cpu: 0.5
