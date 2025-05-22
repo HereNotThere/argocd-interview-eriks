@@ -55,6 +55,10 @@ appRegistryService:
       cpu: 1
       memory: 2Gi
 
+rpcGateway:
+  image:
+    tag: "5b23033"
+
 argocd:
   externalAccess:
     enabled: true
