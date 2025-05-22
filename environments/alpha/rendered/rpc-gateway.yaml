@@ -6,7 +6,7 @@ rpc-gateway:
   image:
     repository: public.ecr.aws/h5v6m2x1/rpc-gateway
     pullPolicy: Always
-    tag: "a2d5eb0360dcbf5b111124c396d26432ea14438c"
+    tag: "latest"
 
   podAnnotations:
     ad.datadoghq.com/rpc-gateway.logs: '[{"service": "rpc-gateway"}]'

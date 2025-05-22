@@ -74,7 +74,7 @@ argocd:
 
 rpcGateway:
   image:
-    tag: "5b23033"
+    tag: "latest"
 
 appOfApps:
   applications:
