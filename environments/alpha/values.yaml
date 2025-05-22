@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "notifications-fix"
+    tag: "b3ba142"
   resources:
     requests:
       cpu: 1000m
