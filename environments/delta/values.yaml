@@ -16,7 +16,7 @@ chains:
 
 notificationService:
   image:
-    tag: "452c52f"
+    tag: "4eb3af7"
   resources:
     requests:
       cpu: 1
