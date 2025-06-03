@@ -77,7 +77,7 @@ rpcGateway:
 
 appRegistryService:
   image:
-    tag: "d96a7ab"
+    tag: "9f4bb56"
   resources:
     requests:
       cpu: 0.5
