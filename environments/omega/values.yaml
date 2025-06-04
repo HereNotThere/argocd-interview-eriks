@@ -49,13 +49,13 @@ riverNode:
 
 subgraph:
   image:
-    tag: "subgraph-060325-04f5619030"
+    tag: "subgraph-060325-b24f4d09b7"
   ponderStartBlock: "13777756"
   nodeEnv: "production"
   resources:
     requests:
       cpu: 1
-      memory: 2Gi
+      memory: 5Gi
     limits:
       cpu: 1.5
       memory: 20Gi
