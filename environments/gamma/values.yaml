@@ -56,7 +56,7 @@ subgraph:
 
 appRegistryService:
   image:
-    tag: "05adc18"
+    tag: "19594c1"
   resources:
     requests:
       cpu: 0.5
