@@ -4,7 +4,7 @@
 
 nodeEnv: "production"
 
-ponderStartBlock: "28777756"
+ponderStartBlock: "13777757"
 ponderLogLevel: "info"
 
 podAnnotations:
@@ -12,7 +12,7 @@ podAnnotations:
 
 image:
   repository: "public.ecr.aws/h5v6m2x1/subgraph"
-  tag: "subgraph-49d065a"
+  tag: "subgraph-49d065a-2"
   pullPolicy: "IfNotPresent"
 
 service:
