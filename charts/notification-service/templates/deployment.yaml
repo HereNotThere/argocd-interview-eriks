@@ -58,6 +58,9 @@ spec:
             httpGet:
               path: /status?blockchain=0
               port: http
+              initialDelaySeconds: 60
+              timeoutSeconds: 5
+              failureThreshold: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
