@@ -4,7 +4,7 @@
 
 apnsTownsAppIdentifier: com.towns.ios
 image:
-  tag: "ab65192"
+  tag: "750ae8a"
 resources:
   limits:
     cpu: 6.0
