@@ -12,6 +12,6 @@ spec:
     requestPath: /status
     port: 80
     checkIntervalSec: 60
-    timeoutSec: 5
+    timeoutSec: 30
     healthyThreshold: 1
     unhealthyThreshold: 3
